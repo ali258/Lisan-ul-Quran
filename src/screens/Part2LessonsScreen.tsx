@@ -39,9 +39,9 @@ const Part2LessonsScreen: React.FC<Part2LessonsScreenProps> = ({ onNavigate, onB
     },
     {
       id: 'lesson-6',
-      title: 'اسم کی مثالیں',
+      title: 'اسم کی اقسام',
       subtitle: 'سبق ۶',
-      description: 'اسم کی مختلف مثالیں',
+      description: 'اسم کی مختلف اقسام',
       icon: '📚',
       color: 'primary-500',
     },
