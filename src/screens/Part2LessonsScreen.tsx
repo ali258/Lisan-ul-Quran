@@ -55,9 +55,9 @@ const Part2LessonsScreen: React.FC<Part2LessonsScreenProps> = ({ onNavigate, onB
     },
     {
       id: 'lesson-8',
-      title: 'اسم کی مشق',
+      title: 'غیر منصرف اسماء',
       subtitle: 'Lesson 8',
-      description: 'اسم کی عملی مشق',
+      description: 'غیر منصرف اسماء کی شناخت',
       icon: '✏️',
       color: 'primary-300',
     },

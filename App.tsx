@@ -6,7 +6,7 @@ import SplashScreen from './src/screens/SplashScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import Part1LessonsScreen from './src/screens/Part1LessonsScreen';
 import Part2LessonsScreen from './src/screens/Part2LessonsScreen';
-import { Lesson1Screen, Lesson2Screen, Lesson3Screen, Lesson4Screen, Lesson5Screen, Lesson6Screen, Lesson7Screen } from './src/screens/lessons';
+import { Lesson1Screen, Lesson2Screen, Lesson3Screen, Lesson4Screen, Lesson5Screen, Lesson6Screen, Lesson7Screen, Lesson8Screen } from './src/screens/lessons';
 
 // Store
 import { useThemeStore } from './src/store/themeStore';
@@ -15,7 +15,7 @@ import { COLORS } from './src/utils/constants';
 // Font loading
 import { initializeFonts } from './src/utils/fontLoader';
 
-type Screen = 'Splash' | 'Home' | 'QuranPart1' | 'QuranPart2' | 'QuranPart3' | 'QuranPart4' | 'Part1Lessons' | 'Part2Lessons' | 'lesson-1' | 'lesson-2' | 'lesson-3' | 'lesson-4' | 'lesson-5' | 'lesson-6' | 'lesson-7';
+type Screen = 'Splash' | 'Home' | 'QuranPart1' | 'QuranPart2' | 'QuranPart3' | 'QuranPart4' | 'Part1Lessons' | 'Part2Lessons' | 'lesson-1' | 'lesson-2' | 'lesson-3' | 'lesson-4' | 'lesson-5' | 'lesson-6' | 'lesson-7' | 'lesson-8';
 
 const { width, height } = Dimensions.get('window');
 
@@ -93,6 +93,8 @@ const App = () => {
         return <Lesson6Screen onNavigate={navigate} onBack={goBack} />;
       case 'lesson-7':
         return <Lesson7Screen onNavigate={navigate} onBack={goBack} />;
+      case 'lesson-8':
+        return <Lesson8Screen onNavigate={navigate} onBack={goBack} />;
       default:
         return <HomeScreen onNavigate={navigate} />;
     }
