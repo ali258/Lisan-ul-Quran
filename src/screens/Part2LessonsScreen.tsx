@@ -32,7 +32,7 @@ const Part2LessonsScreen: React.FC<Part2LessonsScreenProps> = ({ onNavigate, onB
     {
       id: 'lesson-5',
       title: 'اسم کی تعریف',
-      subtitle: 'سبق ۵',
+      subtitle: 'Lesson 5',
       description: 'اسم کی مکمل تعریف',
       icon: '📝',
       color: 'primary-600',
@@ -40,23 +40,23 @@ const Part2LessonsScreen: React.FC<Part2LessonsScreenProps> = ({ onNavigate, onB
     {
       id: 'lesson-6',
       title: 'اسم کی اقسام',
-      subtitle: 'سبق ۶',
+      subtitle: 'Lesson 6',
       description: 'اسم کی مختلف اقسام',
       icon: '📚',
       color: 'primary-500',
     },
     {
       id: 'lesson-7',
-      title: 'اسم کی شناخت',
-      subtitle: 'سبق ۷',
-      description: 'اسم کی شناخت کے طریقے',
+      title: 'منصرف اسماء',
+      subtitle: 'Lesson 7',
+      description: 'منصرف اسماء کی شناخت',
       icon: '🔍',
       color: 'primary-400',
     },
     {
       id: 'lesson-8',
       title: 'اسم کی مشق',
-      subtitle: 'سبق ۸',
+      subtitle: 'Lesson 8',
       description: 'اسم کی عملی مشق',
       icon: '✏️',
       color: 'primary-300',

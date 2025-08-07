@@ -32,7 +32,7 @@ const Part1LessonsScreen: React.FC<Part1LessonsScreenProps> = ({ onNavigate, onB
     {
       id: 'lesson-1',
       title: 'حروف الهجاء',
-      subtitle: 'سبق ۱',
+      subtitle: 'Lesson 1',
       description: 'عربی حروف کی تعلیم',
       icon: '🔤',
       color: 'primary-500',
@@ -40,7 +40,7 @@ const Part1LessonsScreen: React.FC<Part1LessonsScreenProps> = ({ onNavigate, onB
     {
       id: 'lesson-2',
       title: 'حرکات و تنوین و سکون',
-      subtitle: 'سبق ۲',
+      subtitle: 'Lesson 2',
       description: 'حرکات کی تعلیم',
       icon: '⚡',
       color: 'primary-400',
@@ -48,7 +48,7 @@ const Part1LessonsScreen: React.FC<Part1LessonsScreenProps> = ({ onNavigate, onB
     {
       id: 'lesson-3',
       title: 'حروف و حرکات',
-      subtitle: 'سبق ۳',
+      subtitle: 'Lesson 3',
       description: 'لفظ کی تشکیل',
       icon: '🔗',
       color: 'primary-300',
@@ -56,7 +56,7 @@ const Part1LessonsScreen: React.FC<Part1LessonsScreenProps> = ({ onNavigate, onB
     {
       id: 'lesson-4',
       title: 'کلمہ کی اقسام',
-      subtitle: 'سبق ۴',
+      subtitle: 'Lesson 4',
       description: 'کلمہ کی مختلف اقسام',
       icon: '📝',
       color: 'primary-200',
