@@ -20,6 +20,9 @@ interface Part2LessonsScreenProps {
 }
 
 const { width, height } = Dimensions.get('window');
+const isTablet = width >= 768; // Tablet breakpoint
+const lessonsPerRow = isTablet ? 3 : 2;
+const cardWidth = (width - 72 - (lessonsPerRow - 1) * 20) / lessonsPerRow; // Account for spacing between cards
 
 const Part2LessonsScreen: React.FC<Part2LessonsScreenProps> = ({ onNavigate, onBack }) => {
   const { isDarkMode } = useThemeStore();
@@ -33,16 +36,14 @@ const Part2LessonsScreen: React.FC<Part2LessonsScreenProps> = ({ onNavigate, onB
       description: 'اسم کی مکمل تعریف',
       icon: '📝',
       color: 'primary-600',
-      gradient: ['#3b82f6', '#1d4ed8'],
     },
     {
       id: 'lesson-6',
       title: 'اسم کی مثالیں',
       subtitle: 'سبق ۶',
-      description: 'اسم کی مختلف مثالیں اور استعمال',
+      description: 'اسم کی مختلف مثالیں',
       icon: '📚',
       color: 'primary-500',
-      gradient: ['#8b5cf6', '#7c3aed'],
     },
     {
       id: 'lesson-7',
@@ -51,16 +52,14 @@ const Part2LessonsScreen: React.FC<Part2LessonsScreenProps> = ({ onNavigate, onB
       description: 'اسم کی شناخت کے طریقے',
       icon: '🔍',
       color: 'primary-400',
-      gradient: ['#06b6d4', '#0891b2'],
     },
     {
       id: 'lesson-8',
       title: 'اسم کی مشق',
       subtitle: 'سبق ۸',
-      description: 'اسم کی عملی مشق اور تمرین',
+      description: 'اسم کی عملی مشق',
       icon: '✏️',
       color: 'primary-300',
-      gradient: ['#10b981', '#059669'],
     },
   ];
 
@@ -141,72 +140,60 @@ const Part2LessonsScreen: React.FC<Part2LessonsScreenProps> = ({ onNavigate, onB
     lessonsContainer: {
       marginTop: 20,
     },
+    lessonsRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginBottom: 20,
+    },
     lessonCard: {
       backgroundColor: getThemeColor(colors.surface, isDarkMode),
-      borderRadius: 20,
-      padding: 24,
-      marginBottom: 20,
+      borderRadius: 16,
+      padding: 20,
+      width: cardWidth,
       borderWidth: 2,
       borderColor: getThemeColor(colors.border, isDarkMode),
       shadowColor: getThemeColor(colors.shadow, isDarkMode),
-      shadowOffset: { width: 0, height: 8 },
-      shadowOpacity: 0.15,
-      shadowRadius: 12,
-      elevation: 6,
-    },
-    lessonHeader: {
-      flexDirection: 'row',
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.1,
+      shadowRadius: 8,
+      elevation: 4,
       alignItems: 'center',
-      marginBottom: 20,
     },
     lessonIcon: {
-      fontSize: 36,
-      marginRight: 20,
-    },
-    lessonInfo: {
-      flex: 1,
+      fontSize: 32,
+      marginBottom: 12,
     },
     lessonNumber: {
-      fontSize: 16,
+      fontSize: 14,
       fontWeight: 'bold',
       color: getThemeColor(colors.primary, isDarkMode),
-      marginBottom: 6,
+      marginBottom: 8,
       fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
     },
     lessonTitle: {
-      fontSize: 24,
-      fontWeight: 'bold',
-      color: getThemeColor(colors.text, isDarkMode),
-      marginBottom: 6,
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
-      textAlign: 'right',
-    },
-    lessonDescription: {
-      fontSize: 16,
-      color: getThemeColor(colors.textSecondary, isDarkMode),
-      lineHeight: 24,
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
-      marginBottom: 20,
-    },
-    lessonButton: {
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
-      borderRadius: 12,
-      paddingVertical: 16,
-      paddingHorizontal: 24,
-      alignItems: 'center',
-      shadowColor: getThemeColor(colors.shadow, isDarkMode),
-      shadowOffset: { width: 0, height: 4 },
-      shadowOpacity: 0.2,
-      shadowRadius: 8,
-      elevation: 4,
-    },
-    lessonButtonText: {
-      color: getThemeColor(colors.surface, isDarkMode),
       fontSize: 18,
       fontWeight: 'bold',
+      color: getThemeColor(colors.text, isDarkMode),
+      marginBottom: 8,
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
+      textAlign: 'center',
+      lineHeight: 24,
+    },
+    lessonDescription: {
+      fontSize: 12,
+      color: getThemeColor(colors.textSecondary, isDarkMode),
+      lineHeight: 16,
       fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+      textAlign: 'center',
+      marginBottom: 0,
     },
   });
+
+  // Group lessons into rows based on lessonsPerRow
+  const lessonRows = [];
+  for (let i = 0; i < lessons.length; i += lessonsPerRow) {
+    lessonRows.push(lessons.slice(i, i + lessonsPerRow));
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -231,30 +218,30 @@ const Part2LessonsScreen: React.FC<Part2LessonsScreenProps> = ({ onNavigate, onB
         {/* Title Section */}
         <View style={styles.titleSection}>
           <Text style={styles.mainTitle}>حصہ دوم</Text>
-          <Text style={styles.subtitle}>اسم کی تعلیم</Text>
-          <Text style={styles.description}>
-            اس حصے میں آپ اسم کی مکمل تعریف، اقسام اور مثالیں سیکھیں گے
-          </Text>
         </View>
 
-        {/* Lessons */}
+        {/* Lessons in responsive layout */}
         <View style={styles.lessonsContainer}>
-          {lessons.map((lesson) => (
-            <View key={lesson.id} style={styles.lessonCard}>
-              <View style={styles.lessonHeader}>
-                <Text style={styles.lessonIcon}>{lesson.icon}</Text>
-                <View style={styles.lessonInfo}>
+          {lessonRows.map((row, rowIndex) => (
+            <View key={rowIndex} style={styles.lessonsRow}>
+              {row.map((lesson) => (
+                <TouchableOpacity
+                  key={lesson.id}
+                  style={styles.lessonCard}
+                  onPress={() => handleLessonPress(lesson.id)}
+                >
+                  <Text style={styles.lessonIcon}>{lesson.icon}</Text>
                   <Text style={styles.lessonNumber}>{lesson.subtitle}</Text>
                   <Text style={styles.lessonTitle}>{lesson.title}</Text>
-                </View>
-              </View>
-              <Text style={styles.lessonDescription}>{lesson.description}</Text>
-              <TouchableOpacity
-                style={styles.lessonButton}
-                onPress={() => handleLessonPress(lesson.id)}
-              >
-                <Text style={styles.lessonButtonText}>شروع کریں</Text>
-              </TouchableOpacity>
+                  <Text style={styles.lessonDescription}>{lesson.description}</Text>
+                </TouchableOpacity>
+              ))}
+              {/* Add empty views if row is not full */}
+              {row.length < lessonsPerRow && 
+                Array.from({ length: lessonsPerRow - row.length }).map((_, index) => (
+                  <View key={`empty-${index}`} style={{ width: cardWidth }} />
+                ))
+              }
             </View>
           ))}
         </View>
