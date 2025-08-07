@@ -346,7 +346,7 @@ const Lesson7Screen: React.FC<Lesson7ScreenProps> = ({ onNavigate, onBack }) => 
 
         {/* Characteristics Table */}
         <View style={styles.characteristicsContainer}>
-          <Text style={styles.characteristicsTitle}>منصرف اسماء کی خصوصیات</Text>
+          <Text style={styles.characteristicsTitle}>منصرف اسماء کی نشاندہی</Text>
           
           <View style={styles.characteristicsTable}>
             {characteristics.map((char, index) => (

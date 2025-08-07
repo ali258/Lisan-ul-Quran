@@ -351,7 +351,98 @@ const Lesson8Screen: React.FC<Lesson8ScreenProps> = ({ onNavigate, onBack }) => 
           </View>
         </View>
 
-        {/* Identification Table - Third */}
+
+        {/* Groups Table - Third */}
+        <View style={styles.tableContainer}>
+          <Text style={styles.tableTitle}>غیر منصرف اسماء کے چند گروپس</Text>
+          
+          <View style={styles.table}>
+            {/* Table Header */}
+            <View style={styles.tableHeader}>
+              <View style={styles.headerCell}>
+                <Text style={styles.headerText}>مثال</Text>
+              </View>
+              <View style={styles.headerCell}>
+                <Text style={styles.headerText}>اسماء کے چند گروپس</Text>
+              </View>
+            </View>
+
+            {/* Table Rows */}
+            <View style={styles.tableRow}>
+              <View style={styles.tableCell}>
+                <Text style={styles.cellText}>آدَمُ - اِسْحَقُ - يُوسُفُ - أَيُّوبُ</Text>
+              </View>
+              <View style={styles.tableCell}>
+                <Text style={styles.cellText}>انبیاء کے اکثر نام</Text>
+              </View>
+            </View>
+
+            <View style={styles.tableRow}>
+              <View style={styles.tableCell}>
+                <Text style={styles.cellText}>خَدِيجَةُ - عَائِشَةُ - فَاطِمَةُ - زَيْنَبُ</Text>
+              </View>
+              <View style={styles.tableCell}>
+                <Text style={styles.cellText}>عربي مونث اسمائے اعلام مثلاً</Text>
+              </View>
+            </View>
+
+            <View style={styles.tableRow}>
+              <View style={styles.tableCell}>
+                <Text style={styles.cellText}>أسَامَةُ - طَلْحَةُ - حُذَيْفَةُ - حَمْزَةُ</Text>
+              </View>
+              <View style={styles.tableCell}>
+                <Text style={styles.cellText}>مردوں کے نام جو گول تاء پر ختم ہوں</Text>
+              </View>
+            </View>
+
+            <View style={styles.tableRow}>
+              <View style={styles.tableCell}>
+                <Text style={styles.cellText}>عُثْمَانُ - عَدْنَانُ - سَلْمَانُ</Text>
+              </View>
+              <View style={styles.tableCell}>
+                <Text style={styles.cellText}>مردوں کے نام جو 'ان' پر ختم ہوں</Text>
+              </View>
+            </View>
+
+            <View style={styles.tableRow}>
+              <View style={styles.tableCell}>
+                <Text style={styles.cellText}>جِبْرِيلُ - مِيْكُلُ - هَارُوْتُ - مَارُوْتُ</Text>
+              </View>
+              <View style={styles.tableCell}>
+                <Text style={styles.cellText}>فرشتوں کے نام مثلاً</Text>
+              </View>
+            </View>
+
+            <View style={styles.tableRow}>
+              <View style={styles.tableCell}>
+                <Text style={styles.cellText}>مَكَّةُ - مِصْرُ - بَاكِسْتَانُ</Text>
+              </View>
+              <View style={styles.tableCell}>
+                <Text style={styles.cellText}>شہروں اور ملکوں کے اکثر نام مثلاً</Text>
+              </View>
+            </View>
+
+            <View style={styles.tableRow}>
+              <View style={styles.tableCell}>
+                <Text style={styles.cellText}>أَفْعَلُ جیسے اَكْبَرُ ۔ فُعْلَاءُ جیسے صَفْرَاءُ </Text>
+              </View>
+              <View style={styles.tableCell}>
+                <Text style={styles.cellText}>عربی زبان میں کچھ ' وزن '</Text>
+              </View>
+            </View>
+
+            <View style={styles.tableRow}>
+              <View style={styles.tableCell}>
+                <Text style={styles.cellText}>فِرْعَوْنُ - هَامُنُ - ابْلِيْسُ - جَهَنَّمُ</Text>
+              </View>
+              <View style={styles.tableCell}>
+                <Text style={styles.cellText}>دیگر اسماء</Text>
+              </View>
+            </View>
+          </View>
+        </View>
+
+        {/* Identification Table - Fourth */}
         <View style={styles.characteristicsContainer}>
           <Text style={styles.characteristicsTitle}>غیر منصرف کی نشاندہی</Text>
           
@@ -382,6 +473,7 @@ const Lesson8Screen: React.FC<Lesson8ScreenProps> = ({ onNavigate, onBack }) => 
             </View>
           </View>
         </View>
+
 
         {/* Notes Section - Bottom */}
         <View style={styles.notesSection}>

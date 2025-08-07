@@ -61,6 +61,14 @@ const Part2LessonsScreen: React.FC<Part2LessonsScreenProps> = ({ onNavigate, onB
       icon: '✏️',
       color: 'primary-300',
     },
+    {
+      id: 'lesson-9',
+      title: 'مَبْنِي اسماء',
+      subtitle: 'Lesson 9',
+      description: 'مَبْنِي اسماء کی شناخت',
+      icon: '📋',
+      color: 'primary-200',
+    },
   ];
 
   const handleLessonPress = (lessonId: string) => {
