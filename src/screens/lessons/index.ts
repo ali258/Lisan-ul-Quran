@@ -8,7 +8,10 @@ export { default as Lesson6Screen } from './Lesson6Screen';
 export { default as Lesson7Screen } from './Lesson7Screen';
 export { default as Lesson8Screen } from './Lesson8Screen';
 export { default as Lesson9Screen } from './Lesson9Screen';
+export { default as Lesson10Screen } from './Lesson10Screen';
+export { default as Lesson11Screen } from './Lesson11Screen';
+export { default as Lesson12Screen } from './Lesson12Screen';
 
 // Future lesson screens can be added here:
-// export { default as Lesson9Screen } from './Lesson9Screen';
+// export { default as Lesson12Screen } from './Lesson12Screen';
 // etc. 

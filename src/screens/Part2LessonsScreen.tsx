@@ -69,6 +69,30 @@ const Part2LessonsScreen: React.FC<Part2LessonsScreenProps> = ({ onNavigate, onB
       icon: '📋',
       color: 'primary-200',
     },
+    {
+      id: 'lesson-10',
+      title: 'اسم کے چار پہلو',
+      subtitle: 'Lesson 10',
+      description: 'اسم اور اس کے چار اہم پہلو',
+      icon: '🎯',
+      color: 'primary-100',
+    },
+    {
+      id: 'lesson-11',
+      title: 'اعراب',
+      subtitle: 'Lesson 11',
+      description: 'اعراب کی تعریف اور مثالیں',
+      icon: '📝',
+      color: 'primary-50',
+    },
+    {
+      id: 'lesson-12',
+      title: 'جنس',
+      subtitle: 'Lesson 12',
+      description: 'جنس کی تعریف اور مثالیں',
+      icon: '👥',
+      color: 'primary-600',
+    },
   ];
 
   const handleLessonPress = (lessonId: string) => {
