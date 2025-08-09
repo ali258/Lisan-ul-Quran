@@ -117,6 +117,14 @@ const Part2LessonsScreen: React.FC<Part2LessonsScreenProps> = ({ onNavigate, onB
       icon: '🅰️',
       color: 'primary-300',
     },
+    {
+      id: 'lesson-16',
+      title: 'قمری و شمسی حروف',
+      subtitle: 'Lesson 16',
+      description: 'قمری اور شمسی حروف کی فہرست اور مثالیں',
+      icon: '🌙',
+      color: 'primary-200',
+    },
   ];
 
   const handleLessonPress = (lessonId: string) => {

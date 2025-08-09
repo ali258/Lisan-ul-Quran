@@ -65,6 +65,31 @@ const Lesson15Screen: React.FC<Lesson15ScreenProps> = ({ onBack }) => {
     cellAlt: { backgroundColor: 'transparent' },
     cellText: { fontSize: isTablet ? 18 : 16, color: getThemeColor(colors.text, isDarkMode), fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic) },
     noteText: { fontSize: isTablet ? 16 : 14, color: getThemeColor(colors.text, isDarkMode), fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu), textAlign: 'right', marginTop: 12 },
+    graphRow: { flexDirection: 'row', justifyContent: 'center', gap: 16, marginBottom: 16 },
+    graphBox: {
+      width: isTablet ? 120 : 100,
+      height: isTablet ? 100 : 80,
+      borderRadius: 16,
+      backgroundColor: getColorWithOpacity('red-600', 0.9),
+      alignItems: 'center',
+      justifyContent: 'center',
+      shadowColor: getThemeColor(colors.shadow, isDarkMode),
+      shadowOffset: { width: 0, height: 3 },
+      shadowOpacity: 0.25,
+      shadowRadius: 6,
+      elevation: 4,
+    },
+    graphTextEng: {
+      color: '#ffffff',
+      fontSize: isTablet ? 26 : 22,
+      fontWeight: 'bold',
+    },
+    graphTextAr: {
+      color: '#ffffff',
+      fontSize: isTablet ? 30 : 26,
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
+      fontWeight: 'bold',
+    },
   });
 
   return (
@@ -81,6 +106,15 @@ const Lesson15Screen: React.FC<Lesson15ScreenProps> = ({ onBack }) => {
         <View style={styles.contentInner}>
           <View style={styles.sectionCard}>
             <Text style={styles.mainTitle}>مُعرَّف باللّام</Text>
+            {/* Graph: The ↔ ال */}
+            <View style={styles.graphRow}>
+              <View style={styles.graphBox}>
+                <Text style={styles.graphTextEng}>The</Text>
+              </View>
+              <View style={styles.graphBox}>
+                <Text style={styles.graphTextAr}>ال</Text>
+              </View>
+            </View>
             <Text style={styles.bullet}>جب اسم پر <Text style={styles.inlineHighlight}>تنوین</Text> ہو تو <Text style={styles.inlineHighlight}>"ال"</Text> کے داخل ہونے سے اس اسم کی تنوین ختم ہو جاتی ہے۔ یعنی <Text style={styles.inlineHighlight}>"ال"</Text> اور تنوین دونوں کسی اسم پر اکٹھے نہیں آسکتے۔</Text>
             <Text style={styles.bullet}><Text style={styles.inlineHighlight}>"ال"</Text> میں ہمزہ (ا) کو <Text style={styles.inlineHighlight}>ہمزۂ الوصل</Text> کہتے ہیں، جسے جملے کے شروع میں پڑھا جاتا ہے اور درمیانِ کلام میں نہیں پڑھا جاتا، صرف لکھا رہتا ہے۔</Text>
             <Text style={styles.bullet}>جبکہ لام (لْ) کو <Text style={styles.inlineHighlight}>لامِ تعریف</Text> کہا جاتا ہے۔</Text>
