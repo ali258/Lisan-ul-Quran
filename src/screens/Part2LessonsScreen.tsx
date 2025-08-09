@@ -101,6 +101,22 @@ const Part2LessonsScreen: React.FC<Part2LessonsScreenProps> = ({ onNavigate, onB
       icon: '🔢',
       color: 'primary-500',
     },
+    {
+      id: 'lesson-14',
+      title: 'وسعت',
+      subtitle: 'Lesson 14',
+      description: 'نکرہ و معرفہ (وسعت) کی وضاحت',
+      icon: '📘',
+      color: 'primary-400',
+    },
+    {
+      id: 'lesson-15',
+      title: 'مُعرّف باللام',
+      subtitle: 'Lesson 15',
+      description: 'ال کے ساتھ معرفہ—قواعد اور مثالیں',
+      icon: '🅰️',
+      color: 'primary-300',
+    },
   ];
 
   const handleLessonPress = (lessonId: string) => {

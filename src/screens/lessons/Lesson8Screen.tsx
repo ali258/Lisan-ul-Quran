@@ -481,10 +481,12 @@ const Lesson8Screen: React.FC<Lesson8ScreenProps> = ({ onNavigate, onBack }) => 
           
           <View style={styles.noteCard}>
             <Text style={styles.noteText}>
-              غیر منصرف اسم حالت جرّ میں زیر قبول نہیں کرتے، لیکن دو صورتیں میں یہ حالت جرّ میں زیر قبول کرتے ہیں۔ وہ ہم آگے پڑھیں گے۔
+              غیر منصرف اسم حالت جرّ میں زیر قبول نہیں کرتے، لیکن دو صورتیں میں یہ حالت جرّ میں زیر قبول کرتے ہیں۔
             </Text>
           </View>
-
+          <View style={styles.noteCard}>
+            <Text style={styles.noteText}> غیر منصرف اسماء  حالتِ جر میں زیر قبول نہیں کرتے؛ لیکن “الـ” لگنے پر وہ زیر قبول کر لیتے ہیں۔</Text>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
