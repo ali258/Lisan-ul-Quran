@@ -52,7 +52,8 @@ type Screen =
   | 'lesson-9'
   | 'lesson-10'
   | 'lesson-11'
-  | 'lesson-12';
+  | 'lesson-12'
+  | 'lesson-13';
 
 const { width, height } = Dimensions.get('window');
 

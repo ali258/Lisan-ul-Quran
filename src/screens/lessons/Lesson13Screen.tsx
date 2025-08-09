@@ -692,6 +692,114 @@ const Lesson13Screen: React.FC<Lesson13ScreenProps> = ({ onNavigate, onBack }) =
                 </View>
               </View>
             </View>
+ 
+            {/* Examples Table - مثلاً */}
+            <View style={styles.sectionCard}>
+              <Text style={styles.mainTitle}>مثلاً</Text>
+              <View style={styles.singleTableContainer}>
+                {/* Header */}
+                <View style={styles.singleTableHeader}>
+                  <View style={styles.singleHeaderCell}><Text style={styles.headerText}>جر</Text></View>
+                  <View style={styles.singleHeaderCell}><Text style={styles.headerText}>نصب</Text></View>
+                  <View style={styles.singleHeaderCell}><Text style={styles.headerText}>رفع</Text></View>
+                  <View style={styles.singleHeaderCell}><Text style={styles.headerText}>مذکر جمع سالم</Text></View>
+                </View>
+
+                {/* Row: واحد (Masculine singular) */}
+                <View style={styles.singleTableRow}>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>عَبِدٍ</Text></View>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>عَبِدًا</Text></View>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>عَبِدٌ</Text></View>
+                  <View style={styles.singleTypeCell}><Text style={styles.labelText}>واحد</Text></View>
+                </View>
+
+                {/* Row: Dual */}
+                <View style={styles.singleTableRow}>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>عَبِدَيْنِ</Text></View>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>عَبِدَيْنِ</Text></View>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>عَبِدَانِ</Text></View>
+                  <View style={styles.singleTypeCell}><Text style={styles.labelText}>مثنى</Text></View>
+                </View>
+
+                {/* Row: Sound plural */}
+                <View style={styles.singleTableRow}>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>عَبِدِينَ</Text></View>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>عَبِدِينَ</Text></View>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>عَبِدُونَ</Text></View>
+                  <View style={styles.singleTypeCell}><Text style={styles.labelText}>جمع سالم</Text></View>
+                </View>
+              </View>
+              
+              {/* Feminine Sound Plural Examples */}
+              <View style={styles.singleTableContainer}>
+                {/* Header */}
+                <View style={styles.singleTableHeader}>
+                  <View style={styles.singleHeaderCell}><Text style={styles.headerText}>جر</Text></View>
+                  <View style={styles.singleHeaderCell}><Text style={styles.headerText}>نصب</Text></View>
+                  <View style={styles.singleHeaderCell}><Text style={styles.headerText}>رفع</Text></View>
+                  <View style={styles.singleHeaderCell}><Text style={styles.headerText}>مونث جمع سالم</Text></View>
+                </View>
+
+                {/* Row: واحد (Feminine) */}
+                <View style={styles.singleTableRow}>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>جَنَّةٍ</Text></View>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>جَنَّةً</Text></View>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>جَنَّةٌ</Text></View>
+                  <View style={styles.singleTypeCell}><Text style={styles.labelText}>واحد</Text></View>
+                </View>
+
+                {/* Row: Dual (Feminine) */}
+                <View style={styles.singleTableRow}>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>جَنَّتَيْنِ</Text></View>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>جَنَّتَيْنِ</Text></View>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>جَنَّتَانِ</Text></View>
+                  <View style={styles.singleTypeCell}><Text style={styles.labelText}>مثنى</Text></View>
+                </View>
+
+                {/* Row: Sound plural (Feminine) */}
+                <View style={styles.singleTableRow}>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>جَنَّاتٍ</Text></View>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>جَنَّاتٍ</Text></View>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>جَنَّاتٌ</Text></View>
+                  <View style={styles.singleTypeCell}><Text style={styles.labelText}>جمع سالم</Text></View>
+                </View>
+              </View>
+
+              {/* Masculine Broken Plural Examples */}
+              <View style={styles.singleTableContainer}>
+                {/* Header */}
+                <View style={styles.singleTableHeader}>
+                  <View style={styles.singleHeaderCell}><Text style={styles.headerText}>جر</Text></View>
+                  <View style={styles.singleHeaderCell}><Text style={styles.headerText}>نصب</Text></View>
+                  <View style={styles.singleHeaderCell}><Text style={styles.headerText}>رفع</Text></View>
+                  <View style={styles.singleHeaderCell}><Text style={styles.headerText}>مذکر جمع مکسر</Text></View>
+                </View>
+
+                {/* Row: واحد */}
+                <View style={styles.singleTableRow}>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>بَابٍ</Text></View>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>بَابًا</Text></View>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>بَابٌ</Text></View>
+                  <View style={styles.singleTypeCell}><Text style={styles.labelText}>واحد</Text></View>
+                </View>
+
+                {/* Row: Dual */}
+                <View style={styles.singleTableRow}>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>بَابَيْنِ</Text></View>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>بَابَيْنِ</Text></View>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>بَابَانِ</Text></View>
+                  <View style={styles.singleTypeCell}><Text style={styles.labelText}>مثنى</Text></View>
+                </View>
+
+                {/* Row: Broken plural */}
+                <View style={styles.singleTableRow}>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>أَبْوَابٍ</Text></View>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>أَبْوَابًا</Text></View>
+                  <View style={styles.singleCell}><Text style={styles.dataText}>أَبْوَابٌ</Text></View>
+                  <View style={styles.singleTypeCell}><Text style={styles.labelText}>جمع مکسر</Text></View>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
       </ScrollView>
