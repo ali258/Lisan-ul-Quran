@@ -19,6 +19,7 @@ export type RootStackParamList = {
   'lesson-10': undefined;
   'lesson-11': undefined;
   'lesson-12': undefined;
+  'lesson-13': undefined;
 };
 
 export type MenuItem = {

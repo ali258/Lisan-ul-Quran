@@ -93,6 +93,14 @@ const Part2LessonsScreen: React.FC<Part2LessonsScreenProps> = ({ onNavigate, onB
       icon: '👥',
       color: 'primary-600',
     },
+    {
+      id: 'lesson-13',
+      title: 'عدد',
+      subtitle: 'Lesson 13',
+      description: 'عدد کی تعریف اور مثالیں',
+      icon: '🔢',
+      color: 'primary-500',
+    },
   ];
 
   const handleLessonPress = (lessonId: string) => {

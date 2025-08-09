@@ -19,6 +19,7 @@ import {
   Lesson10Screen,
   Lesson11Screen,
   Lesson12Screen,
+  Lesson13Screen,
 } from './src/screens/lessons';
 
 // Store
@@ -139,6 +140,8 @@ const App = () => {
         return <Lesson11Screen onNavigate={navigate} onBack={goBack} />;
       case 'lesson-12':
         return <Lesson12Screen onNavigate={navigate} onBack={goBack} />;
+      case 'lesson-13':
+        return <Lesson13Screen onNavigate={navigate} onBack={goBack} />;
       default:
         return <HomeScreen onNavigate={navigate} />;
     }
