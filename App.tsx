@@ -30,6 +30,10 @@ import {
   Lesson20Screen,
   Lesson21Screen,
   Lesson22Screen,
+  Lesson23Screen,
+  Lesson24Screen,
+  Lesson25Screen,
+  Lesson26Screen,
 } from './src/screens/lessons';
 
 // Store
@@ -73,7 +77,11 @@ type Screen =
   | 'lesson-19'
   | 'lesson-20'
   | 'lesson-21'
-  | 'lesson-22';
+  | 'lesson-22'
+  | 'lesson-23'
+  | 'lesson-24'
+  | 'lesson-25'
+  | 'lesson-26';
 
 const { width, height } = Dimensions.get('window');
 
@@ -183,8 +191,16 @@ const App = () => {
         return <Lesson21Screen onNavigate={navigate} onBack={goBack} />;
       case 'lesson-22':
         return <Lesson22Screen onNavigate={navigate} onBack={goBack} />;
-      default:
-        return <HomeScreen onNavigate={navigate} />;
+      case 'lesson-23':
+        return <Lesson23Screen onNavigate={navigate} onBack={goBack} />;
+      case 'lesson-24':
+        return <Lesson24Screen onNavigate={navigate} onBack={goBack} />;
+            case 'lesson-25':
+        return <Lesson25Screen onNavigate={navigate} onBack={goBack} />;
+      case 'lesson-26':
+        return <Lesson26Screen onNavigate={navigate} onBack={goBack} />;
+    default:
+      return <HomeScreen onNavigate={navigate} />;
     }
   };
 
