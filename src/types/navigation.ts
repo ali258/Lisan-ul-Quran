@@ -7,6 +7,7 @@ export type RootStackParamList = {
   QuranPart3: undefined;
   QuranPart4: undefined;
   Part1Lessons: undefined;
+  Part3Lessons: undefined;
   'lesson-1': undefined;
   'lesson-2': undefined;
   'lesson-3': undefined;
@@ -23,6 +24,12 @@ export type RootStackParamList = {
   'lesson-14': undefined;
   'lesson-15': undefined;
   'lesson-16': undefined;
+  'lesson-17': undefined;
+  'lesson-18': undefined;
+  'lesson-19': undefined;
+  'lesson-20': undefined;
+  'lesson-21': undefined;
+  'lesson-22': undefined;
 };
 
 export type MenuItem = {

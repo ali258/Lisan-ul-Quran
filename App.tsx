@@ -6,6 +6,7 @@ import SplashScreen from './src/screens/SplashScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import Part1LessonsScreen from './src/screens/Part1LessonsScreen';
 import Part2LessonsScreen from './src/screens/Part2LessonsScreen';
+import Part3LessonsScreen from './src/screens/Part3LessonsScreen';
 import {
   Lesson1Screen,
   Lesson2Screen,
@@ -23,6 +24,12 @@ import {
   Lesson14Screen,
   Lesson15Screen,
   Lesson16Screen,
+  Lesson17Screen,
+  Lesson18Screen,
+  Lesson19Screen,
+  Lesson20Screen,
+  Lesson21Screen,
+  Lesson22Screen,
 } from './src/screens/lessons';
 
 // Store
@@ -41,6 +48,7 @@ type Screen =
   | 'QuranPart4'
   | 'Part1Lessons'
   | 'Part2Lessons'
+  | 'Part3Lessons'
   | 'home'
   | 'part-1'
   | 'part-2'
@@ -59,7 +67,13 @@ type Screen =
   | 'lesson-13'
   | 'lesson-14'
   | 'lesson-15'
-  | 'lesson-16';
+  | 'lesson-16'
+  | 'lesson-17'
+  | 'lesson-18'
+  | 'lesson-19'
+  | 'lesson-20'
+  | 'lesson-21'
+  | 'lesson-22';
 
 const { width, height } = Dimensions.get('window');
 
@@ -123,6 +137,8 @@ const App = () => {
         return <Part1LessonsScreen onNavigate={navigate} onBack={goBack} />;
       case 'Part2Lessons':
         return <Part2LessonsScreen onNavigate={navigate} onBack={goBack} />;
+      case 'Part3Lessons':
+        return <Part3LessonsScreen onNavigate={navigate} onBack={goBack} />;
       case 'lesson-1':
         return <Lesson1Screen onNavigate={navigate} onBack={goBack} />;
       case 'lesson-2':
@@ -155,6 +171,18 @@ const App = () => {
         return <Lesson15Screen onNavigate={navigate} onBack={goBack} />;
       case 'lesson-16':
         return <Lesson16Screen onNavigate={navigate} onBack={goBack} />;
+      case 'lesson-17':
+        return <Lesson17Screen onNavigate={navigate} onBack={goBack} />;
+      case 'lesson-18':
+        return <Lesson18Screen onNavigate={navigate} onBack={goBack} />;
+      case 'lesson-19':
+        return <Lesson19Screen onNavigate={navigate} onBack={goBack} />;
+      case 'lesson-20':
+        return <Lesson20Screen onNavigate={navigate} onBack={goBack} />;
+      case 'lesson-21':
+        return <Lesson21Screen onNavigate={navigate} onBack={goBack} />;
+      case 'lesson-22':
+        return <Lesson22Screen onNavigate={navigate} onBack={goBack} />;
       default:
         return <HomeScreen onNavigate={navigate} />;
     }

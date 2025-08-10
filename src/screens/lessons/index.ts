@@ -15,6 +15,12 @@ export { default as Lesson13Screen } from './Lesson13Screen';
 export { default as Lesson14Screen } from './Lesson14Screen';
 export { default as Lesson15Screen } from './Lesson15Screen';
 export { default as Lesson16Screen } from './Lesson16Screen';
+export { default as Lesson17Screen } from './Lesson17Screen';
+export { default as Lesson18Screen } from './Lesson18Screen';
+export { default as Lesson19Screen } from './Lesson19Screen';
+export { default as Lesson20Screen } from './Lesson20Screen';
+export { default as Lesson21Screen } from './Lesson21Screen';
+export { default as Lesson22Screen } from './Lesson22Screen';
 // Future lesson screens can be added here:
-// export { default as Lesson12Screen } from './Lesson12Screen';
+// export { default as Lesson23Screen } from './Lesson23Screen';
 // etc. 

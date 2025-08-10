@@ -16,7 +16,7 @@ import { getThemeColor } from '../utils/colorUtils';
 import { getFontWithProperFallback } from '../utils/fontUtils';
 
 interface HomeScreenProps {
-  onNavigate: (screen: 'QuranPart1' | 'QuranPart2' | 'QuranPart3' | 'QuranPart4' | 'Part1Lessons' | 'Part2Lessons') => void;
+  onNavigate: (screen: 'QuranPart1' | 'QuranPart2' | 'QuranPart3' | 'QuranPart4' | 'Part1Lessons' | 'Part2Lessons' | 'Part3Lessons') => void;
 }
 
 const { width, height } = Dimensions.get('window');
@@ -30,6 +30,8 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
       onNavigate('Part1Lessons');
     } else if (item.route === 'QuranPart2') {
       onNavigate('Part2Lessons');
+    } else if (item.route === 'QuranPart3') {
+      onNavigate('Part3Lessons');
     } else {
       onNavigate(item.route);
     }
