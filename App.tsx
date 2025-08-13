@@ -7,6 +7,9 @@ import HomeScreen from './src/screens/HomeScreen';
 import Part1LessonsScreen from './src/screens/Part1LessonsScreen';
 import Part2LessonsScreen from './src/screens/Part2LessonsScreen';
 import Part3LessonsScreen from './src/screens/Part3LessonsScreen';
+import QuranicWordIsmScreen from './src/screens/QuranicWordIsmScreen';
+import QuranicWordHarfScreen from './src/screens/QuranicWordHarfScreen';
+import QuranicWordFalScreen from './src/screens/QuranicWordFalScreen';
 import {
   Lesson1Screen,
   Lesson2Screen,
@@ -34,6 +37,23 @@ import {
   Lesson24Screen,
   Lesson25Screen,
   Lesson26Screen,
+  QuranicWordLesson1Screen,
+  QuranicWordLesson2Screen,
+  QuranicWordLesson3Screen,
+  QuranicWordHarfLesson1Screen,
+  QuranicWordHarfLesson2Screen,
+  QuranicWordHarfLesson3Screen,
+  QuranicWordHarfLesson4Screen,
+  QuranicWordHarfLesson5Screen,
+  QuranicWordHarfLesson6Screen,
+  QuranicWordHarfLesson7Screen,
+  QuranicWordHarfLesson8Screen,
+  QuranicWordHarfLesson9Screen,
+  QuranicWordHarfLesson10Screen,
+  QuranicWordHarfLesson11Screen,
+  QuranicWordHarfLesson12Screen,
+  QuranicWordHarfLesson13Screen,
+  QuranicWordHarfLesson14Screen,
 } from './src/screens/lessons';
 
 // Store
@@ -46,6 +66,11 @@ import { initializeFonts } from './src/utils/fontLoader';
 type Screen =
   | 'Splash'
   | 'Home'
+  | 'QuranicWord'
+  | 'QuranicWordHarf'
+  | 'QuranicWordIsm'
+  | 'QuranicWordFal'
+  | 'QuranicWordLessons'
   | 'QuranPart1'
   | 'QuranPart2'
   | 'QuranPart3'
@@ -53,6 +78,7 @@ type Screen =
   | 'Part1Lessons'
   | 'Part2Lessons'
   | 'Part3Lessons'
+  | 'QuranicWordLessons'
   | 'home'
   | 'part-1'
   | 'part-2'
@@ -81,7 +107,24 @@ type Screen =
   | 'lesson-23'
   | 'lesson-24'
   | 'lesson-25'
-  | 'lesson-26';
+  | 'lesson-26'
+  | 'QuranicWordLesson1'
+  | 'QuranicWordLesson2'
+  | 'QuranicWordLesson3'
+  | 'QuranicWordHarfLesson1'
+  | 'QuranicWordHarfLesson2'
+  | 'QuranicWordHarfLesson3'
+  | 'QuranicWordHarfLesson4'
+  | 'QuranicWordHarfLesson5'
+  | 'QuranicWordHarfLesson6'
+  | 'QuranicWordHarfLesson7'
+  | 'QuranicWordHarfLesson8'
+  | 'QuranicWordHarfLesson9'
+  | 'QuranicWordHarfLesson10'
+  | 'QuranicWordHarfLesson11'
+  | 'QuranicWordHarfLesson12'
+  | 'QuranicWordHarfLesson13'
+  | 'QuranicWordHarfLesson14';
 
 const { width, height } = Dimensions.get('window');
 
@@ -141,6 +184,14 @@ const App = () => {
         return <SplashScreen onNavigate={() => navigate('Home')} />;
       case 'Home':
         return <HomeScreen onNavigate={navigate} />;
+      case 'QuranicWord':
+        return <QuranicWordIsmScreen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordHarf':
+        return <QuranicWordHarfScreen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordFal':
+        return <QuranicWordFalScreen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordIsm':
+        return <QuranicWordIsmScreen onNavigate={navigate} onBack={goBack} />;
       case 'Part1Lessons':
         return <Part1LessonsScreen onNavigate={navigate} onBack={goBack} />;
       case 'Part2Lessons':
@@ -195,10 +246,44 @@ const App = () => {
         return <Lesson23Screen onNavigate={navigate} onBack={goBack} />;
       case 'lesson-24':
         return <Lesson24Screen onNavigate={navigate} onBack={goBack} />;
-            case 'lesson-25':
+      case 'lesson-25':
         return <Lesson25Screen onNavigate={navigate} onBack={goBack} />;
       case 'lesson-26':
         return <Lesson26Screen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordLesson1':
+        return <QuranicWordLesson1Screen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordLesson2':
+        return <QuranicWordLesson2Screen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordLesson3':
+        return <QuranicWordLesson3Screen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordHarfLesson1':
+        return <QuranicWordHarfLesson1Screen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordHarfLesson2':
+        return <QuranicWordHarfLesson2Screen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordHarfLesson3':
+        return <QuranicWordHarfLesson3Screen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordHarfLesson4':
+        return <QuranicWordHarfLesson4Screen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordHarfLesson5':
+        return <QuranicWordHarfLesson5Screen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordHarfLesson6':
+        return <QuranicWordHarfLesson6Screen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordHarfLesson7':
+        return <QuranicWordHarfLesson7Screen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordHarfLesson8':
+        return <QuranicWordHarfLesson8Screen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordHarfLesson9':
+        return <QuranicWordHarfLesson9Screen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordHarfLesson10':
+        return <QuranicWordHarfLesson10Screen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordHarfLesson11':
+        return <QuranicWordHarfLesson11Screen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordHarfLesson12':
+        return <QuranicWordHarfLesson12Screen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordHarfLesson13':
+        return <QuranicWordHarfLesson13Screen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordHarfLesson14':
+        return <QuranicWordHarfLesson14Screen onNavigate={navigate} onBack={goBack} />;
     default:
       return <HomeScreen onNavigate={navigate} />;
     }

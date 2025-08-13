@@ -7,16 +7,17 @@ import {
   StatusBar,
   StyleSheet,
   Dimensions,
+  TouchableOpacity,
 } from 'react-native';
 import { useThemeStore } from '../store/themeStore';
 import ThemeToggle from '../components/ThemeToggle';
 import ExpandableMenuCard from '../components/ExpandableMenuCard';
-import { QURAN_ARABIC_ITEM, QURAN_PARTS, TAILWIND_COLORS, FONT_CLASSES } from '../utils/constants';
+import { QURAN_ARABIC_ITEM, QURAN_PARTS, QURANIC_WORD_ITEM, QURANIC_WORD_CATEGORIES, TAILWIND_COLORS, FONT_CLASSES } from '../utils/constants';
 import { getThemeColor } from '../utils/colorUtils';
 import { getFontWithProperFallback } from '../utils/fontUtils';
 
 interface HomeScreenProps {
-  onNavigate: (screen: 'QuranPart1' | 'QuranPart2' | 'QuranPart3' | 'QuranPart4' | 'Part1Lessons' | 'Part2Lessons' | 'Part3Lessons') => void;
+  onNavigate: (screen: 'QuranPart1' | 'QuranPart2' | 'QuranPart3' | 'QuranPart4' | 'Part1Lessons' | 'Part2Lessons' | 'Part3Lessons' | 'QuranicWord' | 'QuranicWordHarf' | 'QuranicWordIsm' | 'QuranicWordFal' | 'QuranicWordLesson1' | 'QuranicWordLesson2' | 'QuranicWordLesson3') => void;
 }
 
 const { width, height } = Dimensions.get('window');
@@ -35,6 +36,10 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
     } else {
       onNavigate(item.route);
     }
+  };
+
+  const handleQuranicWordPress = (item: any) => {
+    onNavigate(item.route);
   };
 
   const styles = StyleSheet.create({
@@ -209,6 +214,45 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
       opacity: 0.7,
       color: getThemeColor(colors.textSecondary, isDarkMode),
     },
+    quranicWordCard: {
+      backgroundColor: getThemeColor(colors.surface, isDarkMode),
+      borderRadius: 20,
+      padding: 24,
+      borderWidth: 2,
+      borderColor: getThemeColor(colors.border, isDarkMode),
+      shadowColor: getThemeColor(colors.shadow, isDarkMode),
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.15,
+      shadowRadius: 8,
+      elevation: 6,
+    },
+    quranicWordHeader: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    quranicWordIcon: {
+      fontSize: 36,
+      marginRight: 16,
+    },
+    quranicWordInfo: {
+      flex: 1,
+    },
+    quranicWordTitle: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      color: getThemeColor(colors.text, isDarkMode),
+      marginBottom: 4,
+    },
+    quranicWordSubtitle: {
+      fontSize: 14,
+      color: getThemeColor(colors.textSecondary, isDarkMode),
+      opacity: 0.8,
+    },
+    quranicWordArrow: {
+      fontSize: 24,
+      color: getThemeColor(colors.primary, isDarkMode),
+      fontWeight: 'bold',
+    },
   });
 
   return (
@@ -267,6 +311,18 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
               mainItem={QURAN_ARABIC_ITEM}
               subItems={QURAN_PARTS}
               onSubItemPress={handleQuranPartPress}
+            />
+          </View>
+        </View>
+
+        {/* Quranic Word Section */}
+        <View style={styles.quranSection}>
+          <Text style={styles.sectionTitle}>Expand Your Vocabulary</Text>
+          <View style={styles.cardContainer}>
+            <ExpandableMenuCard
+              mainItem={QURANIC_WORD_ITEM}
+              subItems={QURANIC_WORD_CATEGORIES}
+              onSubItemPress={handleQuranicWordPress}
             />
           </View>
         </View>

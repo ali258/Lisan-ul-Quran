@@ -84,6 +84,16 @@ export const QURAN_ARABIC_ITEM: MenuItem = {
   route: 'QuranArabic',
 };
 
+// Main Quranic Word Item
+export const QURANIC_WORD_ITEM: MenuItem = {
+  id: 'quranic-word',
+  title: 'Quranic Word',
+  subtitle: 'Learn Quranic vocabulary and meanings',
+  icon: '🔤',
+  color: 'primary-500',
+  route: 'QuranicWord',
+};
+
 // Quran Parts
 export const QURAN_PARTS: MenuItem[] = [
   {
@@ -117,6 +127,62 @@ export const QURAN_PARTS: MenuItem[] = [
     icon: '4️⃣',
     color: 'green-600',
     route: 'QuranPart4',
+  },
+];
+
+// Quranic Word Categories
+export const QURANIC_WORD_CATEGORIES: MenuItem[] = [
+  {
+    id: 'quranic-word-harf',
+    title: 'حرف',
+    subtitle: 'Particles',
+    icon: '🔤',
+    color: 'primary-600',
+    route: 'QuranicWordHarf',
+  },
+  {
+    id: 'quranic-word-ism',
+    title: 'اسم',
+    subtitle: 'Nouns',
+    icon: '📝',
+    color: 'primary-500',
+    route: 'QuranicWordIsm',
+  },
+  {
+    id: 'quranic-word-fal',
+    title: 'فعل',
+    subtitle: 'Verbs',
+    icon: '📚',
+    color: 'primary-400',
+    route: 'QuranicWordFal',
+  },
+];
+
+// Quranic Word Lessons (for Ism category)
+export const QURANIC_WORD_LESSONS: MenuItem[] = [
+  {
+    id: 'quranic-word-lesson-1',
+    title: 'Lesson 1',
+    subtitle: 'Basic Quranic Words',
+    icon: '📝',
+    color: 'primary-600',
+    route: 'QuranicWordLesson1',
+  },
+  {
+    id: 'quranic-word-lesson-2',
+    title: 'Lesson 2',
+    subtitle: 'Common Quranic Terms',
+    icon: '📚',
+    color: 'primary-500',
+    route: 'QuranicWordLesson2',
+  },
+  {
+    id: 'quranic-word-lesson-3',
+    title: 'Lesson 3',
+    subtitle: 'Advanced Vocabulary',
+    icon: '🎯',
+    color: 'primary-400',
+    route: 'QuranicWordLesson3',
   },
 ];
 

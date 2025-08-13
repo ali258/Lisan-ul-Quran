@@ -275,11 +275,7 @@ const Part3LessonsScreen: React.FC<Part3LessonsScreenProps> = ({ onNavigate, onB
         {/* Title Section */}
         <View style={styles.titleSection}>
           <Text style={styles.mainTitle}>حصہ سوم</Text>
-          <Text style={styles.subtitle}>مرکبات کی تعلیم</Text>
-          <Text style={styles.description}>
-            اس حصے میں آپ مرکبات (compounds) کے بارے میں سیکھیں گے۔ 
-            یہ حصہ آپ کو بتائے گا کہ کیسے مفرد الفاظ مل کر مرکب بنتے ہیں۔
-          </Text>
+          
         </View>
 
         {/* Lessons in responsive layout */}

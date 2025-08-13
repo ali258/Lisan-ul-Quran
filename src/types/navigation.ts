@@ -2,12 +2,17 @@ export type RootStackParamList = {
   Splash: undefined;
   Home: undefined;
   QuranArabic: undefined;
+  QuranicWord: undefined;
+  QuranicWordHarf: undefined;
+  QuranicWordIsm: undefined;
+  QuranicWordFal: undefined;
   QuranPart1: undefined;
   QuranPart2: undefined;
   QuranPart3: undefined;
   QuranPart4: undefined;
   Part1Lessons: undefined;
   Part3Lessons: undefined;
+  QuranicWordLessons: undefined;
   'lesson-1': undefined;
   'lesson-2': undefined;
   'lesson-3': undefined;
@@ -34,6 +39,23 @@ export type RootStackParamList = {
   'lesson-24': undefined;
   'lesson-25': undefined;
   'lesson-26': undefined;
+  'QuranicWordLesson1': undefined;
+  'QuranicWordLesson2': undefined;
+  'QuranicWordLesson3': undefined;
+  'QuranicWordHarfLesson1': undefined;
+  'QuranicWordHarfLesson2': undefined;
+  'QuranicWordHarfLesson3': undefined;
+  'QuranicWordHarfLesson4': undefined;
+  'QuranicWordHarfLesson5': undefined;
+  'QuranicWordHarfLesson6': undefined;
+  'QuranicWordHarfLesson7': undefined;
+  'QuranicWordHarfLesson8': undefined;
+  'QuranicWordHarfLesson9': undefined;
+  'QuranicWordHarfLesson10': undefined;
+  'QuranicWordHarfLesson11': undefined;
+  'QuranicWordHarfLesson12': undefined;
+  'QuranicWordHarfLesson13': undefined;
+  'QuranicWordHarfLesson14': undefined;
 };
 
 export type MenuItem = {

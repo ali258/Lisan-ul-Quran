@@ -152,7 +152,7 @@ const ExpandableMenuCard: React.FC<ExpandableMenuCardProps> = ({
       paddingBottom: 16,
     },
     subItem: {
-      width: '48%',
+      width: '31%',
       marginHorizontal: '1%',
       marginTop: 12,
     },
