@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { useThemeStore } from '../store/themeStore';
 import { QURANIC_WORD_LESSONS, TAILWIND_COLORS, FONT_CLASSES } from '../utils/constants';
-import { getThemeColor } from '../utils/colorUtils';
+import { getThemeColor, getColorWithOpacity } from '../utils/colorUtils';
 import { getFontWithProperFallback } from '../utils/fontUtils';
 
 interface QuranicWordIsmScreenProps {
@@ -85,13 +85,15 @@ const QuranicWordIsmScreen: React.FC<QuranicWordIsmScreenProps> = ({ onNavigate,
       lineHeight: 24,
     },
     lessonsContainer: {
-      gap: 20,
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'space-between',
+      gap: 16,
     },
     lessonCard: {
       backgroundColor: getThemeColor(colors.surface, isDarkMode),
       borderRadius: 20,
-      padding: 24,
-      marginBottom: 16,
+      padding: 20,
       borderWidth: 2,
       borderColor: getThemeColor(colors.border, isDarkMode),
       shadowColor: getThemeColor(colors.shadow, isDarkMode),
@@ -99,6 +101,9 @@ const QuranicWordIsmScreen: React.FC<QuranicWordIsmScreenProps> = ({ onNavigate,
       shadowOpacity: 0.15,
       shadowRadius: 8,
       elevation: 6,
+      width: isTablet ? '23%' : '48%',
+      alignItems: 'center',
+      marginBottom: 16,
     },
     lessonCardPressed: {
       backgroundColor: getThemeColor(colors.primary, isDarkMode),
@@ -106,27 +111,28 @@ const QuranicWordIsmScreen: React.FC<QuranicWordIsmScreenProps> = ({ onNavigate,
       transform: [{ scale: 0.98 }],
     },
     lessonHeader: {
-      flexDirection: 'row',
       alignItems: 'center',
       marginBottom: 16,
     },
     lessonIcon: {
       fontSize: isTablet ? 48 : 36,
-      marginRight: 16,
+      marginBottom: 12,
     },
     lessonInfo: {
-      flex: 1,
+      alignItems: 'center',
     },
     lessonTitle: {
-      fontSize: isTablet ? 24 : 20,
+      fontSize: isTablet ? 20 : 16,
       fontWeight: 'bold',
       color: getThemeColor(colors.text, isDarkMode),
       marginBottom: 4,
+      textAlign: 'center',
     },
     lessonSubtitle: {
-      fontSize: isTablet ? 16 : 14,
+      fontSize: isTablet ? 14 : 12,
       color: getThemeColor(colors.textSecondary, isDarkMode),
       opacity: 0.8,
+      textAlign: 'center',
     },
     lessonDescription: {
       fontSize: isTablet ? 16 : 14,
@@ -210,12 +216,6 @@ const QuranicWordIsmScreen: React.FC<QuranicWordIsmScreenProps> = ({ onNavigate,
                   <Text style={styles.lessonSubtitle}>{lesson.subtitle}</Text>
                 </View>
               </View>
-              
-              <Text style={styles.lessonDescription}>
-                {index === 0 && "Learn fundamental Quranic nouns and their meanings. Build your vocabulary foundation with commonly used terms in the Holy Quran."}
-                {index === 1 && "Explore frequently used Quranic particles and phrases. Understand the context and significance of these important words in Islamic literature."}
-                {index === 2 && "Dive into advanced Quranic vocabulary and complex terms. Master sophisticated language patterns and deepen your understanding."}
-              </Text>
 
               <View style={styles.progressBar}>
                 <View style={[styles.progressFill, { width: '0%' }]} />

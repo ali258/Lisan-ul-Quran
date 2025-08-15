@@ -30,6 +30,7 @@ export { default as Lesson26Screen } from './Lesson26Screen';
 export { default as QuranicWordLesson1Screen } from './QuranicWordLesson1Screen';
 export { default as QuranicWordLesson2Screen } from './QuranicWordLesson2Screen';
 export { default as QuranicWordLesson3Screen } from './QuranicWordLesson3Screen';
+export { default as QuranicWordLesson4Screen } from './QuranicWordLesson4Screen';
 export { default as QuranicWordHarfLesson1Screen } from './QuranicWordHarfLesson1Screen';
 export { default as QuranicWordHarfLesson2Screen } from './QuranicWordHarfLesson2Screen';
 export { default as QuranicWordHarfLesson3Screen } from './QuranicWordHarfLesson3Screen';

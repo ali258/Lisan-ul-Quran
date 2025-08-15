@@ -40,6 +40,7 @@ import {
   QuranicWordLesson1Screen,
   QuranicWordLesson2Screen,
   QuranicWordLesson3Screen,
+  QuranicWordLesson4Screen,
   QuranicWordHarfLesson1Screen,
   QuranicWordHarfLesson2Screen,
   QuranicWordHarfLesson3Screen,
@@ -111,6 +112,7 @@ type Screen =
   | 'QuranicWordLesson1'
   | 'QuranicWordLesson2'
   | 'QuranicWordLesson3'
+  | 'QuranicWordLesson4'
   | 'QuranicWordHarfLesson1'
   | 'QuranicWordHarfLesson2'
   | 'QuranicWordHarfLesson3'
@@ -256,6 +258,8 @@ const App = () => {
         return <QuranicWordLesson2Screen onNavigate={navigate} onBack={goBack} />;
       case 'QuranicWordLesson3':
         return <QuranicWordLesson3Screen onNavigate={navigate} onBack={goBack} />;
+      case 'QuranicWordLesson4':
+        return <QuranicWordLesson4Screen onNavigate={navigate} onBack={goBack} />;
       case 'QuranicWordHarfLesson1':
         return <QuranicWordHarfLesson1Screen onNavigate={navigate} onBack={goBack} />;
       case 'QuranicWordHarfLesson2':

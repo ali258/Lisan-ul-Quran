@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -14,15 +14,15 @@ import { TAILWIND_COLORS, FONT_CLASSES } from '../../utils/constants';
 import { getThemeColor, getColorWithOpacity } from '../../utils/colorUtils';
 import { getFontWithProperFallback } from '../../utils/fontUtils';
 
-interface Lesson10ScreenProps {
-  onNavigate: (screen: string) => void;
+interface QuranicWordLesson4ScreenProps {
+  onNavigate: (screen: any) => void;
   onBack: () => void;
 }
 
 const { width, height } = Dimensions.get('window');
 const isTablet = width >= 768;
 
-const Lesson10Screen: React.FC<Lesson10ScreenProps> = ({ onNavigate, onBack }) => {
+const QuranicWordLesson4Screen: React.FC<QuranicWordLesson4ScreenProps> = ({ onNavigate, onBack }) => {
   const { isDarkMode } = useThemeStore();
   const colors = isDarkMode ? TAILWIND_COLORS.dark : TAILWIND_COLORS.light;
 
@@ -61,7 +61,6 @@ const Lesson10Screen: React.FC<Lesson10ScreenProps> = ({ onNavigate, onBack }) =
       fontWeight: 'bold',
       color: getThemeColor(colors.text, isDarkMode),
       flex: 1,
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
     },
     scrollView: {
       flex: 1,
@@ -77,7 +76,7 @@ const Lesson10Screen: React.FC<Lesson10ScreenProps> = ({ onNavigate, onBack }) =
       textAlign: 'center',
       marginBottom: 16,
       color: getThemeColor(colors.primary, isDarkMode),
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
     },
     subtitle: {
       fontSize: isTablet ? 18 : 16,
@@ -95,6 +94,13 @@ const Lesson10Screen: React.FC<Lesson10ScreenProps> = ({ onNavigate, onBack }) =
       fontWeight: 'bold',
       marginBottom: 16,
       color: getThemeColor(colors.text, isDarkMode),
+      textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+    },
+    sectionSubtitle: {
+      fontSize: isTablet ? 16 : 14,
+      marginBottom: 20,
+      color: getThemeColor(colors.textSecondary, isDarkMode),
       textAlign: 'center',
       fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
     },
@@ -145,41 +151,35 @@ const Lesson10Screen: React.FC<Lesson10ScreenProps> = ({ onNavigate, onBack }) =
       borderRightWidth: 1,
       borderRightColor: getThemeColor(colors.border, isDarkMode),
     },
-    serialCell: {
-      flex: 0.5,
+    categoryCell: {
+      flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
       paddingVertical: 12,
       paddingHorizontal: 8,
+      backgroundColor: getThemeColor(colors.primary, isDarkMode),
       borderRightWidth: 1,
       borderRightColor: getThemeColor(colors.border, isDarkMode),
-      backgroundColor: getColorWithOpacity(getThemeColor(colors.primary, isDarkMode), 0.1),
     },
     arabicText: {
-      fontSize: 16,
+      fontSize: 18,
       fontWeight: 'bold',
       color: getThemeColor(colors.text, isDarkMode),
       textAlign: 'center',
       fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
     },
-    urduText: {
+    categoryText: {
       fontSize: 16,
-      color: getThemeColor(colors.text, isDarkMode),
+      fontWeight: 'bold',
+      color: getThemeColor(colors.surface, isDarkMode),
       textAlign: 'center',
       fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
-      lineHeight: 22,
     },
-    englishText: {
-      fontSize: 14,
-      color: getThemeColor(colors.textSecondary, isDarkMode),
-      textAlign: 'center',
-      fontStyle: 'italic',
+    highlightedCell: {
+      backgroundColor: getThemeColor(colors.error, isDarkMode),
     },
-    serialText: {
-      fontSize: 18,
-      fontWeight: 'bold',
-      color: getThemeColor(colors.primary, isDarkMode),
-      textAlign: 'center',
+    highlightedText: {
+      color: getThemeColor(colors.surface, isDarkMode),
     },
     noteSection: {
       backgroundColor: getThemeColor(colors.surface, isDarkMode),
@@ -218,7 +218,7 @@ const Lesson10Screen: React.FC<Lesson10ScreenProps> = ({ onNavigate, onBack }) =
         <TouchableOpacity style={styles.backButton} onPress={onBack}>
           <Text style={styles.backButtonText}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>اسم کے چار اہم پہلو</Text>
+        <Text style={styles.headerTitle}>اسم موصول</Text>
       </View>
 
       <ScrollView
@@ -227,86 +227,62 @@ const Lesson10Screen: React.FC<Lesson10ScreenProps> = ({ onNavigate, onBack }) =
         contentContainerStyle={styles.content}
       >
         {/* Title Section */}
-        <Text style={styles.title}>اسم کے چار اہم پہلو</Text>
+        <Text style={styles.title}>اسم موصول</Text>
         <Text style={styles.subtitle}>
-          Four Important Aspects of Ism (Noun) in Arabic Grammar
+          Relative Pronouns - Connecting Words in Arabic
         </Text>
 
         {/* Main Table */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>اسم کے چار اہم پہلو کی تفصیل</Text>
+          <Text style={styles.sectionTitle}>اسم موصول کی مکمل جدول</Text>
+          <Text style={styles.sectionSubtitle}>Relative Pronouns Table</Text>
           
           <View style={styles.tableContainer}>
             {/* Main Header Row */}
             <View style={styles.tableHeader}>
-              
               <View style={styles.headerCell}>
-                <Text style={styles.headerText}>اسم کے چار اہم پہلو</Text>
+                <Text style={styles.headerText}>جمع</Text>
+              </View>
+              <View style={styles.headerCell}>
+                <Text style={styles.headerText}>مثنى</Text>
+              </View>
+              <View style={styles.headerCell}>
+                <Text style={styles.headerText}>واحد</Text>
+              </View>
+              <View style={styles.headerCell}>
+                <Text style={styles.headerText}>  جو، جس نے  </Text>
               </View>
             </View>
 
-            {/* Row 1 */}
+            {/* Masculine Row */}
             <View style={styles.dataRow}>
               <View style={styles.dataCell}>
-                <Text style={styles.urduText}>مذکر اور مونث</Text>
+                <Text style={styles.arabicText}>اَلَّذِينَ</Text>
               </View>
               <View style={styles.dataCell}>
-                <Text style={styles.englishText}>Gender</Text>
+                <Text style={styles.arabicText}>اَللَّذَانِ</Text>
               </View>
               <View style={styles.dataCell}>
-                <Text style={styles.arabicText}>جنس</Text>
+                <Text style={styles.arabicText}>اَلَّذِیْ</Text>
               </View>
-              <View style={styles.serialCell}>
-                <Text style={styles.serialText}>1</Text>
-              </View>
-              
-            </View>
-
-            {/* Row 2 */}
-            <View style={styles.dataRow}>
-              <View style={styles.dataCell}>
-                <Text style={styles.urduText}>واحد ، مثنی اور جمع</Text>
-              </View>
-              <View style={styles.dataCell}>
-                <Text style={styles.englishText}>Number</Text>
-              </View>
-              <View style={styles.dataCell}>
-                <Text style={styles.arabicText}>عدد</Text>
-              </View>
-              <View style={styles.serialCell}>
-                <Text style={styles.serialText}>2</Text>
+              <View style={styles.categoryCell}>
+                <Text style={styles.categoryText}>مذكر</Text>
               </View>
             </View>
 
-            {/* Row 3 */}
+            {/* Feminine Row */}
             <View style={styles.dataRow}>
               <View style={styles.dataCell}>
-                <Text style={styles.urduText}>نکرہ اور معرفہ</Text>
+                <Text style={styles.arabicText}>اَللَّاتِي - اَللَّائِیْ</Text>
+              </View>
+              <View style={[styles.dataCell, styles.highlightedCell]}>
+                <Text style={[styles.arabicText, styles.highlightedText]}>اَللَّتَانِ</Text>
               </View>
               <View style={styles.dataCell}>
-                <Text style={styles.englishText}>Capacity</Text>
+                <Text style={styles.arabicText}>اَلَّتِیْ</Text>
               </View>
-              <View style={styles.dataCell}>
-                <Text style={styles.arabicText}>وسعت</Text>
-              </View>
-              <View style={styles.serialCell}>
-                <Text style={styles.serialText}>3</Text>
-              </View>
-            </View>
-
-            {/* Row 4 */}
-            <View style={styles.dataRow}>
-              <View style={styles.dataCell}>
-                <Text style={styles.urduText}>مرفوع ، منصوب اور مجرور</Text>
-              </View>
-              <View style={styles.dataCell}>
-                <Text style={styles.englishText}>Status</Text>
-              </View>
-              <View style={styles.dataCell}>
-                <Text style={styles.arabicText}>اعراب</Text>
-              </View>
-              <View style={styles.serialCell}>
-                <Text style={styles.serialText}>4</Text>
+              <View style={styles.categoryCell}>
+                <Text style={styles.categoryText}>مونث</Text>
               </View>
             </View>
           </View>
@@ -316,11 +292,12 @@ const Lesson10Screen: React.FC<Lesson10ScreenProps> = ({ onNavigate, onBack }) =
         <View style={styles.noteSection}>
           <Text style={styles.noteTitle}>یاد رکھیں</Text>
           <Text style={styles.noteText}>
-            • جنس: اسم کی جنس سے مراد ہے کہ وہ مذکر ہے یا مؤنث{'\n'}
-            • عدد: اسم کی عدد سے مراد ہے کہ وہ واحد، مثنی یا جمع ہے{'\n'}
-            • وسعت: اسم کی وسعت سے مراد ہے کہ وہ نکرہ ہے یا معرفہ{'\n'}
-            • اعراب: اسم کی اعرابی حالت سے مراد ہے کہ وہ مرفوع، منصوب یا مجرور ہے{'\n'}
-            • یہ چاروں پہلو عربی گرامر میں اسم کی مکمل شناخت کے لیے ضروری ہیں
+            • اسم موصول وہ الفاظ ہیں جو دو جملوں کو جوڑتے ہیں{'\n'}
+            • الَّذِي مذكر واحد کے لیے استعمال ہوتا ہے{'\n'}
+            • الَّتِي مونث واحد کے لیے استعمال ہوتا ہے{'\n'}
+            • مثنى میں اللَّذَانِ (مذكر) اور اللَّتَانِ (مونث) ہیں{'\n'}
+            • جمع میں الَّذِينَ (مذكر) اور اللَّاتِي/اللَّائِي (مونث) ہیں{'\n'}
+            • یہ الفاظ قرآن پاک میں بہت زیادہ استعمال ہوتے ہیں
           </Text>
         </View>
       </ScrollView>
@@ -328,4 +305,4 @@ const Lesson10Screen: React.FC<Lesson10ScreenProps> = ({ onNavigate, onBack }) =
   );
 };
 
-export default Lesson10Screen; 
+export default QuranicWordLesson4Screen; 

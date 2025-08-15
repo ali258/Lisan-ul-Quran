@@ -42,6 +42,7 @@ export type RootStackParamList = {
   'QuranicWordLesson1': undefined;
   'QuranicWordLesson2': undefined;
   'QuranicWordLesson3': undefined;
+  'QuranicWordLesson4': undefined;
   'QuranicWordHarfLesson1': undefined;
   'QuranicWordHarfLesson2': undefined;
   'QuranicWordHarfLesson3': undefined;

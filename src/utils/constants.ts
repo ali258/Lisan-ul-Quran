@@ -163,7 +163,7 @@ export const QURANIC_WORD_LESSONS: MenuItem[] = [
   {
     id: 'quranic-word-lesson-1',
     title: 'Lesson 1',
-    subtitle: 'Basic Quranic Words',
+    subtitle: 'بنیادی قرآنی الفاظ',
     icon: '📝',
     color: 'primary-600',
     route: 'QuranicWordLesson1',
@@ -171,7 +171,7 @@ export const QURANIC_WORD_LESSONS: MenuItem[] = [
   {
     id: 'quranic-word-lesson-2',
     title: 'Lesson 2',
-    subtitle: 'Common Quranic Terms',
+    subtitle: 'اشارے والے اسماء',
     icon: '📚',
     color: 'primary-500',
     route: 'QuranicWordLesson2',
@@ -179,10 +179,18 @@ export const QURANIC_WORD_LESSONS: MenuItem[] = [
   {
     id: 'quranic-word-lesson-3',
     title: 'Lesson 3',
-    subtitle: 'Advanced Vocabulary',
+    subtitle: 'ضمائر کی تفصیل',
     icon: '🎯',
     color: 'primary-400',
     route: 'QuranicWordLesson3',
+  },
+  {
+    id: 'quranic-word-lesson-4',
+    title: 'Lesson 4',
+    subtitle: 'اسم موصول کی تفصیل',
+    icon: '🔗',
+    color: 'primary-300',
+    route: 'QuranicWordLesson4',
   },
 ];
 

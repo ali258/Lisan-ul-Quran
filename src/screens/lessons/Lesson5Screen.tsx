@@ -53,6 +53,39 @@ const Lesson5Screen: React.FC<Lesson5ScreenProps> = ({ onNavigate, onBack }) => 
     },
   ];
 
+  const ismCharacteristicsData = [
+    {
+      category: 'ال (ال تعریف)',
+      rule: 'اگر کسی لفظ کے شروع میں "ال" ہو تو وہ اسم ہوتا ہے۔',
+      examples: 'الكتاب (کتاب)، المسجد (مسجد)',
+    },
+    {
+      category: 'تنوین (دو زبر، دو زیر، دو پیش)',
+      rule: 'اگر کسی لفظ کے آخر میں تنوین ہو تو وہ اسم ہوتا ہے',
+      examples: 'كتابٌ (کتاب)، مسجدٍ (مسجد)',
+    },
+    {
+      category: 'گول ة',
+      rule: 'اگر کسی لفظ کے آخر میں گول ة ہو تو وہ اسم ہے۔',
+      examples: '',
+    },
+    {
+      category: 'حرف جر',
+      rule: 'اگر کسی لفظ کے شروع میں حرف جار ہو تو وہ اسم ہوتا ہے۔',
+      examples: 'في المسجدِ (مسجد میں)',
+    },
+    {
+      category: 'نداء (ندائیہ)',
+      rule: 'اگر کسی لفظ کے شروع میں "یا" ہو تو وہ اسم ہوتا ہے۔',
+      examples: 'يا محمد (اے محمد)',
+    },
+    {
+      category: 'ضمائر (ضمیر)',
+      rule: 'ضمائر بھی اسم کی ایک قسم ہیں۔',
+      examples: 'هو (وہ)، هي (وہ)',
+    },
+  ];
+
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -211,6 +244,64 @@ const Lesson5Screen: React.FC<Lesson5ScreenProps> = ({ onNavigate, onBack }) => 
       fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
       lineHeight: 20,
     },
+    // New styles for Ism characteristics table
+    ismCharacteristicsSection: {
+      marginBottom: 40,
+    },
+    ismCharacteristicsTable: {
+      backgroundColor: getThemeColor(colors.surface, isDarkMode),
+      borderRadius: 16,
+      overflow: 'hidden',
+      borderWidth: 1,
+      borderColor: getThemeColor(colors.border, isDarkMode),
+      shadowColor: getThemeColor(colors.shadow, isDarkMode),
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.1,
+      shadowRadius: 8,
+      elevation: 4,
+    },
+    ismTableHeader: {
+      backgroundColor: '#059669', // Green color for distinction
+      flexDirection: 'row',
+      paddingVertical: 16,
+      paddingHorizontal: 20,
+    },
+    ismTableHeaderCell: {
+      flex: 1,
+      alignItems: 'center',
+    },
+    ismTableHeaderText: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      color: 'white',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+    },
+    ismTableRow: {
+      flexDirection: 'row',
+      borderBottomWidth: 1,
+      borderBottomColor: getThemeColor(colors.border, isDarkMode),
+    },
+    ismTableCell: {
+      flex: 1,
+      paddingVertical: 16,
+      paddingHorizontal: 12,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    ismTableCellText: {
+      fontSize: 14,
+      color: getThemeColor(colors.text, isDarkMode),
+      textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+      lineHeight: 20,
+    },
+    ismTableCellArabic: {
+      fontSize: 16,
+      color: getThemeColor(colors.text, isDarkMode),
+      textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
+      lineHeight: 24,
+    },
     noteSection: {
       marginTop: 32,
       padding: 20,
@@ -270,8 +361,10 @@ const Lesson5Screen: React.FC<Lesson5ScreenProps> = ({ onNavigate, onBack }) => 
           </View>
         </View>
 
-        {/* Table Section */}
+
+        {/* Original Table Section */}
         <View style={styles.tableSection}>
+          <Text style={styles.sectionTitle}>اسم کی اقسام</Text>
           <View style={styles.tableContainer}>
             
             {/* Table Header */}
@@ -296,6 +389,158 @@ const Lesson5Screen: React.FC<Lesson5ScreenProps> = ({ onNavigate, onBack }) => 
                 </View>
               </View>
             ))}
+
+          </View>
+        </View>
+
+        {/* Ism Characteristics Table */}
+        <View style={styles.ismCharacteristicsSection}>
+          <Text style={styles.sectionTitle}>اسم کی ظاہری علامت</Text>
+          <View style={styles.ismCharacteristicsTable}>
+            
+            {/* Table Header */}
+            <View style={styles.ismTableHeader}>
+              <View style={styles.ismTableHeaderCell}>
+                <Text style={styles.ismTableHeaderText}>مثالیں</Text>
+              </View>
+              <View style={styles.ismTableHeaderCell}>
+                <Text style={styles.ismTableHeaderText}>علامت</Text>
+              </View>
+              <View style={styles.ismTableHeaderCell}>
+                <Text style={styles.ismTableHeaderText}>تفصیل</Text>
+              </View>
+              <View style={styles.ismTableHeaderCell}>
+                <Text style={styles.ismTableHeaderText}>نمبر</Text>
+              </View>
+            </View>
+
+            {/* Row 1 */}
+            <View style={styles.ismTableRow}>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellArabic}>كَلِمَة</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellArabic}>ة</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellText}>آخر میں گول (تاء)</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellText}>1</Text>
+              </View>
+            </View>
+
+            {/* Row 2 */}
+            <View style={styles.ismTableRow}>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellArabic}>سَمَاءٌ - سَمَاءً - سَمَاءٍ</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+              <Text style={styles.ismTableCellArabic}>۔ٌ  ۔ً  ۔ٍ</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellText}>آخر میں تنوین</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellText}>2</Text>
+              </View>
+            </View>
+
+            {/* Row 3 */}
+            <View style={styles.ismTableRow}>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellArabic}>صَحْرَاء (جنگل)</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellArabic}>اء</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellText}>آخر میں الف ممدودہ</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellText}>3</Text>
+              </View>
+            </View>
+
+            {/* Row 4 */}
+            <View style={styles.ismTableRow}>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellArabic}>ذِكْرٰى (نصحیت)</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellArabic}> ۔ٰ  ی</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellText}>آخر میں الف مقصورہ</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellText}>4</Text>
+              </View>
+            </View>
+
+            {/* Row 5 */}
+            <View style={styles.ismTableRow}>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellArabic}>اَلْحَمْد</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellArabic}>اَلْ</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellText}>شروع میں (ال)</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellText}>5</Text>
+              </View>
+            </View>
+
+            {/* Row 6 */}
+            <View style={styles.ismTableRow}>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellArabic}>مَسْجِدَانِ ، عَبِدَيْنِ</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellArabic}> ۔َ انِ - ۔َ یْنِ </Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellText}>آخر میں مثنی</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellText}>6</Text>
+              </View>
+            </View>
+
+            {/* Row 7 */}
+            <View style={styles.ismTableRow}>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellArabic}>عَبْدُونَ ، عَبْدِينَ</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellArabic}> ۔ُ وْنَ - ۔ِ یْنَ </Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellText}>آخر میں جمع</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellText}>7</Text>
+              </View>
+            </View>
+
+            {/* Row 8 */}
+            <View style={styles.ismTableRow}>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellArabic}>في المسجد (مسجد میں)</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellArabic}>حرف جر</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellText}>کسی لفظ کے شروع میں حرف جر</Text>
+              </View>
+              <View style={styles.ismTableCell}>
+                <Text style={styles.ismTableCellText}>8</Text>
+              </View>
+            </View>
 
           </View>
         </View>
