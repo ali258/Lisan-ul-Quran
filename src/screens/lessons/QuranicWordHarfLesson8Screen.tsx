@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { useThemeStore } from '../../store/themeStore';
 import { TAILWIND_COLORS, FONT_CLASSES } from '../../utils/constants';
-import { getThemeColor } from '../../utils/colorUtils';
+import { getThemeColor, getColorFromClass } from '../../utils/colorUtils';
 import { getFontWithProperFallback } from '../../utils/fontUtils';
 
 interface QuranicWordHarfLesson8ScreenProps {
@@ -49,17 +49,17 @@ const QuranicWordHarfLesson8Screen: React.FC<QuranicWordHarfLesson8ScreenProps> 
       padding: 8,
       marginRight: 16,
       borderRadius: 8,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('harf-orange-dark') : getColorFromClass('harf-orange-light'),
     },
     backButtonText: {
       fontSize: 18,
-      color: getThemeColor(colors.surface, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-dark-text') : getColorFromClass('harf-orange-light-text'),
       fontWeight: 'bold',
     },
     headerTitle: {
       fontSize: 20,
       fontWeight: 'bold',
-      color: getThemeColor(colors.text, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
       flex: 1,
     },
     scrollView: {
@@ -74,8 +74,16 @@ const QuranicWordHarfLesson8Screen: React.FC<QuranicWordHarfLesson8ScreenProps> 
       fontSize: isTablet ? 32 : 24,
       fontWeight: 'bold',
       textAlign: 'center',
+      marginBottom: 8,
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
+    },
+    titleEnglish: {
+      fontSize: isTablet ? 18 : 16,
+      fontWeight: 'bold',
+      color: getThemeColor(colors.textSecondary, isDarkMode),
+      textAlign: 'center',
       marginBottom: 16,
-      color: getThemeColor(colors.primary, isDarkMode),
+      fontStyle: 'italic',
     },
     subtitle: {
       fontSize: isTablet ? 18 : 16,
@@ -105,7 +113,7 @@ const QuranicWordHarfLesson8Screen: React.FC<QuranicWordHarfLesson8ScreenProps> 
       padding: 20,
       marginBottom: 16,
       borderWidth: 2,
-      borderColor: getThemeColor(colors.primary, isDarkMode),
+      borderColor: isDarkMode ? getColorFromClass('harf-orange-light') : getColorFromClass('harf-orange-light'),
       shadowColor: getThemeColor(colors.shadow, isDarkMode),
       shadowOffset: { width: 0, height: 4 },
       shadowOpacity: 0.15,
@@ -123,7 +131,7 @@ const QuranicWordHarfLesson8Screen: React.FC<QuranicWordHarfLesson8ScreenProps> 
     particleArabic: {
       fontSize: isTablet ? 28 : 24,
       fontWeight: 'bold',
-      color: getThemeColor(colors.primary, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
       fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
       lineHeight: 32,
       marginBottom: 4,
@@ -145,7 +153,7 @@ const QuranicWordHarfLesson8Screen: React.FC<QuranicWordHarfLesson8ScreenProps> 
       textAlign: 'center',
     },
     exampleSection: {
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('harf-orange-light') : getColorFromClass('harf-orange-dark'),
       borderRadius: 12,
       padding: 12,
       marginTop: 8,
@@ -153,21 +161,22 @@ const QuranicWordHarfLesson8Screen: React.FC<QuranicWordHarfLesson8ScreenProps> 
     exampleTitle: {
       fontSize: isTablet ? 12 : 10,
       fontWeight: 'bold',
-      color: getThemeColor(colors.surface, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
       marginBottom: 6,
       textAlign: 'center',
     },
     exampleReference: {
       fontSize: isTablet ? 12 : 10,
-      color: getThemeColor(colors.surface, isDarkMode),
-      opacity: 0.8,
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
+      opacity: 0.9,
       textAlign: 'center',
-      fontStyle: 'italic',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+      lineHeight: 16,
     },
     decorativeLine: {
       height: 3,
       width: 60,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('harf-orange-light') : getColorFromClass('harf-orange-light'),
       borderRadius: 2,
       alignSelf: 'center',
       marginBottom: 24,
@@ -176,130 +185,88 @@ const QuranicWordHarfLesson8Screen: React.FC<QuranicWordHarfLesson8ScreenProps> 
 
   const particles = [
     {
-      arabic: 'إِلَى',
-      transliteration: 'ila',
-      urduMeaning: 'تک',
-      englishMeaning: 'to',
-      reference: '',
+      arabic: 'لَا',
+      transliteration: 'La',
+      urduMeaning: 'نہیں',
+      englishMeaning: 'not',
+      explanation: 'General negation',
     },
     {
-      arabic: 'بِ',
-      transliteration: 'bi (ba\' al-qasam)',
-      urduMeaning: 'قسم',
-      englishMeaning: 'by',
-      reference: 'التوبة 9:56',
+      arabic: 'كَلَّا',
+      transliteration: 'Kalla',
+      urduMeaning: 'ہرگز نہیں',
+      englishMeaning: 'Certainly not / Never',
+      explanation: 'Negative particle',
     },
     {
-      arabic: 'بِ',
-      transliteration: 'bi',
-      urduMeaning: 'سے / ساتھ',
-      englishMeaning: 'by, with',
-      reference: '',
+      arabic: 'لَمْ',
+      transliteration: 'Lam / For Past',
+      urduMeaning: 'نہیں ',
+      englishMeaning: 'did not',
+      explanation: 'For Past',
     },
     {
-      arabic: 'تَ',
-      transliteration: 'ta (ta\' al-qasam)',
-      urduMeaning: 'قسم',
-      englishMeaning: 'by',
-      reference: 'يوسف 12:73',
+      arabic: 'لَنْ',
+      transliteration: 'Lan / For Future',
+      urduMeaning: 'ہرگز نہیں / کبھی نہیں ',
+      englishMeaning: 'never / will not',
+      explanation: 'For Future',
     },
     {
-      arabic: 'حَاشَا',
-      transliteration: 'hasha',
-      urduMeaning: 'سوائے',
-      englishMeaning: 'except',
-      reference: '',
+      arabic: 'مَا',
+      transliteration: 'Ma',
+      urduMeaning: 'نہیں / نہ ',
+      englishMeaning: 'not',
+      explanation: 'ماضی کی نفی ',
     },
     {
-      arabic: 'حَتَّى',
-      transliteration: 'hatta',
-      urduMeaning: 'تک',
-      englishMeaning: 'until',
-      reference: '',
+      arabic: 'لَيْسَ / لَیْسَتْ',
+      transliteration: 'Laisa / Laisat',
+      urduMeaning: 'نہیں ہے ',
+      englishMeaning: 'is not',
+      explanation: 'Present tense negation',
     },
     {
-      arabic: 'خَلَا',
-      transliteration: 'khala',
-      urduMeaning: 'سوائے',
-      englishMeaning: 'except',
-      reference: '',
+      arabic: 'بَلَى',
+      transliteration: 'bala',
+      urduMeaning: 'کیوں نہیں',
+      englishMeaning: 'Yes, indeed / Why Not',
+      explanation: 'Positive particle',
     },
     {
-      arabic: 'رُبَّ',
-      transliteration: 'rubba',
-      urduMeaning: 'بسا اوقات',
-      englishMeaning: 'many a',
-      reference: '',
+      arabic: 'غَیْر',
+      transliteration: 'ghayr',
+      urduMeaning: 'علاوہ / سوائے',
+      englishMeaning: 'not / other than',
+      explanation: 'Negative particle',
     },
     {
-      arabic: 'عَدَا',
-      transliteration: 'ada',
-      urduMeaning: 'سوائے',
-      englishMeaning: 'except',
-      reference: '',
+      arabic: 'إِلَّا',
+      transliteration: 'Illa',
+      urduMeaning: 'مگر / کے علاوہ',
+      englishMeaning: 'except / unless',
+      explanation: 'Exception particle',
     },
     {
-      arabic: 'عَلَى',
+      arabic: 'نَعَمْ',
+      transliteration: 'naam',
+      urduMeaning: 'ہاں',
+      englishMeaning: 'Yes',
+      explanation: 'Positive Particle',
+    },
+    {
+      arabic: 'اَلَا',
       transliteration: 'ala',
-      urduMeaning: 'پر',
-      englishMeaning: 'on',
-      reference: '',
+      urduMeaning: 'خبردار! / ہرگز نہ / نہیں ہوگا',
+      englishMeaning: 'Lo! / do not / will not',
+      explanation: 'Exception particle',
     },
     {
-      arabic: 'عَنْ',
-      transliteration: 'an',
-      urduMeaning: 'سے (بارے میں)',
-      englishMeaning: 'about',
-      reference: '',
-    },
-    {
-      arabic: 'فِي',
-      transliteration: 'fi',
-      urduMeaning: 'میں',
-      englishMeaning: 'in',
-      reference: '',
-    },
-    {
-      arabic: 'كَ',
-      transliteration: 'ka',
-      urduMeaning: 'جیسا',
-      englishMeaning: 'like',
-      reference: '',
-    },
-    {
-      arabic: 'لِ',
-      transliteration: 'li',
-      urduMeaning: 'کے لیے',
-      englishMeaning: 'for',
-      reference: '',
-    },
-    {
-      arabic: 'مُذْ',
-      transliteration: 'mudh',
-      urduMeaning: 'سے',
-      englishMeaning: 'since',
-      reference: '',
-    },
-    {
-      arabic: 'مُنْذُ',
-      transliteration: 'mundhu',
-      urduMeaning: 'سے',
-      englishMeaning: 'since',
-      reference: '',
-    },
-    {
-      arabic: 'مِنْ',
-      transliteration: 'min',
-      urduMeaning: 'سے',
-      englishMeaning: 'from',
-      reference: '',
-    },
-    {
-      arabic: 'وَ',
-      transliteration: 'wa (waw al-qasam)',
-      urduMeaning: 'قسم',
-      englishMeaning: 'by',
-      reference: 'الذاريات 51:1',
+      arabic: 'اَلَّا (اَنْ + لَا)',
+      transliteration: 'Alla',
+      urduMeaning: 'سوائے اس کے کہ',
+      englishMeaning: 'except that',
+      explanation: 'Negative particle',
     },
   ];
 
@@ -315,7 +282,7 @@ const QuranicWordHarfLesson8Screen: React.FC<QuranicWordHarfLesson8ScreenProps> 
         <TouchableOpacity style={styles.backButton} onPress={onBack}>
           <Text style={styles.backButtonText}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Harf Lesson 8</Text>
+        <Text style={styles.headerTitle}>حروف نفی و اثبات</Text>
       </View>
 
       <ScrollView
@@ -324,21 +291,16 @@ const QuranicWordHarfLesson8Screen: React.FC<QuranicWordHarfLesson8ScreenProps> 
         contentContainerStyle={styles.content}
       >
         {/* Title Section */}
-        <Text style={styles.title}>🔤 حرف - Particles</Text>
+        <Text style={styles.title}> حروف نفی و اثبات</Text>
+        <Text style={styles.titleEnglish}>Negative & Positive Particles</Text>
         <Text style={styles.subtitle}>
-          Learn essential Arabic particles and their usage in the Quran
+          Learn essential Arabic negative and positive particles and their usage in the Quran
         </Text>
 
         {/* Decorative Line */}
         <View style={styles.decorativeLine} />
 
-        {/* Lesson Group */}
-        <Text style={styles.lessonGroup}>
-          حروف الجر
-        </Text>
-        <Text style={styles.subtitle}>
-          Prepositions
-        </Text>
+        
 
         {/* Particles */}
         <View style={styles.particlesContainer}>
@@ -349,15 +311,14 @@ const QuranicWordHarfLesson8Screen: React.FC<QuranicWordHarfLesson8ScreenProps> 
                   <Text style={styles.particleArabic}>{particle.arabic}</Text>
                   <Text style={styles.particleTransliteration}>{particle.transliteration}</Text>
                   <Text style={styles.particleMeaning}>{particle.urduMeaning}</Text>
+                  <Text style={styles.particleMeaning}>{particle.englishMeaning}</Text>
                 </View>
               </View>
               
-              {particle.reference && (
-                <View style={styles.exampleSection}>
-                  <Text style={styles.exampleTitle}>Quranic Reference</Text>
-                  <Text style={styles.exampleReference}>{particle.reference}</Text>
-                </View>
-              )}
+              {/* <View style={styles.exampleSection}>
+                <Text style={styles.exampleTitle}>Explanation</Text>
+                <Text style={styles.exampleReference}>{particle.explanation}</Text>
+              </View> */}
             </View>
           ))}
         </View>

@@ -43,6 +43,10 @@ export type RootStackParamList = {
   'QuranicWordLesson2': undefined;
   'QuranicWordLesson3': undefined;
   'QuranicWordLesson4': undefined;
+  'QuranicWordLesson5': undefined;
+  'QuranicWordLesson6': undefined;
+  'QuranicWordLesson7': undefined;
+  'QuranicWordLesson8': undefined;
   'QuranicWordHarfLesson1': undefined;
   'QuranicWordHarfLesson2': undefined;
   'QuranicWordHarfLesson3': undefined;
@@ -57,6 +61,9 @@ export type RootStackParamList = {
   'QuranicWordHarfLesson12': undefined;
   'QuranicWordHarfLesson13': undefined;
   'QuranicWordHarfLesson14': undefined;
+  'QuranicWordHarfLesson15': undefined;
+  'QuranicWordHarfLesson16': undefined;
+  'QuranicWordHarfLesson17': undefined;
 };
 
 export type MenuItem = {

@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { useThemeStore } from '../../store/themeStore';
 import { TAILWIND_COLORS, FONT_CLASSES } from '../../utils/constants';
-import { getThemeColor } from '../../utils/colorUtils';
+import { getThemeColor, getColorFromClass } from '../../utils/colorUtils';
 import { getFontWithProperFallback } from '../../utils/fontUtils';
 
 interface QuranicWordHarfLesson12ScreenProps {
@@ -49,17 +49,17 @@ const QuranicWordHarfLesson12Screen: React.FC<QuranicWordHarfLesson12ScreenProps
       padding: 8,
       marginRight: 16,
       borderRadius: 8,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('harf-orange-dark') : getColorFromClass('harf-orange-light'),
     },
     backButtonText: {
       fontSize: 18,
-      color: getThemeColor(colors.surface, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-dark-text') : getColorFromClass('harf-orange-light-text'),
       fontWeight: 'bold',
     },
     headerTitle: {
       fontSize: 20,
       fontWeight: 'bold',
-      color: getThemeColor(colors.text, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
       flex: 1,
     },
     scrollView: {
@@ -74,8 +74,16 @@ const QuranicWordHarfLesson12Screen: React.FC<QuranicWordHarfLesson12ScreenProps
       fontSize: isTablet ? 32 : 24,
       fontWeight: 'bold',
       textAlign: 'center',
+      marginBottom: 8,
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
+    },
+    titleEnglish: {
+      fontSize: isTablet ? 18 : 16,
+      fontWeight: 'bold',
+      color: getThemeColor(colors.textSecondary, isDarkMode),
+      textAlign: 'center',
       marginBottom: 16,
-      color: getThemeColor(colors.primary, isDarkMode),
+      fontStyle: 'italic',
     },
     subtitle: {
       fontSize: isTablet ? 18 : 16,
@@ -105,7 +113,7 @@ const QuranicWordHarfLesson12Screen: React.FC<QuranicWordHarfLesson12ScreenProps
       padding: 20,
       marginBottom: 16,
       borderWidth: 2,
-      borderColor: getThemeColor(colors.primary, isDarkMode),
+      borderColor: getColorFromClass('harf-orange-light'),
       shadowColor: getThemeColor(colors.shadow, isDarkMode),
       shadowOffset: { width: 0, height: 4 },
       shadowOpacity: 0.15,
@@ -123,7 +131,7 @@ const QuranicWordHarfLesson12Screen: React.FC<QuranicWordHarfLesson12ScreenProps
     particleArabic: {
       fontSize: isTablet ? 28 : 24,
       fontWeight: 'bold',
-      color: getThemeColor(colors.primary, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
       fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
       lineHeight: 32,
       marginBottom: 4,
@@ -145,7 +153,7 @@ const QuranicWordHarfLesson12Screen: React.FC<QuranicWordHarfLesson12ScreenProps
       textAlign: 'center',
     },
     exampleSection: {
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('harf-orange-dark') : getColorFromClass('harf-orange-light'),
       borderRadius: 12,
       padding: 12,
       marginTop: 8,
@@ -153,21 +161,30 @@ const QuranicWordHarfLesson12Screen: React.FC<QuranicWordHarfLesson12ScreenProps
     exampleTitle: {
       fontSize: isTablet ? 12 : 10,
       fontWeight: 'bold',
-      color: getThemeColor(colors.surface, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-dark-text') : getColorFromClass('harf-orange-light-text'),
       marginBottom: 6,
       textAlign: 'center',
     },
     exampleReference: {
       fontSize: isTablet ? 12 : 10,
-      color: getThemeColor(colors.surface, isDarkMode),
-      opacity: 0.8,
+      color: isDarkMode ? getColorFromClass('harf-orange-dark-text') : getColorFromClass('harf-orange-light-text'),
+      opacity: 0.9,
       textAlign: 'center',
-      fontStyle: 'italic',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
+      lineHeight: 16,
+    },
+    translationText: {
+      fontSize: isTablet ? 12 : 10,
+      color: isDarkMode ? getColorFromClass('harf-orange-dark-text') : getColorFromClass('harf-orange-light-text'),
+      opacity: 0.9,
+      textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+      lineHeight: 16,
     },
     decorativeLine: {
       height: 3,
       width: 60,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('harf-orange-dark') : getColorFromClass('harf-orange-light'),
       borderRadius: 2,
       alignSelf: 'center',
       marginBottom: 24,
@@ -176,67 +193,61 @@ const QuranicWordHarfLesson12Screen: React.FC<QuranicWordHarfLesson12ScreenProps
 
   const particles = [
     {
-      arabic: 'أَمْ',
-      transliteration: 'am',
-      urduMeaning: '(question)or / یا',
-      englishMeaning: '(question) or',
-      reference: 'Used in questions',
+      arabic: 'قَدْ (+فعل)',
+      transliteration: 'Qad',
+      urduMeaning: 'تحقیقاً، یقیناً',
+      englishMeaning: 'indeed, certainly',
+      category: 'حرفِ تحقیق/تاکید',
+      explanation: 'ماضی/حال کے ساتھ، کام ہوچکا یا ہو رہا ہو',
     },
     {
-      arabic: 'أَوْ',
-      transliteration: 'aw',
-      urduMeaning: 'or / یا',
-      englishMeaning: 'or',
-      reference: 'General conjunction',
+      arabic: 'لَقَدْ (+فعل)',
+      transliteration: 'La-qad',
+      urduMeaning: 'یقیناً، تحقیقاً',
+      englishMeaning: 'indeed, already',
+      category: 'حرفِ تحقیق/تاکید',
+      explanation: 'اکثر ماضی کے ساتھ',
     },
     {
-      arabic: 'بَلْ',
-      transliteration: 'bal',
-      urduMeaning: 'rather / بلکہ',
-      englishMeaning: 'rather',
-      reference: 'Correction particle',
+      arabic: 'سَ (+فعل)',
+      transliteration: 'Sa',
+      urduMeaning: 'عنقریب، جلد',
+      englishMeaning: 'will (near future)',
+      category: 'حرفِ استقبال',
+      explanation: 'مستقبل قریب (near future)',
     },
     {
-      arabic: 'ثُمَّ',
-      transliteration: 'thumma',
-      urduMeaning: 'then / پھر',
-      englishMeaning: 'then',
-      reference: 'Sequential conjunction',
+      arabic: 'سَوْفَ (+فعل)',
+      transliteration: 'Sao-fa',
+      urduMeaning: 'مستقبل میں',
+      englishMeaning: 'will (for future)',
+      category: 'حرفِ استقبال',
+      explanation: 'مستقبل (distant future)',
     },
     {
-      arabic: 'حَتَّى',
-      transliteration: 'hatta',
-      urduMeaning: 'even until / حتی',
-      englishMeaning: 'even until',
-      reference: 'Inclusive conjunction',
+      arabic: 'لَ (+فعل+) نَّ',
+      transliteration: 'La + (فعل) + Na',
+      urduMeaning: 'ضرور، لازماً',
+      englishMeaning: 'will surely, must',
+      category: 'حرفِ تاکید/تاکید شدید',
+      explanation: 'فعل مضارع کے ساتھ، تاکید کے لئے',
+    },
+    
+    {
+      arabic: 'لَ',
+      transliteration: 'La',
+      urduMeaning: 'تحقیقاً، یقیناً',
+      englishMeaning: 'indeed, surely',
+      category: 'حرفِ تحقیق/تاکید',
+      explanation: 'جملے میں زور دینے کے لیے',
     },
     {
-      arabic: 'فَ',
-      transliteration: 'fa',
-      urduMeaning: 'so, then / پس / پھر',
-      englishMeaning: 'so, then',
-      reference: 'Result conjunction',
-    },
-    {
-      arabic: 'لَا',
-      transliteration: 'la',
-      urduMeaning: '(as conjunction)nor / نہیں',
-      englishMeaning: '(as conjunction) nor',
-      reference: 'Negative conjunction',
-    },
-    {
-      arabic: 'لَكِنْ',
-      transliteration: 'lakin',
-      urduMeaning: 'but / لیکن',
-      englishMeaning: 'but',
-      reference: 'Contrast conjunction',
-    },
-    {
-      arabic: 'وَ',
-      transliteration: 'wa',
-      urduMeaning: 'and / اور',
-      englishMeaning: 'and',
-      reference: 'Basic conjunction',
+      arabic: 'لِ، لْ + (آمِر)',
+      transliteration: 'Li, L',
+      urduMeaning: 'چاہئے کہ، لازم ہے',
+      englishMeaning: 'let sb do (imperative)',
+      category: 'حرفِ امر/تمنّی',
+      explanation: 'حکم یا دعا کے طور پر',
     },
   ];
 
@@ -252,7 +263,7 @@ const QuranicWordHarfLesson12Screen: React.FC<QuranicWordHarfLesson12ScreenProps
         <TouchableOpacity style={styles.backButton} onPress={onBack}>
           <Text style={styles.backButtonText}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Harf Lesson 12</Text>
+        <Text style={styles.headerTitle}>فعل کا ابتدائی حرف</Text>
       </View>
 
       <ScrollView
@@ -261,21 +272,14 @@ const QuranicWordHarfLesson12Screen: React.FC<QuranicWordHarfLesson12ScreenProps
         contentContainerStyle={styles.content}
       >
         {/* Title Section */}
-        <Text style={styles.title}>🔤 حرف - Particles</Text>
-        <Text style={styles.subtitle}>
-          Learn essential Arabic particles and their usage in the Quran
-        </Text>
+        <Text style={styles.title}>فعل کا ابتدائی حرف</Text>
+        <Text style={styles.titleEnglish}>Prefix for Verb</Text>
+        
 
         {/* Decorative Line */}
         <View style={styles.decorativeLine} />
 
-        {/* Lesson Group */}
-        <Text style={styles.lessonGroup}>
-          حروف العطف
-        </Text>
-        <Text style={styles.subtitle}>
-          Conjunction Particles
-        </Text>
+        
 
         {/* Particles */}
         <View style={styles.particlesContainer}>
@@ -286,12 +290,17 @@ const QuranicWordHarfLesson12Screen: React.FC<QuranicWordHarfLesson12ScreenProps
                   <Text style={styles.particleArabic}>{particle.arabic}</Text>
                   <Text style={styles.particleTransliteration}>{particle.transliteration}</Text>
                   <Text style={styles.particleMeaning}>{particle.urduMeaning}</Text>
+                  <Text style={styles.particleMeaning}>{particle.englishMeaning}</Text>
                 </View>
               </View>
               
               <View style={styles.exampleSection}>
-                <Text style={styles.exampleTitle}>Usage Type</Text>
-                <Text style={styles.exampleReference}>{particle.reference}</Text>
+                <Text style={styles.exampleTitle}>Category</Text>
+                <Text style={styles.exampleReference}>{particle.category}</Text>
+              </View>
+              <View style={styles.exampleSection}>
+                <Text style={styles.exampleTitle}>Explanation</Text>
+                <Text style={styles.translationText}>{particle.explanation}</Text>
               </View>
             </View>
           ))}

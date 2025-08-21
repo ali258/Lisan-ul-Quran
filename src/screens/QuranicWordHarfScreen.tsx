@@ -124,12 +124,16 @@ const QuranicWordHarfScreen: React.FC<QuranicWordHarfScreenProps> = ({ onNavigat
       marginBottom: 24,
     },
     lessonsContainer: {
-      gap: 20,
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'space-between',
+      gap: 16,
     },
     lessonCard: {
+      width: isTablet ? '23%' : '48%',
       backgroundColor: getThemeColor(colors.surface, isDarkMode),
       borderRadius: 20,
-      padding: 24,
+      padding: 20,
       marginBottom: 16,
       borderWidth: 2,
       borderColor: getThemeColor(colors.border, isDarkMode),
@@ -140,27 +144,44 @@ const QuranicWordHarfScreen: React.FC<QuranicWordHarfScreenProps> = ({ onNavigat
       elevation: 6,
     },
     lessonHeader: {
-      flexDirection: 'row',
       alignItems: 'center',
       marginBottom: 16,
     },
     lessonIcon: {
-      fontSize: isTablet ? 48 : 36,
-      marginRight: 16,
+      fontSize: isTablet ? 40 : 32,
+      marginBottom: 12,
     },
     lessonInfo: {
-      flex: 1,
+      alignItems: 'center',
     },
     lessonTitle: {
-      fontSize: isTablet ? 24 : 20,
+      fontSize: isTablet ? 18 : 16,
       fontWeight: 'bold',
       color: getThemeColor(colors.text, isDarkMode),
-      marginBottom: 4,
+      marginBottom: 8,
+      textAlign: 'center',
     },
     lessonSubtitle: {
-      fontSize: isTablet ? 16 : 14,
+      fontSize: isTablet ? 14 : 12,
       color: getThemeColor(colors.textSecondary, isDarkMode),
       opacity: 0.8,
+      textAlign: 'center',
+      lineHeight: 18,
+    },
+    lessonUrduName: {
+      fontSize: isTablet ? 14 : 12,
+      color: getThemeColor(colors.text, isDarkMode),
+      textAlign: 'center',
+      lineHeight: 18,
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+      marginBottom: 4,
+    },
+    lessonEnglishName: {
+      fontSize: isTablet ? 12 : 10,
+      color: getThemeColor(colors.textSecondary, isDarkMode),
+      textAlign: 'center',
+      lineHeight: 16,
+      fontStyle: 'italic',
     },
     lessonDescription: {
       fontSize: isTablet ? 16 : 14,
@@ -224,19 +245,17 @@ const QuranicWordHarfScreen: React.FC<QuranicWordHarfScreenProps> = ({ onNavigat
             activeOpacity={0.7}
           >
             <View style={styles.lessonHeader}>
-              <Text style={styles.lessonIcon}>🔤</Text>
+              <Text style={styles.lessonIcon}>🔗</Text>
               <View style={styles.lessonInfo}>
                 <Text style={styles.lessonTitle}>Lesson 1</Text>
-                <Text style={styles.lessonSubtitle}>حروف الابتداء والحصر</Text>
+                <Text style={styles.lessonUrduName}>اسم ضمائر</Text>
+                <Text style={styles.lessonEnglishName}>Personal Pronouns</Text>
               </View>
             </View>
             
-            <Text style={styles.lessonDescription}>
-              آغاز اور حصر/اختصاص کے حروف سیکھیں۔ إلا، إنما، لا، اور ما جیسے اہم عربی حروف کو قرآنی مثالوں کے ساتھ سیکھیں۔
-            </Text>
 
             <View style={styles.progressBar}>
-              <View style={[styles.progressFill, { width: '0%' }]} />
+              <View style={[styles.progressFill, { width: '50%' }]} />
             </View>
             <Text style={styles.progressText}>Ready to start</Text>
           </TouchableOpacity>
@@ -247,16 +266,15 @@ const QuranicWordHarfScreen: React.FC<QuranicWordHarfScreenProps> = ({ onNavigat
             activeOpacity={0.7}
           >
             <View style={styles.lessonHeader}>
-              <Text style={styles.lessonIcon}>❓</Text>
+              <Text style={styles.lessonIcon}>🔗</Text>
               <View style={styles.lessonInfo}>
                 <Text style={styles.lessonTitle}>Lesson 2</Text>
-                <Text style={styles.lessonSubtitle}>حروف الاستفهام</Text>
+                <Text style={styles.lessonUrduName}>حروفِ جارہ</Text>
+                <Text style={styles.lessonEnglishName}>Prepositions</Text>
               </View>
             </View>
             
-            <Text style={styles.lessonDescription}>
-              عربی میں سوال پوچھنے کے لیے استعمال ہونے والے استفہامی حروف سیکھیں۔ أ، أَيَّانَ، أَيْنَ، كَمْ، كَيْفَ، مَتَى، اور هَلْ جیسے حروف کو قرآنی مثالوں کے ساتھ سیکھیں۔
-            </Text>
+            
 
             <View style={styles.progressBar}>
               <View style={[styles.progressFill, { width: '0%' }]} />
@@ -270,17 +288,14 @@ const QuranicWordHarfScreen: React.FC<QuranicWordHarfScreenProps> = ({ onNavigat
             activeOpacity={0.7}
           >
             <View style={styles.lessonHeader}>
-              <Text style={styles.lessonIcon}>⏰</Text>
+              <Text style={styles.lessonIcon}>💪</Text>
               <View style={styles.lessonInfo}>
                 <Text style={styles.lessonTitle}>Lesson 3</Text>
-                <Text style={styles.lessonSubtitle}>حروف الاستقبال</Text>
+                <Text style={styles.lessonUrduName}>حروفِ جر مع الضمائر</Text>
+                <Text style={styles.lessonEnglishName}>Conjunctions with the Particles</Text>
               </View>
             </View>
             
-            <Text style={styles.lessonDescription}>
-              عربی میں مستقبل کے افعال کو ظاہر کرنے کے لیے استعمال ہونے والے مستقبل کے حروف سیکھیں۔ سَ اور سَوْفَ جیسے حروف کو قرآنی مثالوں کے ساتھ سیکھیں۔
-            </Text>
-
             <View style={styles.progressBar}>
               <View style={[styles.progressFill, { width: '0%' }]} />
             </View>
@@ -293,16 +308,15 @@ const QuranicWordHarfScreen: React.FC<QuranicWordHarfScreenProps> = ({ onNavigat
             activeOpacity={0.7}
           >
             <View style={styles.lessonHeader}>
-              <Text style={styles.lessonIcon}>✨</Text>
+              <Text style={styles.lessonIcon}>🔀</Text>
               <View style={styles.lessonInfo}>
                 <Text style={styles.lessonTitle}>Lesson 4</Text>
-                <Text style={styles.lessonSubtitle}>حروف التحقيق / التخفيف</Text>
+                <Text style={styles.lessonUrduName}>اسمائے اشارہ</Text>
+                <Text style={styles.lessonEnglishName}>Demonstrative Pronouns</Text>
               </View>
             </View>
             
-            <Text style={styles.lessonDescription}>
-              عربی میں امید اور سبب کے لیے استعمال ہونے والے تحقیق اور تخفیف کے حروف سیکھیں۔ عَسَى، كَيْ، كَيْلاَ، لَعَلَّهُ، اور لِكَيْ جیسے حروف کو قرآنی مثالوں کے ساتھ سیکھیں۔
-            </Text>
+         
 
             <View style={styles.progressBar}>
               <View style={[styles.progressFill, { width: '0%' }]} />
@@ -316,17 +330,15 @@ const QuranicWordHarfScreen: React.FC<QuranicWordHarfScreenProps> = ({ onNavigat
             activeOpacity={0.7}
           >
             <View style={styles.lessonHeader}>
-              <Text style={styles.lessonIcon}>⚠️</Text>
+              <Text style={styles.lessonIcon}>❓</Text>
               <View style={styles.lessonInfo}>
                 <Text style={styles.lessonTitle}>Lesson 5</Text>
-                <Text style={styles.lessonSubtitle}>حروف التنبيه</Text>
+                <Text style={styles.lessonUrduName}>اسم موصول</Text>
+                <Text style={styles.lessonEnglishName}>Relative Pronouns</Text>
               </View>
             </View>
             
-            <Text style={styles.lessonDescription}>
-              عربی میں توجہ مرکوز کرنے اور سننے والوں کو خبردار کرنے کے لیے استعمال ہونے والے تنبیہ کے حروف سیکھیں۔ أَلَا، أَمَّا، اور هَـ (هاء التنبيه) جیسے حروف کو قرآنی مثالوں کے ساتھ سیکھیں۔
-            </Text>
-
+      
             <View style={styles.progressBar}>
               <View style={[styles.progressFill, { width: '0%' }]} />
             </View>
@@ -339,16 +351,14 @@ const QuranicWordHarfScreen: React.FC<QuranicWordHarfScreenProps> = ({ onNavigat
             activeOpacity={0.7}
           >
             <View style={styles.lessonHeader}>
-              <Text style={styles.lessonIcon}>🔤</Text>
+              <Text style={styles.lessonIcon}>❌</Text>
               <View style={styles.lessonInfo}>
                 <Text style={styles.lessonTitle}>Lesson 6</Text>
-                <Text style={styles.lessonSubtitle}>حروف التهجي / المقطعات</Text>
+                <Text style={styles.lessonUrduName}>حروف عطف</Text>
+                <Text style={styles.lessonEnglishName}>Conjunctions</Text>
               </View>
             </View>
             
-            <Text style={styles.lessonDescription}>
-              قرآن کے بعض سورتوں کے شروع میں پائے جانے والے پراسرار منفصل حروف (مقطعات) سیکھیں۔ الر، الم، حم، ص، طس، طه، ق، ن، يس اور مزید تمام 14 ترکیبات کو ان کے قرآنی حوالوں کے ساتھ سیکھیں۔
-            </Text>
 
             <View style={styles.progressBar}>
               <View style={[styles.progressFill, { width: '0%' }]} />
@@ -362,17 +372,14 @@ const QuranicWordHarfScreen: React.FC<QuranicWordHarfScreenProps> = ({ onNavigat
             activeOpacity={0.7}
           >
             <View style={styles.lessonHeader}>
-              <Text style={styles.lessonIcon}>💪</Text>
+              <Text style={styles.lessonIcon}>🚫</Text>
               <View style={styles.lessonInfo}>
                 <Text style={styles.lessonTitle}>Lesson 7</Text>
-                <Text style={styles.lessonSubtitle}>حروف التوكيد</Text>
+                <Text style={styles.lessonUrduName}>حروف و اسمائے استفهام</Text>
+                <Text style={styles.lessonEnglishName}>Interrogative Particles</Text>
               </View>
             </View>
-            
-            <Text style={styles.lessonDescription}>
-              عربی میں بیانات کو مضبوط اور تصدیق کرنے کے لیے استعمال ہونے والے تاکید کے حروف سیکھیں۔ أَنَّ، إِنَّ، قَدْ، لَ، اور نَ جیسے حروف کو ان کی مختلف اقسام اور قرآنی مثالوں کے ساتھ سیکھیں۔
-            </Text>
-
+    
             <View style={styles.progressBar}>
               <View style={[styles.progressFill, { width: '0%' }]} />
             </View>
@@ -385,16 +392,15 @@ const QuranicWordHarfScreen: React.FC<QuranicWordHarfScreenProps> = ({ onNavigat
             activeOpacity={0.7}
           >
             <View style={styles.lessonHeader}>
-              <Text style={styles.lessonIcon}>🔗</Text>
+              <Text style={styles.lessonIcon}>💪</Text>
               <View style={styles.lessonInfo}>
                 <Text style={styles.lessonTitle}>Lesson 8</Text>
-                <Text style={styles.lessonSubtitle}>حروف الجر</Text>
+                <Text style={styles.lessonUrduName}>حروف نفی و اثبات</Text>
+                <Text style={styles.lessonEnglishName}>Negative & Positive Particles</Text>
               </View>
             </View>
             
-            <Text style={styles.lessonDescription}>
-              الفاظ کو جوڑنے اور رشتے ظاہر کرنے کے لیے استعمال ہونے والے تمام عربی حروف جر سیکھیں۔ إلى، في، من، على، عن، لِ، كَ اور مزید 18 اہم حروف جر کو ان کے معانی اور قرآنی مثالوں کے ساتھ سیکھیں۔
-            </Text>
+            
 
             <View style={styles.progressBar}>
               <View style={[styles.progressFill, { width: '0%' }]} />
@@ -408,17 +414,15 @@ const QuranicWordHarfScreen: React.FC<QuranicWordHarfScreenProps> = ({ onNavigat
             activeOpacity={0.7}
           >
             <View style={styles.lessonHeader}>
-              <Text style={styles.lessonIcon}>⚡</Text>
+              <Text style={styles.lessonIcon}>🤝</Text>
               <View style={styles.lessonInfo}>
                 <Text style={styles.lessonTitle}>Lesson 9</Text>
-                <Text style={styles.lessonSubtitle}>حروف الجزم</Text>
+                <Text style={styles.lessonUrduName}>حروف مشبه بالفعل </Text>
+                <Text style={styles.lessonEnglishName}>Particles Resembling Verbs</Text>
               </View>
             </View>
             
-            <Text style={styles.lessonDescription}>
-              عربی میں فعل کے مزاج کو متاثر کرنے اور شرطی یا منفی بیانات بنانے والے حروف جزم سیکھیں۔ إِنْ، لَا، لَمَّا، اور لَمْ جیسے حروف کو ان کے قرآنی مثالوں کے ساتھ سیکھیں۔
-            </Text>
-
+            
             <View style={styles.progressBar}>
               <View style={[styles.progressFill, { width: '0%' }]} />
             </View>
@@ -431,17 +435,14 @@ const QuranicWordHarfScreen: React.FC<QuranicWordHarfScreenProps> = ({ onNavigat
             activeOpacity={0.7}
           >
             <View style={styles.lessonHeader}>
-              <Text style={styles.lessonIcon}>💬</Text>
+              <Text style={styles.lessonIcon}>📢</Text>
               <View style={styles.lessonInfo}>
                 <Text style={styles.lessonTitle}>Lesson 10</Text>
-                <Text style={styles.lessonSubtitle}>حروف الجواب / الانتقال</Text>
+                <Text style={styles.lessonUrduName}>حروف ندا</Text>
+                <Text style={styles.lessonEnglishName}>Vocative Particles</Text>
               </View>
             </View>
             
-            <Text style={styles.lessonDescription}>
-              عربی میں سوالات کے جواب دینے اور موضوعات کو تبدیل کرنے کے لیے استعمال ہونے والے جواب اور انتقال کے حروف سیکھیں۔ أَجَلْ، بَلَى، اور كَلَّا جیسے حروف کو ان کے قرآنی مثالوں کے ساتھ سیکھیں۔
-            </Text>
-
             <View style={styles.progressBar}>
               <View style={[styles.progressFill, { width: '0%' }]} />
             </View>
@@ -454,16 +455,14 @@ const QuranicWordHarfScreen: React.FC<QuranicWordHarfScreenProps> = ({ onNavigat
             activeOpacity={0.7}
           >
             <View style={styles.lessonHeader}>
-              <Text style={styles.lessonIcon}>🔀</Text>
+              <Text style={styles.lessonIcon}>🔍</Text>
               <View style={styles.lessonInfo}>
                 <Text style={styles.lessonTitle}>Lesson 11</Text>
-                <Text style={styles.lessonSubtitle}>حروف الشرط</Text>
+                <Text style={styles.lessonUrduName}>مرکب ما</Text>
+                <Text style={styles.lessonEnglishName}>Compound Word with Ma</Text>
               </View>
             </View>
             
-            <Text style={styles.lessonDescription}>
-              عربی میں اگر-تو کے بیانات اور شرطی جملے بنانے کے لیے استعمال ہونے والے شرطی حروف سیکھیں۔ إِذَا، إِنْ، كُلَّمَا، لَمَّا، لَوْ، اور لَوْلَا جیسے حروف کو ان کے قرآنی مثالوں کے ساتھ سیکھیں۔
-            </Text>
 
             <View style={styles.progressBar}>
               <View style={[styles.progressFill, { width: '0%' }]} />
@@ -477,17 +476,14 @@ const QuranicWordHarfScreen: React.FC<QuranicWordHarfScreenProps> = ({ onNavigat
             activeOpacity={0.7}
           >
             <View style={styles.lessonHeader}>
-              <Text style={styles.lessonIcon}>🔗</Text>
+              <Text style={styles.lessonIcon}>🎯</Text>
               <View style={styles.lessonInfo}>
                 <Text style={styles.lessonTitle}>Lesson 12</Text>
-                <Text style={styles.lessonSubtitle}>حروف العطف</Text>
+                <Text style={styles.lessonUrduName}>فعل کا ابتدائی حرف</Text>
+                <Text style={styles.lessonEnglishName}>Prefix for Verb</Text>
               </View>
             </View>
             
-            <Text style={styles.lessonDescription}>
-              الفاظ، جملے اور فقروں کو جوڑنے والے حروف عطف سیکھیں۔ أَمْ، أَوْ، بَلْ، ثُمَّ، حَتَّى، فَ، لَا، لَكِنْ، اور وَ جیسے حروف کو ان کے مختلف استعمال کی اقسام کے ساتھ سیکھیں۔
-            </Text>
-
             <View style={styles.progressBar}>
               <View style={[styles.progressFill, { width: '0%' }]} />
             </View>
@@ -500,17 +496,14 @@ const QuranicWordHarfScreen: React.FC<QuranicWordHarfScreenProps> = ({ onNavigat
             activeOpacity={0.7}
           >
             <View style={styles.lessonHeader}>
-              <Text style={styles.lessonIcon}>📢</Text>
+              <Text style={styles.lessonIcon}>🌟</Text>
               <View style={styles.lessonInfo}>
                 <Text style={styles.lessonTitle}>Lesson 13</Text>
-                <Text style={styles.lessonSubtitle}>حروف النداء</Text>
+                <Text style={styles.lessonUrduName}>قرآن کے عام حروف </Text>
+                <Text style={styles.lessonEnglishName}>Quranic Common Harfs</Text>
               </View>
             </View>
             
-            <Text style={styles.lessonDescription}>
-              کسی کو پکارنے یا خطاب کرنے کے لیے استعمال ہونے والے حروف نداء سیکھیں۔ أَيُّهَا اور يَا جیسے حروف کو ان کے قرآنی مثالوں کے ساتھ سیکھیں اور عربی میں لوگوں کو مناسب طریقے سے خطاب کرنے کا طریقہ سمجھیں۔
-            </Text>
-
             <View style={styles.progressBar}>
               <View style={[styles.progressFill, { width: '0%' }]} />
             </View>
@@ -526,14 +519,73 @@ const QuranicWordHarfScreen: React.FC<QuranicWordHarfScreenProps> = ({ onNavigat
               <Text style={styles.lessonIcon}>🔧</Text>
               <View style={styles.lessonInfo}>
                 <Text style={styles.lessonTitle}>Lesson 14</Text>
-                <Text style={styles.lessonSubtitle}>دیگر حروف</Text>
+                <Text style={styles.lessonUrduName}>حروف سبب و علت</Text>
+                <Text style={styles.lessonEnglishName}>Cause/Reason Particles</Text>
+              </View>
+            </View>
+
+            <View style={styles.progressBar}>
+              <View style={[styles.progressFill, { width: '0%' }]} />
+            </View>
+            <Text style={styles.progressText}>Ready to start</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.lessonCard}
+            onPress={() => onNavigate('QuranicWordHarfLesson15')}
+            activeOpacity={0.7}
+          >
+            <View style={styles.lessonHeader}>
+              <Text style={styles.lessonIcon}>👆</Text>
+              <View style={styles.lessonInfo}>
+                <Text style={styles.lessonTitle}>Lesson 15</Text>
+                <Text style={styles.lessonUrduName}>اسمائے موصول</Text>
+                <Text style={styles.lessonEnglishName}>Relative Pronouns</Text>
+              </View>
+            </View>
+
+            <View style={styles.progressBar}>
+              <View style={[styles.progressFill, { width: '0%' }]} />
+            </View>
+            <Text style={styles.progressText}>Ready to start</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.lessonCard}
+            onPress={() => onNavigate('QuranicWordHarfLesson16')}
+            activeOpacity={0.7}
+          >
+            <View style={styles.lessonHeader}>
+              <Text style={styles.lessonIcon}>📝</Text>
+              <View style={styles.lessonInfo}>
+                <Text style={styles.lessonTitle}>Lesson 16</Text>
+                <Text style={styles.lessonUrduName}>اسمائے اشارہ</Text>
+                <Text style={styles.lessonEnglishName}>Demonstrative Pronouns</Text>
               </View>
             </View>
             
-            <Text style={styles.lessonDescription}>
-              وہ مختلف حروف سیکھیں جو دوسری اقسام میں نہیں آتے۔ إِذَا/إِذْ، إِلاَّ أَن، أَيْ، قَلَّمَا، نَعَمْ، اور وَإِمَّا جیسے حروف کو ان کے قرآنی مثالوں کے ساتھ سیکھیں۔
-            </Text>
+          
 
+            <View style={styles.progressBar}>
+              <View style={[styles.progressFill, { width: '0%' }]} />
+            </View>
+            <Text style={styles.progressText}>Ready to start</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.lessonCard}
+            onPress={() => onNavigate('QuranicWordHarfLesson17')}
+            activeOpacity={0.7}
+          >
+            <View style={styles.lessonHeader}>
+              <Text style={styles.lessonIcon}>📝</Text>
+              <View style={styles.lessonInfo}>
+                <Text style={styles.lessonTitle}>Lesson 17</Text>
+                <Text style={styles.lessonUrduName}>اسم ضمائر</Text>
+                <Text style={styles.lessonEnglishName}>Personal Pronouns</Text>
+              </View>
+            </View>
+            
+            
             <View style={styles.progressBar}>
               <View style={[styles.progressFill, { width: '0%' }]} />
             </View>

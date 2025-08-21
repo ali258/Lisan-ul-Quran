@@ -171,7 +171,7 @@ const QuranicWordLesson4Screen: React.FC<QuranicWordLesson4ScreenProps> = ({ onN
     categoryText: {
       fontSize: 16,
       fontWeight: 'bold',
-      color: getThemeColor(colors.surface, isDarkMode),
+      color: getThemeColor(colors.text, isDarkMode),
       textAlign: 'center',
       fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
     },
@@ -275,8 +275,8 @@ const QuranicWordLesson4Screen: React.FC<QuranicWordLesson4ScreenProps> = ({ onN
               <View style={styles.dataCell}>
                 <Text style={styles.arabicText}>اَللَّاتِي - اَللَّائِیْ</Text>
               </View>
-              <View style={[styles.dataCell, styles.highlightedCell]}>
-                <Text style={[styles.arabicText, styles.highlightedText]}>اَللَّتَانِ</Text>
+              <View style={styles.dataCell}>
+                <Text style={styles.arabicText}>-</Text>
               </View>
               <View style={styles.dataCell}>
                 <Text style={styles.arabicText}>اَلَّتِیْ</Text>
@@ -288,6 +288,8 @@ const QuranicWordLesson4Screen: React.FC<QuranicWordLesson4ScreenProps> = ({ onN
           </View>
         </View>
 
+       
+
         {/* Note Section */}
         <View style={styles.noteSection}>
           <Text style={styles.noteTitle}>یاد رکھیں</Text>
@@ -297,7 +299,7 @@ const QuranicWordLesson4Screen: React.FC<QuranicWordLesson4ScreenProps> = ({ onN
             • الَّتِي مونث واحد کے لیے استعمال ہوتا ہے{'\n'}
             • مثنى میں اللَّذَانِ (مذكر) اور اللَّتَانِ (مونث) ہیں{'\n'}
             • جمع میں الَّذِينَ (مذكر) اور اللَّاتِي/اللَّائِي (مونث) ہیں{'\n'}
-            • یہ الفاظ قرآن پاک میں بہت زیادہ استعمال ہوتے ہیں
+           
           </Text>
         </View>
       </ScrollView>

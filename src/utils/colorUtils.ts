@@ -68,6 +68,39 @@ const TAILWIND_COLOR_MAP = {
   'green-600': '#059669',
   'yellow-500': '#eab308',
   'red-600': '#dc2626',
+  
+  // Harf-orange colors
+  'harf-orange-light': '#FF6B35',
+  'harf-orange-light-text': '#FFF0EA',
+  'harf-orange-dark': '#FFF0EA',
+  'harf-orange-dark-text': '#FF6B35',
+
+  // Ism-blue colors
+  // 'ism-blue-light': '#333D79',
+  // 'ism-blue-light-text': '#FAF9F6',
+  // 'ism-blue-dark': '#FAF9F6',  
+  // 'ism-blue-dark-text': '#333D79',
+
+  // Ism-blue colors
+  'ism-blue-light': '#246CF6',           // Vibrant, clear blue
+  'ism-blue-light-text': '#F9F9FB',      // Crisp off-white for text
+  'ism-blue-dark': '#E6F0FF',            // Soft blue-tinted light background
+  'ism-blue-dark-text': '#246CF6',       // Vibrant blue for text on light BG
+
+
+  // 'ism-blue-dark': '#333D79',  
+  // 'ism-blue-dark-text': '#FAF9F6',
+
+  'markab-purple-light': '#8F5CF7',
+  'markab-purple-light-text': '#FAF9F6',
+  'markab-purple-dark': '#EAE6FF',
+  'markab-purple-dark-text': '#673AB7',
+
+
+  'black-text': '#000000',
+  'white-text': '#ffffff',
+
+  'ism-blue': '#1e40af',
 };
 
 /**

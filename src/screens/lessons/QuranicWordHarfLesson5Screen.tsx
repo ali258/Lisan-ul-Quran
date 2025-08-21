@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { useThemeStore } from '../../store/themeStore';
 import { TAILWIND_COLORS, FONT_CLASSES } from '../../utils/constants';
-import { getThemeColor } from '../../utils/colorUtils';
+import { getThemeColor, getColorWithOpacity, getColorFromClass } from '../../utils/colorUtils';
 import { getFontWithProperFallback } from '../../utils/fontUtils';
 
 interface QuranicWordHarfLesson5ScreenProps {
@@ -26,177 +26,186 @@ const QuranicWordHarfLesson5Screen: React.FC<QuranicWordHarfLesson5ScreenProps> 
   const { isDarkMode } = useThemeStore();
   const colors = isDarkMode ? TAILWIND_COLORS.dark : TAILWIND_COLORS.light;
 
+
   const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: getThemeColor(colors.background, isDarkMode),
-    },
-    header: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      paddingHorizontal: 24,
-      paddingVertical: 20,
-      backgroundColor: getThemeColor(colors.surface, isDarkMode),
-      borderBottomWidth: 1,
-      borderBottomColor: getThemeColor(colors.border, isDarkMode),
-      shadowColor: getThemeColor(colors.shadow, isDarkMode),
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.1,
-      shadowRadius: 4,
-      elevation: 4,
-    },
-    backButton: {
-      padding: 8,
-      marginRight: 16,
-      borderRadius: 8,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
-    },
-    backButtonText: {
-      fontSize: 18,
-      color: getThemeColor(colors.surface, isDarkMode),
-      fontWeight: 'bold',
-    },
-    headerTitle: {
-      fontSize: 20,
-      fontWeight: 'bold',
-      color: getThemeColor(colors.text, isDarkMode),
-      flex: 1,
-    },
-    scrollView: {
-      flex: 1,
-    },
-    content: {
-      paddingHorizontal: 24,
-      paddingTop: 32,
-      paddingBottom: 40,
-    },
-    title: {
-      fontSize: isTablet ? 32 : 24,
-      fontWeight: 'bold',
-      textAlign: 'center',
-      marginBottom: 16,
-      color: getThemeColor(colors.primary, isDarkMode),
-    },
-    subtitle: {
-      fontSize: isTablet ? 18 : 16,
-      textAlign: 'center',
-      marginBottom: 32,
-      color: getThemeColor(colors.textSecondary, isDarkMode),
-      lineHeight: 24,
-    },
-    lessonGroup: {
-      fontSize: isTablet ? 22 : 18,
-      fontWeight: 'bold',
-      textAlign: 'center',
-      marginBottom: 24,
-      color: getThemeColor(colors.text, isDarkMode),
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
-      lineHeight: 32,
-    },
-    particlesContainer: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      justifyContent: 'space-between',
-    },
-    particleCard: {
-      width: isTablet ? '48%' : '48%',
-      backgroundColor: getThemeColor(colors.surface, isDarkMode),
-      borderRadius: 20,
-      padding: 20,
-      marginBottom: 16,
-      borderWidth: 2,
-      borderColor: getThemeColor(colors.primary, isDarkMode),
-      shadowColor: getThemeColor(colors.shadow, isDarkMode),
-      shadowOffset: { width: 0, height: 4 },
-      shadowOpacity: 0.15,
-      shadowRadius: 8,
-      elevation: 6,
-    },
-    particleHeader: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      marginBottom: 16,
-    },
-    particleInfo: {
-      flex: 1,
-    },
-    particleArabic: {
-      fontSize: isTablet ? 28 : 24,
-      fontWeight: 'bold',
-      color: getThemeColor(colors.primary, isDarkMode),
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
-      lineHeight: 32,
-      marginBottom: 4,
-      textAlign: 'center',
-    },
-    particleTransliteration: {
-      fontSize: isTablet ? 14 : 12,
-      color: getThemeColor(colors.textSecondary, isDarkMode),
-      fontStyle: 'italic',
-      marginBottom: 6,
-      textAlign: 'center',
-    },
-    particleMeaning: {
-      fontSize: isTablet ? 16 : 14,
-      color: getThemeColor(colors.text, isDarkMode),
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
-      lineHeight: 20,
-      marginBottom: 8,
-      textAlign: 'center',
-    },
-    exampleSection: {
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
-      borderRadius: 12,
-      padding: 12,
-      marginTop: 8,
-    },
-    exampleTitle: {
-      fontSize: isTablet ? 12 : 10,
-      fontWeight: 'bold',
-      color: getThemeColor(colors.surface, isDarkMode),
-      marginBottom: 6,
-      textAlign: 'center',
-    },
-    exampleReference: {
-      fontSize: isTablet ? 12 : 10,
-      color: getThemeColor(colors.surface, isDarkMode),
-      opacity: 0.8,
-      textAlign: 'center',
-      fontStyle: 'italic',
-    },
-    decorativeLine: {
-      height: 3,
-      width: 60,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
-      borderRadius: 2,
-      alignSelf: 'center',
-      marginBottom: 24,
-    },
+        flex: 1,
+        backgroundColor: getThemeColor(colors.background, isDarkMode),
+      },
+      header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingHorizontal: 24,
+        paddingVertical: 20,
+        backgroundColor: getThemeColor(colors.surface, isDarkMode),
+        borderBottomWidth: 1,
+        borderBottomColor: getThemeColor(colors.border, isDarkMode),
+        shadowColor: getThemeColor(colors.shadow, isDarkMode),
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 4,
+      },
+      backButton: {
+        padding: 8,
+        marginRight: 16,
+        borderRadius: 8,
+        backgroundColor: isDarkMode ? getColorFromClass('ism-blue-dark') : getColorFromClass('ism-blue-light'),
+      },
+      backButtonText: {
+        fontSize: 18,
+        color: isDarkMode ? getColorFromClass('ism-blue-dark-text') : getColorFromClass('ism-blue-light-text'),
+        fontWeight: 'bold',
+      },
+      headerTitle: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: isDarkMode ? getColorFromClass('ism-blue-light-text') : getColorFromClass('ism-blue-dark-text'),
+        flex: 1,
+      },
+      scrollView: {
+        flex: 1,
+      },
+      content: {
+        paddingHorizontal: 24,
+        paddingTop: 32,
+        paddingBottom: 40,
+      },
+      title: {
+        fontSize: isTablet ? 32 : 24,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginBottom: 16,
+        color: isDarkMode ? getColorFromClass('ism-blue-light-text') : getColorFromClass('ism-blue-dark-text'),
+        fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
+      },
+      subtitle: {
+        fontSize: isTablet ? 18 : 16,
+        textAlign: 'center',
+        marginBottom: 32,
+        color: getThemeColor(colors.textSecondary, isDarkMode),
+        lineHeight: 24,
+        fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+      },
+      section: {
+        marginBottom: 32,
+      },
+      sectionTitle: {
+        fontSize: isTablet ? 22 : 18,
+        fontWeight: 'bold',
+        marginBottom: 16,
+        color: isDarkMode ? getColorFromClass('ism-blue-light-text') : getColorFromClass('ism-blue-dark-text'),
+        textAlign: 'center',
+        fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+      },
+      sectionSubtitle: {
+        fontSize: isTablet ? 16 : 14,
+        marginBottom: 20,
+        color: getThemeColor(colors.textSecondary, isDarkMode),
+        textAlign: 'center',
+        fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+      },
+      tableContainer: {
+        backgroundColor: getThemeColor(colors.surface, isDarkMode),
+        borderRadius: 16,
+        overflow: 'hidden',
+        borderWidth: 1,
+        borderColor: getThemeColor(colors.border, isDarkMode),
+        shadowColor: getThemeColor(colors.shadow, isDarkMode),
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.1,
+        shadowRadius: 8,
+        elevation: 4,
+      },
+      tableHeader: {
+        flexDirection: 'row',
+        backgroundColor: isDarkMode ? getColorFromClass('ism-blue-dark') : getColorFromClass('ism-blue-light'),
+      },
+      headerCell: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 16,
+        paddingHorizontal: 8,
+        borderRightWidth: 1,
+        borderRightColor: getThemeColor(colors.surface, isDarkMode),
+      },
+      headerText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: isDarkMode ? getColorFromClass('ism-blue-dark-text') : getColorFromClass('ism-blue-light-text'),
+        textAlign: 'center',
+        fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+      },
+      dataRow: {
+        flexDirection: 'row',
+        backgroundColor: getThemeColor(colors.surface, isDarkMode),
+        borderBottomWidth: 1,
+        borderBottomColor: getThemeColor(colors.border, isDarkMode),
+      },
+      dataCell: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 8,
+        borderRightWidth: 1,
+        borderRightColor: getThemeColor(colors.border, isDarkMode),
+      },
+      categoryCell: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 8,
+        backgroundColor: isDarkMode ? getColorFromClass('ism-blue-dark') : getColorFromClass('ism-blue-light'),
+        borderRightWidth: 1,
+        borderRightColor: getThemeColor(colors.border, isDarkMode),
+      },
+      arabicText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: getThemeColor(colors.text, isDarkMode),
+        textAlign: 'center',
+        fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
+      },
+      categoryText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: isDarkMode ? getColorFromClass('ism-blue-dark-text') : getColorFromClass('ism-blue-light-text'),
+        textAlign: 'center',
+        fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+      },
+      highlightedCell: {
+        backgroundColor: getThemeColor(colors.error, isDarkMode),
+      },
+      highlightedText: {
+        color: getThemeColor(colors.surface, isDarkMode),
+      },
+      noteSection: {
+        backgroundColor: getThemeColor(colors.surface, isDarkMode),
+        borderRadius: 16,
+        padding: 20,
+        marginTop: 24,
+        borderWidth: 1,
+        borderColor: getThemeColor(colors.border, isDarkMode),
+        borderLeftWidth: 4,
+        borderLeftColor: isDarkMode ? getColorFromClass('ism-blue-dark') : getColorFromClass('ism-blue-light'),
+      },
+      noteTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: isDarkMode ? getColorFromClass('ism-blue-light-text') : getColorFromClass('ism-blue-dark-text'),
+        marginBottom: 12,
+        fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+      },
+      noteText: {
+        fontSize: 16,
+        color: getThemeColor(colors.text, isDarkMode),
+        lineHeight: 24,
+        fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+      },
   });
-
-  const particles = [
-    {
-      arabic: 'أَلَا',
-      transliteration: 'alā',
-      urduMeaning: 'سنو! / !behold',
-      englishMeaning: 'behold',
-      reference: 'يونس 10:62',
-    },
-    {
-      arabic: 'أَمَّا',
-      transliteration: 'ammā',
-      urduMeaning: 'جہاں تک / as for',
-      englishMeaning: 'as for',
-      reference: 'الليل 92:5',
-    },
-    {
-      arabic: 'هَـ',
-      transliteration: 'hā (Hā\' al-Tanbih)',
-      urduMeaning: 'یہ لو! / here is',
-      englishMeaning: 'here is',
-      reference: 'آل عمران 3:66',
-    },
-  ];
 
   return (
     <SafeAreaView style={styles.container}>
@@ -210,7 +219,7 @@ const QuranicWordHarfLesson5Screen: React.FC<QuranicWordHarfLesson5ScreenProps> 
         <TouchableOpacity style={styles.backButton} onPress={onBack}>
           <Text style={styles.backButtonText}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Harf Lesson 5</Text>
+        <Text style={styles.headerTitle}>اسم موصول</Text>
       </View>
 
       <ScrollView
@@ -219,40 +228,80 @@ const QuranicWordHarfLesson5Screen: React.FC<QuranicWordHarfLesson5ScreenProps> 
         contentContainerStyle={styles.content}
       >
         {/* Title Section */}
-        <Text style={styles.title}>🔤 حرف - Particles</Text>
+        <Text style={styles.title}>اسم موصول</Text>
         <Text style={styles.subtitle}>
-          Learn essential Arabic particles and their usage in the Quran
+          Relative Pronouns - Connecting Words in Arabic
         </Text>
 
-        {/* Decorative Line */}
-        <View style={styles.decorativeLine} />
-
-        {/* Lesson Group */}
-        <Text style={styles.lessonGroup}>
-          حروف التنبيه
-        </Text>
-        <Text style={styles.subtitle}>
-          Particles of Attention / Warning
-        </Text>
-
-        {/* Particles */}
-        <View style={styles.particlesContainer}>
-          {particles.map((particle, index) => (
-            <View key={index} style={styles.particleCard}>
-              <View style={styles.particleHeader}>
-                <View style={styles.particleInfo}>
-                  <Text style={styles.particleArabic}>{particle.arabic}</Text>
-                  <Text style={styles.particleTransliteration}>{particle.transliteration}</Text>
-                  <Text style={styles.particleMeaning}>{particle.urduMeaning}</Text>
-                </View>
+        {/* Main Table */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>اسم موصول کی مکمل جدول</Text>
+          <Text style={styles.sectionSubtitle}>Relative Pronouns Table</Text>
+          
+          <View style={styles.tableContainer}>
+            {/* Main Header Row */}
+            <View style={styles.tableHeader}>
+              <View style={styles.headerCell}>
+                <Text style={styles.headerText}>جمع</Text>
               </View>
-              
-              <View style={styles.exampleSection}>
-                <Text style={styles.exampleTitle}>Quranic Reference</Text>
-                <Text style={styles.exampleReference}>{particle.reference}</Text>
+              <View style={styles.headerCell}>
+                <Text style={styles.headerText}>مثنى</Text>
+              </View>
+              <View style={styles.headerCell}>
+                <Text style={styles.headerText}>واحد</Text>
+              </View>
+              <View style={styles.headerCell}>
+                <Text style={styles.headerText}>  جو، جس نے  </Text>
               </View>
             </View>
-          ))}
+
+            {/* Masculine Row */}
+            <View style={styles.dataRow}>
+              <View style={styles.dataCell}>
+                <Text style={styles.arabicText}>اَلَّذِينَ</Text>
+              </View>
+              <View style={styles.dataCell}>
+                <Text style={styles.arabicText}>اَللَّذَانِ</Text>
+              </View>
+              <View style={styles.dataCell}>
+                <Text style={styles.arabicText}>اَلَّذِیْ</Text>
+              </View>
+              <View style={styles.categoryCell}>
+                <Text style={styles.categoryText}>مذكر</Text>
+              </View>
+            </View>
+
+            {/* Feminine Row */}
+            <View style={styles.dataRow}>
+              <View style={styles.dataCell}>
+                <Text style={styles.arabicText}>اَللَّاتِي - اَللَّائِیْ</Text>
+              </View>
+              <View style={styles.dataCell}>
+                <Text style={styles.arabicText}>-</Text>
+              </View>
+              <View style={styles.dataCell}>
+                <Text style={styles.arabicText}>اَلَّتِیْ</Text>
+              </View>
+              <View style={styles.categoryCell}>
+                <Text style={styles.categoryText}>مونث</Text>
+              </View>
+            </View>
+          </View>
+        </View>
+
+       
+
+        {/* Note Section */}
+        <View style={styles.noteSection}>
+          <Text style={styles.noteTitle}>یاد رکھیں</Text>
+          <Text style={styles.noteText}>
+            • اسم موصول وہ الفاظ ہیں جو دو جملوں کو جوڑتے ہیں{'\n'}
+            • الَّذِي مذكر واحد کے لیے استعمال ہوتا ہے{'\n'}
+            • الَّتِي مونث واحد کے لیے استعمال ہوتا ہے{'\n'}
+            • مثنى میں اللَّذَانِ (مذكر) اور اللَّتَانِ (مونث) ہیں{'\n'}
+            • جمع میں الَّذِينَ (مذكر) اور اللَّاتِي/اللَّائِي (مونث) ہیں{'\n'}
+           
+          </Text>
         </View>
       </ScrollView>
     </SafeAreaView>

@@ -192,6 +192,38 @@ export const QURANIC_WORD_LESSONS: MenuItem[] = [
     color: 'primary-300',
     route: 'QuranicWordLesson4',
   },
+  {
+    id: 'quranic-word-lesson-5',
+    title: 'Lesson 5',
+    subtitle: 'اسم استفهام',
+    icon: '❓',
+    color: 'primary-200',
+    route: 'QuranicWordLesson5',
+  },
+  {
+    id: 'quranic-word-lesson-6',
+    title: 'Lesson 6',
+    subtitle: 'اسم شرط',
+    icon: '🔀',
+    color: 'primary-100',
+    route: 'QuranicWordLesson6',
+  },
+  {
+    id: 'quranic-word-lesson-7',
+    title: 'Lesson 7',
+    subtitle: 'اسم ظرف',
+    icon: '📍',
+    color: 'primary-50',
+    route: 'QuranicWordLesson7',
+  },
+  {
+    id: 'quranic-word-lesson-8',
+    title: 'Lesson 8',
+    subtitle: 'عدد',
+    icon: '🔢',
+    color: 'primary-25',
+    route: 'QuranicWordLesson8',
+  },
 ];
 
 export const APP_CONFIG = {

@@ -14,7 +14,7 @@ import { TAILWIND_COLORS, FONT_CLASSES } from '../../utils/constants';
 import { getThemeColor } from '../../utils/colorUtils';
 import { getFontWithProperFallback } from '../../utils/fontUtils';
 
-interface QuranicWordHarfLesson14ScreenProps {
+interface QuranicWordLesson6ScreenProps {
   onNavigate: (screen: any) => void;
   onBack: () => void;
 }
@@ -22,7 +22,7 @@ interface QuranicWordHarfLesson14ScreenProps {
 const { width, height } = Dimensions.get('window');
 const isTablet = width >= 768;
 
-const QuranicWordHarfLesson14Screen: React.FC<QuranicWordHarfLesson14ScreenProps> = ({ onNavigate, onBack }) => {
+const QuranicWordLesson6Screen: React.FC<QuranicWordLesson6ScreenProps> = ({ onNavigate, onBack }) => {
   const { isDarkMode } = useThemeStore();
   const colors = isDarkMode ? TAILWIND_COLORS.dark : TAILWIND_COLORS.light;
 
@@ -84,25 +84,26 @@ const QuranicWordHarfLesson14Screen: React.FC<QuranicWordHarfLesson14ScreenProps
       color: getThemeColor(colors.textSecondary, isDarkMode),
       lineHeight: 24,
     },
-    lessonGroup: {
+    section: {
+      marginBottom: 32,
+    },
+    sectionTitle: {
       fontSize: isTablet ? 22 : 18,
       fontWeight: 'bold',
-      textAlign: 'center',
-      marginBottom: 24,
+      marginBottom: 16,
       color: getThemeColor(colors.text, isDarkMode),
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
-      lineHeight: 32,
+      textAlign: 'center',
     },
-    particlesContainer: {
+    wordsGrid: {
       flexDirection: 'row',
       flexWrap: 'wrap',
       justifyContent: 'space-between',
     },
-    particleCard: {
-      width: isTablet ? '48%' : '48%',
+    wordCard: {
+      width: isTablet ? '31%' : '48%',
       backgroundColor: getThemeColor(colors.surface, isDarkMode),
       borderRadius: 20,
-      padding: 20,
+      padding: 16,
       marginBottom: 16,
       borderWidth: 2,
       borderColor: getThemeColor(colors.primary, isDarkMode),
@@ -110,45 +111,40 @@ const QuranicWordHarfLesson14Screen: React.FC<QuranicWordHarfLesson14ScreenProps
       shadowOffset: { width: 0, height: 4 },
       shadowOpacity: 0.15,
       shadowRadius: 8,
-      elevation: 6,
-    },
-    particleHeader: {
-      flexDirection: 'row',
+      elevation: 4,
       alignItems: 'center',
-      marginBottom: 16,
     },
-    particleInfo: {
-      flex: 1,
-    },
-    particleArabic: {
-      fontSize: isTablet ? 28 : 24,
+    arabicWord: {
+      fontSize: isTablet ? 20 : 16,
       fontWeight: 'bold',
+      textAlign: 'center',
+      marginBottom: 8,
       color: getThemeColor(colors.primary, isDarkMode),
       fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
-      lineHeight: 32,
-      marginBottom: 4,
-      textAlign: 'center',
+      lineHeight: 24,
     },
-    particleTransliteration: {
+    urduMeaning: {
       fontSize: isTablet ? 14 : 12,
-      color: getThemeColor(colors.textSecondary, isDarkMode),
-      fontStyle: 'italic',
-      marginBottom: 6,
       textAlign: 'center',
-    },
-    particleMeaning: {
-      fontSize: isTablet ? 16 : 14,
+      marginBottom: 6,
       color: getThemeColor(colors.text, isDarkMode),
       fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
-      lineHeight: 20,
-      marginBottom: 8,
+      lineHeight: 18,
+    },
+    englishMeaning: {
+      fontSize: isTablet ? 12 : 10,
       textAlign: 'center',
+      color: getThemeColor(colors.textSecondary, isDarkMode),
+      fontStyle: 'italic',
+      lineHeight: 16,
+      marginBottom: 6,
     },
     exampleSection: {
       backgroundColor: getThemeColor(colors.primary, isDarkMode),
       borderRadius: 12,
       padding: 12,
       marginTop: 8,
+      width: '100%',
     },
     exampleTitle: {
       fontSize: isTablet ? 12 : 10,
@@ -157,45 +153,21 @@ const QuranicWordHarfLesson14Screen: React.FC<QuranicWordHarfLesson14ScreenProps
       marginBottom: 6,
       textAlign: 'center',
     },
-    exampleReference: {
+    exampleText: {
       fontSize: isTablet ? 12 : 10,
       color: getThemeColor(colors.surface, isDarkMode),
-      opacity: 0.9,
       textAlign: 'center',
       fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
       lineHeight: 16,
+      marginBottom: 4,
     },
     translationText: {
       fontSize: isTablet ? 12 : 10,
       color: getThemeColor(colors.surface, isDarkMode),
-      opacity: 0.9,
       textAlign: 'center',
       fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
       lineHeight: 16,
-    },
-    notesSection: {
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
-      borderRadius: 16,
-      padding: 20,
-      marginTop: 24,
-      borderWidth: 2,
-      borderColor: getThemeColor(colors.primary, isDarkMode),
-    },
-    notesTitle: {
-      fontSize: isTablet ? 18 : 16,
-      fontWeight: 'bold',
-      color: getThemeColor(colors.surface, isDarkMode),
-      marginBottom: 12,
-      textAlign: 'center',
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
-    },
-    notesText: {
-      fontSize: isTablet ? 14 : 12,
-      color: getThemeColor(colors.surface, isDarkMode),
-      lineHeight: 20,
-      textAlign: 'center',
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
-      marginBottom: 8,
+      opacity: 0.9,
     },
     decorativeLine: {
       height: 3,
@@ -207,16 +179,70 @@ const QuranicWordHarfLesson14Screen: React.FC<QuranicWordHarfLesson14ScreenProps
     },
   });
 
-  const particles = [
+  const conditionalWords = [
     {
-      arabic: '-',
-      transliteration: '-',
-      urduMeaning: '-',
-      englishMeaning: '-',
-      example: '-',
-      translation: '-',
+      arabic: 'مَنْ',
+      urdu: 'جو شخص / جو بھی',
+      english: 'whoever',
+      example: 'فَمَنْ يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ',
+      translation: 'تو جو بھی ذرہ برابر نیکی کرے گا وہ دیکھ لے گا',
     },
-   
+    {
+      arabic: 'مَا',
+      urdu: 'جو بھی / جو کچھ',
+      english: 'whatever',
+      example: 'وَمَا تَفْعَلُوا مِنْ خَيْرٍ يَعْلَمْهُ اللهُ',
+      translation: 'اور جو بھی تم نیکی کرو، اللہ اسے جان لیتا ہے',
+    },
+    {
+      arabic: 'أَيُّ',
+      urdu: 'جو بھی',
+      english: 'which/whichever',
+      example: 'أَيُّكُمْ أَحْسَنُ عَمَلًا',
+      translation: 'تم میں سے کون بہتر عمل کرتا ہے ؟',
+    },
+    {
+      arabic: 'أَيْنَمَا',
+      urdu: 'جہاں بھی',
+      english: 'wherever',
+      example: 'أَيْنَمَا تَكُونُوا يُدْرِككُمُ الْمَوْتُ',
+      translation: 'تم جہاں بھی ہو، موت تمہیں آپکڑے گی',
+    },
+    {
+      arabic: 'أَيَّانَ',
+      urdu: 'کب بھی',
+      english: 'whenever',
+      example: 'أَيَّانَ يُرْسَلُ فِيهَا',
+      translation: 'وہ کب بھیجے جائیں گے',
+    },
+    {
+      arabic: 'أَيْنَ',
+      urdu: 'کہاں بھی',
+      english: 'wherever',
+      example: 'أَيْنَ تُوَلُّوا فَثَمَّ وَجْهُ اللهِ',
+      translation: 'تم جدھر بھی رخ کرو، وہاں اللہ کی ذات ہے',
+    },
+    {
+      arabic: 'مَتَى',
+      urdu: 'جب بھی',
+      english: 'whenever',
+      example: 'مَتَى يَأْتِكُمْ نَصْرُ اللهِ',
+      translation: 'جب بھی اللہ کی مدد آئے',
+    },
+    {
+      arabic: 'إِذْمَا',
+      urdu: 'جب بھی',
+      english: 'whenever',
+      example: 'إِذْمَا تَرَكْتُهُ أَضْعُفْتُهُ',
+      translation: 'جب بھی میں اسے چھوڑتا ہوں، وہ کمزور ہو جاتا ہے',
+    },
+    {
+      arabic: 'أَنَّى',
+      urdu: 'جیسے بھی',
+      english: 'however',
+      example: 'أَنَّى يُؤْفَكُونَ',
+      translation: 'وہ کیسے پھیرے جاتے ہیں',
+    },
   ];
 
   return (
@@ -231,7 +257,7 @@ const QuranicWordHarfLesson14Screen: React.FC<QuranicWordHarfLesson14ScreenProps
         <TouchableOpacity style={styles.backButton} onPress={onBack}>
           <Text style={styles.backButtonText}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Harf Lesson 14</Text>
+        <Text style={styles.headerTitle}>اسم Lesson 6</Text>
       </View>
 
       <ScrollView
@@ -240,45 +266,37 @@ const QuranicWordHarfLesson14Screen: React.FC<QuranicWordHarfLesson14ScreenProps
         contentContainerStyle={styles.content}
       >
         {/* Title Section */}
-        <Text style={styles.title}>🔤 حرف سبب و علت - Cause & Reason Particles</Text>
+        <Text style={styles.title}>🔀 اسم شرط - Conditional Nouns</Text>
         <Text style={styles.subtitle}>
-          Learn essential Arabic cause and reason particles and their usage in the Quran
+          Learn essential Arabic conditional nouns and their usage in conditional sentences
         </Text>
 
         {/* Decorative Line */}
         <View style={styles.decorativeLine} />
 
-        
-
-        {/* Particles */}
-        <View style={styles.particlesContainer}>
-          {particles.map((particle, index) => (
-            <View key={index} style={styles.particleCard}>
-              <View style={styles.particleHeader}>
-                <View style={styles.particleInfo}>
-                  <Text style={styles.particleArabic}>{particle.arabic}</Text>
-                  <Text style={styles.particleTransliteration}>{particle.transliteration}</Text>
-                  <Text style={styles.particleMeaning}>{particle.urduMeaning}</Text>
-                  <Text style={styles.particleMeaning}>{particle.englishMeaning}</Text>
+        {/* Conditional Words Section */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>اسم شرط - Conditional Nouns</Text>
+          
+          <View style={styles.wordsGrid}>
+            {conditionalWords.map((word, index) => (
+              <View key={index} style={styles.wordCard}>
+                <Text style={styles.arabicWord}>{word.arabic}</Text>
+                <Text style={styles.urduMeaning}>{word.urdu}</Text>
+                <Text style={styles.englishMeaning}>{word.english}</Text>
+                
+                <View style={styles.exampleSection}>
+                  <Text style={styles.exampleTitle}>Example</Text>
+                  <Text style={styles.exampleText}>{word.example}</Text>
+                  <Text style={styles.translationText}>{word.translation}</Text>
                 </View>
               </View>
-              
-              <View style={styles.exampleSection}>
-                <Text style={styles.exampleTitle}>Example</Text>
-                <Text style={styles.exampleReference}>{particle.example}</Text>
-              </View>
-              <View style={styles.exampleSection}>
-                <Text style={styles.exampleTitle}>Reference</Text>
-                <Text style={styles.translationText}>{particle.translation}</Text>
-              </View>
-            </View>
-          ))}
+            ))}
+          </View>
         </View>
-
-        
       </ScrollView>
     </SafeAreaView>
   );
 };
 
-export default QuranicWordHarfLesson14Screen; 
+export default QuranicWordLesson6Screen; 

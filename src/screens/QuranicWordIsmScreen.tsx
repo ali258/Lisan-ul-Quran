@@ -15,7 +15,7 @@ import { getThemeColor, getColorWithOpacity } from '../utils/colorUtils';
 import { getFontWithProperFallback } from '../utils/fontUtils';
 
 interface QuranicWordIsmScreenProps {
-  onNavigate: (screen: 'QuranicWordLesson1' | 'QuranicWordLesson2' | 'QuranicWordLesson3') => void;
+  onNavigate: (screen: 'QuranicWordLesson1' | 'QuranicWordLesson2' | 'QuranicWordLesson3' | 'QuranicWordLesson4' | 'QuranicWordLesson5' | 'QuranicWordLesson6' | 'QuranicWordLesson7' | 'QuranicWordLesson8') => void;
   onBack: () => void;
 }
 

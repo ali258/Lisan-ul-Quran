@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { useThemeStore } from '../../store/themeStore';
 import { TAILWIND_COLORS, FONT_CLASSES } from '../../utils/constants';
-import { getThemeColor } from '../../utils/colorUtils';
+import { getThemeColor, getColorFromClass } from '../../utils/colorUtils';
 import { getFontWithProperFallback } from '../../utils/fontUtils';
 
 interface QuranicWordHarfLesson6ScreenProps {
@@ -49,17 +49,17 @@ const QuranicWordHarfLesson6Screen: React.FC<QuranicWordHarfLesson6ScreenProps> 
       padding: 8,
       marginRight: 16,
       borderRadius: 8,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('harf-orange-dark') : getColorFromClass('harf-orange-light'),
     },
     backButtonText: {
       fontSize: 18,
-      color: getThemeColor(colors.surface, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-dark-text') : getColorFromClass('harf-orange-light-text'),
       fontWeight: 'bold',
     },
     headerTitle: {
       fontSize: 20,
       fontWeight: 'bold',
-      color: getThemeColor(colors.text, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
       flex: 1,
     },
     scrollView: {
@@ -74,8 +74,16 @@ const QuranicWordHarfLesson6Screen: React.FC<QuranicWordHarfLesson6ScreenProps> 
       fontSize: isTablet ? 32 : 24,
       fontWeight: 'bold',
       textAlign: 'center',
+      marginBottom: 8,
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
+    },
+    titleEnglish: {
+      fontSize: isTablet ? 18 : 16,
+      fontWeight: 'bold',
+      color: getThemeColor(colors.textSecondary, isDarkMode),
+      textAlign: 'center',
       marginBottom: 16,
-      color: getThemeColor(colors.primary, isDarkMode),
+      fontStyle: 'italic',
     },
     subtitle: {
       fontSize: isTablet ? 18 : 16,
@@ -89,7 +97,7 @@ const QuranicWordHarfLesson6Screen: React.FC<QuranicWordHarfLesson6ScreenProps> 
       fontWeight: 'bold',
       textAlign: 'center',
       marginBottom: 24,
-      color: getThemeColor(colors.text, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
       fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
       lineHeight: 32,
     },
@@ -105,7 +113,7 @@ const QuranicWordHarfLesson6Screen: React.FC<QuranicWordHarfLesson6ScreenProps> 
       padding: 20,
       marginBottom: 16,
       borderWidth: 2,
-      borderColor: getThemeColor(colors.primary, isDarkMode),
+      borderColor: isDarkMode ? getColorFromClass('harf-orange-light') : getColorFromClass('harf-orange-light'),
       shadowColor: getThemeColor(colors.shadow, isDarkMode),
       shadowOffset: { width: 0, height: 4 },
       shadowOpacity: 0.15,
@@ -123,7 +131,7 @@ const QuranicWordHarfLesson6Screen: React.FC<QuranicWordHarfLesson6ScreenProps> 
     particleArabic: {
       fontSize: isTablet ? 28 : 24,
       fontWeight: 'bold',
-      color: getThemeColor(colors.primary, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
       fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
       lineHeight: 32,
       marginBottom: 4,
@@ -131,21 +139,21 @@ const QuranicWordHarfLesson6Screen: React.FC<QuranicWordHarfLesson6ScreenProps> 
     },
     particleTransliteration: {
       fontSize: isTablet ? 14 : 12,
-      color: getThemeColor(colors.textSecondary, isDarkMode),
+      color: isDarkMode ? getColorFromClass('white-text') : getColorFromClass('black-text'),
       fontStyle: 'italic',
       marginBottom: 6,
       textAlign: 'center',
     },
     particleMeaning: {
       fontSize: isTablet ? 16 : 14,
-      color: getThemeColor(colors.text, isDarkMode),
+      color: isDarkMode ? getColorFromClass('white-text') : getColorFromClass('black-text'),
       fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
       lineHeight: 20,
       marginBottom: 8,
       textAlign: 'center',
     },
     exampleSection: {
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('harf-orange-light') : getColorFromClass('harf-orange-light'),
       borderRadius: 12,
       padding: 12,
       marginTop: 8,
@@ -153,13 +161,13 @@ const QuranicWordHarfLesson6Screen: React.FC<QuranicWordHarfLesson6ScreenProps> 
     exampleTitle: {
       fontSize: isTablet ? 12 : 10,
       fontWeight: 'bold',
-      color: getThemeColor(colors.surface, isDarkMode),
+      color: getColorFromClass('black-text'),
       marginBottom: 6,
       textAlign: 'center',
     },
     exampleReference: {
       fontSize: isTablet ? 12 : 10,
-      color: getThemeColor(colors.surface, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
       opacity: 0.8,
       textAlign: 'center',
       fontStyle: 'italic',
@@ -167,112 +175,52 @@ const QuranicWordHarfLesson6Screen: React.FC<QuranicWordHarfLesson6ScreenProps> 
     decorativeLine: {
       height: 3,
       width: 60,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('harf-orange-dark') : getColorFromClass('harf-orange-light'),
       borderRadius: 2,
       alignSelf: 'center',
       marginBottom: 24,
     },
   });
 
-  const particles = [
+  const conjunctions = [
     {
-      arabic: 'الر',
-      transliteration: 'Alif Lam Ra',
-      urduMeaning: 'disjointed letters / حروف مقطعات',
-      englishMeaning: 'disjointed letters',
-      reference: 'يونس 10:1',
+      arabic: 'وَ',
+      transliteration: 'Wa',
+      urduMeaning: 'اور',
+      englishMeaning: 'and',
     },
     {
-      arabic: 'الم',
-      transliteration: 'Alif Lam Mim',
-      urduMeaning: 'disjointed letters / حروف مقطعات',
-      englishMeaning: 'disjointed letters',
-      reference: 'البقرة 2:1',
+      arabic: 'بَلْ',
+      transliteration: 'Bal',
+      urduMeaning: 'بلکہ ',
+      englishMeaning: 'rather, instead',
     },
     {
-      arabic: 'المر',
-      transliteration: 'Alif Lam Mim Ra',
-      urduMeaning: 'disjointed letters / حروف مقطعات',
-      englishMeaning: 'disjointed letters',
-      reference: 'الرعد 13:1',
+      arabic: 'ثُمَّ',
+      transliteration: 'Thumma',
+      urduMeaning: 'پھر ',
+      englishMeaning: 'then, after that',
     },
     {
-      arabic: 'المص',
-      transliteration: 'Alif Lam Mim Sad',
-      urduMeaning: 'disjointed letters / حروف مقطعات',
-      englishMeaning: 'disjointed letters',
-      reference: 'الأعراف 7:1',
+      arabic: 'فَ',
+      transliteration: 'Fa',
+      urduMeaning: 'تو، پھر فوراً ',
+      englishMeaning: '(immediate)so, then',
     },
     {
-      arabic: 'حم',
-      transliteration: 'Ha Mim',
-      urduMeaning: 'disjointed letters / حروف مقطعات',
-      englishMeaning: 'disjointed letters',
-      reference: 'غافر 40:1',
+      arabic: 'أَوْ',
+      transliteration: 'Aw',
+      urduMeaning: 'یا ',
+      englishMeaning: 'or',
     },
     {
-      arabic: 'ص',
-      transliteration: 'Sad',
-      urduMeaning: 'disjointed letters / حروف مقطعات',
-      englishMeaning: 'disjointed letters',
-      reference: 'ص 38:1',
+      arabic: 'أَمْ',
+      transliteration: 'Am',
+      urduMeaning: 'یا (سوالیہ)',
+      englishMeaning: '(interrogative) or',
     },
-    {
-      arabic: 'طس',
-      transliteration: 'Ta Sin',
-      urduMeaning: 'disjointed letters / حروف مقطعات',
-      englishMeaning: 'disjointed letters',
-      reference: 'النمل 27:1',
-    },
-    {
-      arabic: 'طسم',
-      transliteration: 'Ta Sin Mim',
-      urduMeaning: 'disjointed letters / حروف مقطعات',
-      englishMeaning: 'disjointed letters',
-      reference: 'الشعراء 26:1',
-    },
-    {
-      arabic: 'طه',
-      transliteration: 'Ta Ha',
-      urduMeaning: 'disjointed letters / حروف مقطعات',
-      englishMeaning: 'disjointed letters',
-      reference: 'طه 20:1',
-    },
-    {
-      arabic: 'عسق',
-      transliteration: 'Ain Sin Qaf',
-      urduMeaning: 'disjointed letters / حروف مقطعات',
-      englishMeaning: 'disjointed letters',
-      reference: 'الشورى 42:2',
-    },
-    {
-      arabic: 'ق',
-      transliteration: 'Qaf',
-      urduMeaning: 'disjointed letters / حروف مقطعات',
-      englishMeaning: 'disjointed letters',
-      reference: 'ق 50:1',
-    },
-    {
-      arabic: 'كهيعص',
-      transliteration: 'Kaf Ha Ya Ain Sad',
-      urduMeaning: 'disjointed letters / حروف مقطعات',
-      englishMeaning: 'disjointed letters',
-      reference: 'مريم 19:1',
-    },
-    {
-      arabic: 'ن',
-      transliteration: 'Nun',
-      urduMeaning: 'disjointed letters / حروف مقطعات',
-      englishMeaning: 'disjointed letters',
-      reference: 'القلم 68:1',
-    },
-    {
-      arabic: 'يس',
-      transliteration: 'Ya Sin',
-      urduMeaning: 'disjointed letters / حروف مقطعات',
-      englishMeaning: 'disjointed letters',
-      reference: 'يس 36:1',
-    },
+    
+   
   ];
 
   return (
@@ -287,7 +235,7 @@ const QuranicWordHarfLesson6Screen: React.FC<QuranicWordHarfLesson6ScreenProps> 
         <TouchableOpacity style={styles.backButton} onPress={onBack}>
           <Text style={styles.backButtonText}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Harf Lesson 6</Text>
+        <Text style={styles.headerTitle}>حرف عطف</Text>
       </View>
 
       <ScrollView
@@ -296,37 +244,27 @@ const QuranicWordHarfLesson6Screen: React.FC<QuranicWordHarfLesson6ScreenProps> 
         contentContainerStyle={styles.content}
       >
         {/* Title Section */}
-        <Text style={styles.title}>🔤 حرف - Particles</Text>
+        <Text style={styles.title}> حرف عطف</Text>
+        <Text style={styles.titleEnglish}>Conjunctions</Text>
         <Text style={styles.subtitle}>
-          Learn essential Arabic particles and their usage in the Quran
+          Learn essential Arabic conjunctions and their usage in the Quran
         </Text>
 
         {/* Decorative Line */}
         <View style={styles.decorativeLine} />
 
-        {/* Lesson Group */}
-        <Text style={styles.lessonGroup}>
-          حروف التهجي / المقطعات
-        </Text>
-        <Text style={styles.subtitle}>
-          Disjointed Letters / Muqatta'at
-        </Text>
+        
 
-        {/* Particles */}
+        {/* Conjunctions */}
         <View style={styles.particlesContainer}>
-          {particles.map((particle, index) => (
+          {conjunctions.map((conjunction, index) => (
             <View key={index} style={styles.particleCard}>
               <View style={styles.particleHeader}>
                 <View style={styles.particleInfo}>
-                  <Text style={styles.particleArabic}>{particle.arabic}</Text>
-                  <Text style={styles.particleTransliteration}>{particle.transliteration}</Text>
-                  <Text style={styles.particleMeaning}>{particle.urduMeaning}</Text>
+                  <Text style={styles.particleArabic}>{conjunction.arabic}</Text>
+                  <Text style={styles.particleTransliteration}>{conjunction.transliteration}</Text>
+                  <Text style={styles.particleMeaning}>{conjunction.urduMeaning}</Text>
                 </View>
-              </View>
-              
-              <View style={styles.exampleSection}>
-                <Text style={styles.exampleTitle}>Quranic Reference</Text>
-                <Text style={styles.exampleReference}>{particle.reference}</Text>
               </View>
             </View>
           ))}

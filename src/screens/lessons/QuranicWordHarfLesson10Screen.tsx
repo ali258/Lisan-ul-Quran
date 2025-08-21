@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { useThemeStore } from '../../store/themeStore';
 import { TAILWIND_COLORS, FONT_CLASSES } from '../../utils/constants';
-import { getThemeColor } from '../../utils/colorUtils';
+import { getThemeColor, getColorFromClass } from '../../utils/colorUtils';
 import { getFontWithProperFallback } from '../../utils/fontUtils';
 
 interface QuranicWordHarfLesson10ScreenProps {
@@ -49,17 +49,17 @@ const QuranicWordHarfLesson10Screen: React.FC<QuranicWordHarfLesson10ScreenProps
       padding: 8,
       marginRight: 16,
       borderRadius: 8,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('harf-orange-dark') : getColorFromClass('harf-orange-light'),
     },
     backButtonText: {
       fontSize: 18,
-      color: getThemeColor(colors.surface, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-dark-text') : getColorFromClass('harf-orange-light-text'),
       fontWeight: 'bold',
     },
     headerTitle: {
       fontSize: 20,
       fontWeight: 'bold',
-      color: getThemeColor(colors.text, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
       flex: 1,
     },
     scrollView: {
@@ -74,8 +74,16 @@ const QuranicWordHarfLesson10Screen: React.FC<QuranicWordHarfLesson10ScreenProps
       fontSize: isTablet ? 32 : 24,
       fontWeight: 'bold',
       textAlign: 'center',
+      marginBottom: 8,
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
+    },
+    titleEnglish: {
+      fontSize: isTablet ? 18 : 16,
+      fontWeight: 'bold',
+      color: getThemeColor(colors.textSecondary, isDarkMode),
+      textAlign: 'center',
       marginBottom: 16,
-      color: getThemeColor(colors.primary, isDarkMode),
+      fontStyle: 'italic',
     },
     subtitle: {
       fontSize: isTablet ? 18 : 16,
@@ -105,7 +113,7 @@ const QuranicWordHarfLesson10Screen: React.FC<QuranicWordHarfLesson10ScreenProps
       padding: 20,
       marginBottom: 16,
       borderWidth: 2,
-      borderColor: getThemeColor(colors.primary, isDarkMode),
+      borderColor: getColorFromClass('harf-orange-light'),
       shadowColor: getThemeColor(colors.shadow, isDarkMode),
       shadowOffset: { width: 0, height: 4 },
       shadowOpacity: 0.15,
@@ -123,7 +131,7 @@ const QuranicWordHarfLesson10Screen: React.FC<QuranicWordHarfLesson10ScreenProps
     particleArabic: {
       fontSize: isTablet ? 28 : 24,
       fontWeight: 'bold',
-      color: getThemeColor(colors.primary, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
       fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
       lineHeight: 32,
       marginBottom: 4,
@@ -145,7 +153,7 @@ const QuranicWordHarfLesson10Screen: React.FC<QuranicWordHarfLesson10ScreenProps
       textAlign: 'center',
     },
     exampleSection: {
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('harf-orange-dark') : getColorFromClass('harf-orange-light'),
       borderRadius: 12,
       padding: 12,
       marginTop: 8,
@@ -153,48 +161,80 @@ const QuranicWordHarfLesson10Screen: React.FC<QuranicWordHarfLesson10ScreenProps
     exampleTitle: {
       fontSize: isTablet ? 12 : 10,
       fontWeight: 'bold',
-      color: getThemeColor(colors.surface, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-dark-text') : getColorFromClass('harf-orange-light-text'),
       marginBottom: 6,
       textAlign: 'center',
     },
     exampleReference: {
       fontSize: isTablet ? 12 : 10,
-      color: getThemeColor(colors.surface, isDarkMode),
-      opacity: 0.8,
+      color: isDarkMode ? getColorFromClass('harf-orange-dark-text') : getColorFromClass('harf-orange-light-text'),
+      opacity: 0.9,
       textAlign: 'center',
-      fontStyle: 'italic',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
+      lineHeight: 16,
     },
     decorativeLine: {
       height: 3,
       width: 60,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('harf-orange-dark') : getColorFromClass('harf-orange-light'),
       borderRadius: 2,
       alignSelf: 'center',
       marginBottom: 24,
+    },
+    notesSection: {
+      marginTop: 32,
+      padding: 20,
+      backgroundColor: getThemeColor(colors.surface, isDarkMode),
+      borderRadius: 15,
+      borderWidth: 1,
+      borderColor: getColorFromClass('harf-orange-light'),
+      shadowColor: getThemeColor(colors.shadow, isDarkMode),
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.05,
+      shadowRadius: 4,
+      elevation: 3,
+    },
+    notesTitle: {
+      fontSize: isTablet ? 20 : 18,
+      fontWeight: 'bold',
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
+      textAlign: 'center',
+      marginBottom: 12,
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
+    },
+    notesText: {
+      fontSize: isTablet ? 16 : 14,
+      color: getThemeColor(colors.textSecondary, isDarkMode),
+      lineHeight: 22,
+      marginBottom: 8,
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
     },
   });
 
   const particles = [
     {
-      arabic: 'أَجَلْ',
-      transliteration: 'ajal',
-      urduMeaning: 'yes indeed / جی ہاں',
-      englishMeaning: 'yes indeed',
-      reference: 'الأعراف 7:172',
+      arabic: 'يَا',
+      transliteration: 'Ya',
+      urduMeaning: 'اے ',
+      englishMeaning: 'O!',
+      spelling: 'یا (Ya)',
+      composition: 'ہر جگہ استعمال ہوا ہے',
     },
     {
-      arabic: 'بَلَى',
-      transliteration: 'bala',
-      urduMeaning: 'yes indeed / کیوں نہیں',
-      englishMeaning: 'yes indeed',
-      reference: 'المعارج 70:40',
+      arabic: 'يَا أَيُّهَا',
+      transliteration: 'Ya Ayyuha',
+      urduMeaning: 'اے ... ',
+      englishMeaning: 'O you ...',
+      spelling: 'يا + اَيُّهَا (Ya + Ayyuha)',
+      composition: 'مردانہ/عام گروہ کے لیے',
     },
     {
-      arabic: 'كَلَّا',
-      transliteration: 'kalla',
-      urduMeaning: 'never / ہرگز نہیں',
-      englishMeaning: 'never',
-      reference: 'التكاثر 102:3',
+      arabic: 'يَا أَيَّتُهَا',
+      transliteration: 'Ya Ayyatuha',
+      urduMeaning: 'اے ... ',
+      englishMeaning: 'O ...',
+      spelling: 'يا + أَيَّتُهَا (Ya + Ayyatuha)',
+      composition: 'صرف مونث یا مونث جمع کے لیے',
     },
   ];
 
@@ -210,7 +250,7 @@ const QuranicWordHarfLesson10Screen: React.FC<QuranicWordHarfLesson10ScreenProps
         <TouchableOpacity style={styles.backButton} onPress={onBack}>
           <Text style={styles.backButtonText}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Harf Lesson 10</Text>
+        <Text style={styles.headerTitle}>حرف ندا</Text>
       </View>
 
       <ScrollView
@@ -219,21 +259,16 @@ const QuranicWordHarfLesson10Screen: React.FC<QuranicWordHarfLesson10ScreenProps
         contentContainerStyle={styles.content}
       >
         {/* Title Section */}
-        <Text style={styles.title}>🔤 حرف - Particles</Text>
+        <Text style={styles.title}> حرف ندا</Text>
+        <Text style={styles.titleEnglish}>Vocative Particles</Text>
         <Text style={styles.subtitle}>
-          Learn essential Arabic particles and their usage in the Quran
+          Learn essential Arabic vocative particles and their usage in the Quran
         </Text>
 
         {/* Decorative Line */}
         <View style={styles.decorativeLine} />
 
-        {/* Lesson Group */}
-        <Text style={styles.lessonGroup}>
-          حروف الجواب / الانتقال
-        </Text>
-        <Text style={styles.subtitle}>
-          Response / Transition Particles
-        </Text>
+       
 
         {/* Particles */}
         <View style={styles.particlesContainer}>
@@ -244,15 +279,34 @@ const QuranicWordHarfLesson10Screen: React.FC<QuranicWordHarfLesson10ScreenProps
                   <Text style={styles.particleArabic}>{particle.arabic}</Text>
                   <Text style={styles.particleTransliteration}>{particle.transliteration}</Text>
                   <Text style={styles.particleMeaning}>{particle.urduMeaning}</Text>
+                  <Text style={styles.particleMeaning}>{particle.englishMeaning}</Text>
                 </View>
               </View>
               
               <View style={styles.exampleSection}>
-                <Text style={styles.exampleTitle}>Quranic Reference</Text>
-                <Text style={styles.exampleReference}>{particle.reference}</Text>
+                <Text style={styles.exampleTitle}>Spelling (Separate)</Text>
+                <Text style={styles.exampleReference}>{particle.spelling}</Text>
+              </View>
+              <View style={styles.exampleSection}>
+                <Text style={styles.exampleTitle}>Usage</Text>
+                <Text style={styles.exampleReference}>{particle.composition}</Text>
               </View>
             </View>
           ))}
+        </View>
+
+        {/* Important Notes */}
+        <View style={styles.notesSection}>
+          <Text style={styles.notesTitle}>استعمال اور نوٹس</Text>
+          <Text style={styles.notesText}>
+            اصل اور واحد حَرْفِ ندا جو قرآن میں آیا ہے ، ہر جگہ اسی کا استعمال ہوا ہے۔
+          </Text>
+          <Text style={styles.notesText}>
+            مردانه عام گروه کے لیے جیسے : يَا أَيُّهَا الَّذِينَ آمَنُوا، يَا أَيُّهَا النَّاسُ
+          </Text>
+          <Text style={styles.notesText}>
+            صرف مونث یا مونث جمع کے لیے ، جیسے: يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ
+          </Text>
         </View>
       </ScrollView>
     </SafeAreaView>

@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { useThemeStore } from '../../store/themeStore';
 import { TAILWIND_COLORS, FONT_CLASSES } from '../../utils/constants';
-import { getThemeColor } from '../../utils/colorUtils';
+import { getThemeColor, getColorFromClass } from '../../utils/colorUtils';
 import { getFontWithProperFallback } from '../../utils/fontUtils';
 
 interface QuranicWordHarfLesson3ScreenProps {
@@ -49,17 +49,17 @@ const QuranicWordHarfLesson3Screen: React.FC<QuranicWordHarfLesson3ScreenProps> 
       padding: 8,
       marginRight: 16,
       borderRadius: 8,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('markab-purple-dark') : getColorFromClass('markab-purple-light'),
     },
     backButtonText: {
       fontSize: 18,
-      color: getThemeColor(colors.surface, isDarkMode),
+      color: isDarkMode ? getColorFromClass('markab-purple-dark-text') : getColorFromClass('markab-purple-light-text'),
       fontWeight: 'bold',
     },
     headerTitle: {
       fontSize: 20,
       fontWeight: 'bold',
-      color: getThemeColor(colors.text, isDarkMode),
+      color: isDarkMode ? getColorFromClass('markab-purple-light-text') : getColorFromClass('markab-purple-dark-text'),
       flex: 1,
     },
     scrollView: {
@@ -74,8 +74,17 @@ const QuranicWordHarfLesson3Screen: React.FC<QuranicWordHarfLesson3ScreenProps> 
       fontSize: isTablet ? 32 : 24,
       fontWeight: 'bold',
       textAlign: 'center',
+      marginBottom: 8,
+      color: isDarkMode ? getColorFromClass('markab-purple-light-text') : getColorFromClass('markab-purple-dark-text'),
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
+    },
+    titleEnglish: {
+      fontSize: isTablet ? 18 : 16,
+      fontWeight: 'bold',
+      color: getThemeColor(colors.textSecondary, isDarkMode),
+      textAlign: 'center',
       marginBottom: 16,
-      color: getThemeColor(colors.primary, isDarkMode),
+      fontStyle: 'italic',
     },
     subtitle: {
       fontSize: isTablet ? 18 : 16,
@@ -83,111 +92,206 @@ const QuranicWordHarfLesson3Screen: React.FC<QuranicWordHarfLesson3ScreenProps> 
       marginBottom: 32,
       color: getThemeColor(colors.textSecondary, isDarkMode),
       lineHeight: 24,
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
     },
-    lessonGroup: {
+    section: {
+      marginBottom: 32,
+    },
+    sectionTitle: {
       fontSize: isTablet ? 22 : 18,
       fontWeight: 'bold',
-      textAlign: 'center',
-      marginBottom: 24,
-      color: getThemeColor(colors.text, isDarkMode),
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
-      lineHeight: 32,
-    },
-    particlesContainer: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      justifyContent: 'space-between',
-    },
-    particleCard: {
-      width: isTablet ? '48%' : '48%',
-      backgroundColor: getThemeColor(colors.surface, isDarkMode),
-      borderRadius: 20,
-      padding: 20,
       marginBottom: 16,
-      borderWidth: 2,
-      borderColor: getThemeColor(colors.primary, isDarkMode),
+      color: isDarkMode ? getColorFromClass('ism-blue-light-text') : getColorFromClass('ism-blue-dark-text'),
+      textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+    },
+    sectionTitle2: {
+      fontSize: isTablet ? 22 : 18,
+      fontWeight: 'bold',
+      marginBottom: 16,
+      color: isDarkMode ? getColorFromClass('markab-purple-light-text') : getColorFromClass('markab-purple-dark-text'),
+      textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+    },
+    sectionSubtitle: {
+      fontSize: isTablet ? 16 : 14,
+      marginBottom: 20,
+      color: getThemeColor(colors.textSecondary, isDarkMode),
+      textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+    },
+    tableContainer: {
+      backgroundColor: getThemeColor(colors.surface, isDarkMode),
+      borderRadius: 16,
+      overflow: 'hidden',
+      borderWidth: 1,
+      borderColor: getThemeColor(colors.border, isDarkMode),
       shadowColor: getThemeColor(colors.shadow, isDarkMode),
       shadowOffset: { width: 0, height: 4 },
-      shadowOpacity: 0.15,
+      shadowOpacity: 0.1,
       shadowRadius: 8,
-      elevation: 6,
+      elevation: 4,
     },
-    particleHeader: {
+    tableHeader: {
       flexDirection: 'row',
-      alignItems: 'center',
-      marginBottom: 16,
+      backgroundColor: isDarkMode ? getColorFromClass('ism-blue-dark') : getColorFromClass('ism-blue-light'),
     },
-    particleInfo: {
+    tableHeader2: {
+      flexDirection: 'row',
+      backgroundColor: isDarkMode ? getColorFromClass('markab-purple-dark') : getColorFromClass('markab-purple-light'),
+    },
+    headerCell: {
       flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 16,
+      paddingHorizontal: 8,
+      borderRightWidth: 1,
+      borderRightColor: getThemeColor(colors.surface, isDarkMode),
     },
-    particleArabic: {
-      fontSize: isTablet ? 28 : 24,
+    headerText: {
+      fontSize: 16,
       fontWeight: 'bold',
-      color: getThemeColor(colors.primary, isDarkMode),
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
-      lineHeight: 32,
-      marginBottom: 4,
+      color: isDarkMode ? getColorFromClass('ism-blue-dark-text') : getColorFromClass('ism-blue-light-text'),
       textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
     },
-    particleTransliteration: {
-      fontSize: isTablet ? 14 : 12,
-      color: getThemeColor(colors.textSecondary, isDarkMode),
-      fontStyle: 'italic',
-      marginBottom: 6,
+    headerCell2: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 16,
+      paddingHorizontal: 8,
+      borderRightWidth: 1,
+      borderRightColor: getThemeColor(colors.surface, isDarkMode),
+    },
+    headerText2: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      color: isDarkMode ? getColorFromClass('markab-purple-dark-text') : getColorFromClass('markab-purple-light-text'),
       textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
     },
-    particleMeaning: {
-      fontSize: isTablet ? 16 : 14,
+    dataRow: {
+      flexDirection: 'row',
+      backgroundColor: getThemeColor(colors.surface, isDarkMode),
+      borderBottomWidth: 1,
+      borderBottomColor: getThemeColor(colors.border, isDarkMode),
+    },
+    dataRow2: {
+      flexDirection: 'row',
+      backgroundColor: getThemeColor(colors.surface, isDarkMode),
+      borderBottomWidth: 1,
+      borderBottomColor: getThemeColor(colors.border, isDarkMode),
+    },
+    dataCell: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 12,
+      paddingHorizontal: 8,
+      borderRightWidth: 1,
+      borderRightColor: getThemeColor(colors.border, isDarkMode),
+    },
+    arabicText: {
+      fontSize: 18,
+      fontWeight: 'bold',
       color: getThemeColor(colors.text, isDarkMode),
+      textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
+    },
+    urduText: {
+      fontSize: 14,
+      color: getThemeColor(colors.text, isDarkMode),
+      textAlign: 'center',
       fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
       lineHeight: 20,
-      marginBottom: 8,
-      textAlign: 'center',
     },
-    exampleSection: {
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
-      borderRadius: 12,
-      padding: 12,
-      marginTop: 8,
-    },
-    exampleTitle: {
-      fontSize: isTablet ? 12 : 10,
-      fontWeight: 'bold',
-      color: getThemeColor(colors.surface, isDarkMode),
-      marginBottom: 6,
-      textAlign: 'center',
-    },
-    exampleReference: {
-      fontSize: isTablet ? 12 : 10,
-      color: getThemeColor(colors.surface, isDarkMode),
-      opacity: 0.8,
+    englishText: {
+      fontSize: 12,
+      color: getThemeColor(colors.textSecondary, isDarkMode),
       textAlign: 'center',
       fontStyle: 'italic',
+      lineHeight: 16,
     },
-    decorativeLine: {
-      height: 3,
-      width: 60,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
-      borderRadius: 2,
-      alignSelf: 'center',
-      marginBottom: 24,
+    exampleText: {
+      fontSize: 14,
+      color: getThemeColor(colors.text, isDarkMode),
+      textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
+      lineHeight: 20,
+    },
+    categoryCell: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 12,
+      paddingHorizontal: 8,
+      backgroundColor: isDarkMode ? getColorFromClass('ism-blue-dark') : getColorFromClass('ism-blue-light'),
+      borderRightWidth: 1,
+      borderRightColor: getThemeColor(colors.border, isDarkMode),
+    },
+    categoryText: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      color: isDarkMode ? getColorFromClass('ism-blue-dark-text') : getColorFromClass('ism-blue-light-text'),
+      textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+    },
+    categoryText2: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      color: isDarkMode ? getColorFromClass('markab-purple-dark-text') : getColorFromClass('markab-purple-light-text'),
+      textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+    },
+    categoryCell2: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 12,
+      paddingHorizontal: 8,
+      backgroundColor: isDarkMode ? getColorFromClass('markab-purple-dark') : getColorFromClass('markab-purple-light'),
+      borderRightWidth: 1,
+      borderRightColor: getThemeColor(colors.border, isDarkMode),
+    },
+    dataCell2: {
+      flex: 2,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 12,
+      paddingHorizontal: 8,
+      borderRightWidth: 1,
+      borderRightColor: getThemeColor(colors.border, isDarkMode),
+    },
+    mergedCell: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 24, // Double padding for merged cell
+      paddingHorizontal: 8,
+      borderRightWidth: 1,
+      borderRightColor: getThemeColor(colors.border, isDarkMode),
+      backgroundColor: getThemeColor(colors.surface, isDarkMode),
     },
   });
 
   const particles = [
     {
-      arabic: 'سَ',
-      transliteration: 'sa',
-      urduMeaning: 'عنقریب / will',
-      englishMeaning: 'will',
-      reference: 'البقرة 2:142',
+      arabic: 'إِلَّا',
+      transliteration: 'Illā',
+      urduMeaning: 'سواۓ ',
+      englishMeaning: 'except',
+      example: 'لَا إِلَهَ إِلَّا اللهُ',
+      translation: 'کوئی معبود نہیں سوائے اللہ کے',
     },
     {
-      arabic: 'سَوْفَ',
-      transliteration: 'sawfa',
-      urduMeaning: 'عنقريب / soon',
-      englishMeaning: 'soon',
-      reference: 'النبأ 78:4',
+      arabic: 'غَيْرَ',
+      transliteration: 'Ghayr',
+      urduMeaning: 'غير / سوا',
+      englishMeaning: 'except / other than',
+      example: 'غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ',
+      translation: 'سورة الفاتحه',
     },
   ];
 
@@ -203,7 +307,7 @@ const QuranicWordHarfLesson3Screen: React.FC<QuranicWordHarfLesson3ScreenProps> 
         <TouchableOpacity style={styles.backButton} onPress={onBack}>
           <Text style={styles.backButtonText}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Harf Lesson 3</Text>
+        <Text style={styles.headerTitle}>حروفِ جر مع الضمائر </Text>
       </View>
 
       <ScrollView
@@ -212,41 +316,1215 @@ const QuranicWordHarfLesson3Screen: React.FC<QuranicWordHarfLesson3ScreenProps> 
         contentContainerStyle={styles.content}
       >
         {/* Title Section */}
-        <Text style={styles.title}>🔤 حرف - Particles</Text>
+        <Text style={styles.title}>حروفِ جر مع الضمائر</Text>
+        <Text style={styles.titleEnglish}>Conjunctions with the Particles</Text>
         <Text style={styles.subtitle}>
-          Learn essential Arabic particles and their usage in the Quran
+          Learn essential Arabic Conjunctions with the Particles and their usage in the Quran
         </Text>
 
-        {/* Decorative Line */}
-        <View style={styles.decorativeLine} />
 
-        {/* Lesson Group */}
-        <Text style={styles.lessonGroup}>
-          حروف الاستقبال
-        </Text>
-        <Text style={styles.subtitle}>
-          Future Tense Particles
-        </Text>
-
-        {/* Particles */}
-        <View style={styles.particlesContainer}>
-          {particles.map((particle, index) => (
-            <View key={index} style={styles.particleCard}>
-              <View style={styles.particleHeader}>
-                <View style={styles.particleInfo}>
-                  <Text style={styles.particleArabic}>{particle.arabic}</Text>
-                  <Text style={styles.particleTransliteration}>{particle.transliteration}</Text>
-                  <Text style={styles.particleMeaning}>{particle.urduMeaning}</Text>
-                </View>
-              </View>
-              
-              <View style={styles.exampleSection}>
-                <Text style={styles.exampleTitle}>Quranic Reference</Text>
-                <Text style={styles.exampleReference}>{particle.reference}</Text>
-              </View>
+        {/* Main Table */}
+        <View style={styles.section}>
+        <Text style={styles.sectionTitle}>ضمائر مُتَّصِلٌ منصوب و مجرور</Text>
+        
+        <View style={styles.tableContainer}>
+          {/* Main Header Row */}
+          <View style={styles.tableHeader}>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText}>جمع</Text>
             </View>
-          ))}
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText}>مثنى</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText}>واحد</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText}></Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>ھُمْ</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>ھُمَا</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>ہُ</Text>
+            </View>
+            <View style={styles.categoryCell}>
+              <Text style={styles.categoryText}>غائب مذكر</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>ھُنَّ</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>ھُمَا</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>ھَا</Text>
+            </View>
+            <View style={styles.categoryCell}>
+              <Text style={styles.categoryText}>غائب مونث</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>کُمْ</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>کُمَا</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>کَ</Text>
+            </View>
+            <View style={styles.categoryCell}>
+              <Text style={styles.categoryText}>حاضر مذكر</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>کُنَّ</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>کُمَا</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>کِ</Text>
+            </View>
+            <View style={styles.categoryCell}>
+              <Text style={styles.categoryText}>حاضر مونث</Text>
+            </View>
+          </View>
+
+          {/* 1st Person */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell2}>
+              <Text style={styles.arabicText}>نَا</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>یَ</Text>
+            </View>
+            <View style={styles.categoryCell}>
+              <Text style={styles.categoryText}>متکلم</Text>
+            </View>
+          </View>
         </View>
+        </View>
+
+        {/* Notes Section */}
+        {/* Main Table */}
+        <View style={styles.section}>
+        <Text style={styles.sectionTitle2}>بِ+ضمیر: قرآنی مرکبات</Text>
+        
+        <View style={styles.tableContainer}>
+          {/* Main Header Row */}
+          <View style={styles.tableHeader2}>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>جمع</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>مثنى</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>واحد</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>بِ / کے ساتھ</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>بِهِمْ / ان کے ساتھ</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>بِهِمَا </Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>بِهِ / اس کے ساتھ</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مذكر</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>ان دونوں کے ساتھ</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>بِهَا / اس عورت کے ساتھ</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مونث</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>بِكُمْ / تمہارے ساتھ</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>بِكَ / تیرے ساتھ</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مذكر</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مونث</Text>
+            </View>
+          </View>
+
+          {/* 1st Person */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell2}>
+              <Text style={styles.arabicText}>بِنَا / ہمارے ساتھ</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>بِىْ / میرے ساتھ</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>متکلم</Text>
+            </View>
+          </View>
+        </View>
+        </View>
+
+        {/* Main Table */}
+        <View style={styles.section}>
+        <Text style={styles.sectionTitle2}>فِي+ضمیر: قرآنی مرکبات</Text>
+        
+        <View style={styles.tableContainer}>
+          {/* Main Header Row */}
+          <View style={styles.tableHeader2}>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>جمع</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>مثنى</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>واحد</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>فِي / میں</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>فِيهِمْ / ان میں</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>فِيهِمَا</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>فِيهِ / اس میں</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مذكر</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>فِيهِنَّ / ان سب میں</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>ان دونوں میں</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>فِيهَا / اس (عورت) میں</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مونث</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>فِيكُمْ / تم سب میں</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مذكر</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مونث</Text>
+            </View>
+          </View>
+
+          {/* 1st Person */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell2}>
+              <Text style={styles.arabicText}>فِينَا / ہم میں</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>متکلم</Text>
+            </View>
+          </View>
+        </View>
+        </View>
+
+        {/* Main Table */}
+        <View style={styles.section}>
+        <Text style={styles.sectionTitle2}>مِنْ+ضمیر: قرآنی مرکبات</Text>
+        
+        <View style={styles.tableContainer}>
+          {/* Main Header Row */}
+          <View style={styles.tableHeader2}>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>جمع</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>مثنى</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>واحد</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>مِنْ / سے</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>مِنْهُمْ / ان سے </Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>مِنْهُمَا</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>مِنْهُ / اس سے</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مذكر</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>ان دونوں سے</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>مِنْهَا / اس عورت سے</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مونث</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>مِنْكُمْ / تم سب سے</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مذكر</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>مِنْكُنَّ / تم عورتوں سے</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مونث</Text>
+            </View>
+          </View>
+
+          {/* 1st Person */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell2}>
+              <Text style={styles.arabicText}>مِنَّا / ہم سے</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>مِنِّي / مجھ سے</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>متکلم</Text>
+            </View>
+          </View>
+        </View>
+        </View>
+
+        {/* Main Table */}
+        <View style={styles.section}>
+        <Text style={styles.sectionTitle2}>عَنْ+ضمیر: قرآنی مرکبات</Text>
+        
+        <View style={styles.tableContainer}>
+          {/* Main Header Row */}
+          <View style={styles.tableHeader2}>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>جمع</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>مثنى</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>واحد</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>عَنْ / سے</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عَنْهُمْ / ان سے</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عَنْهُمَا</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عَنْهُ / اس سے</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مذكر</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>ان دونوں سے</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عَنْهَا / اس سے (مؤنث)</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مونث</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عَنْكُمْ / تم سے</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عَنْكَ / تجھ سے</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مذكر</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مونث</Text>
+            </View>
+          </View>
+
+          {/* 1st Person */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell2}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عَنِّي / مجھ سے</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>متکلم</Text>
+            </View>
+          </View>
+        </View>
+        </View>
+
+        {/* Main Table */}
+        <View style={styles.section}>
+        <Text style={styles.sectionTitle2}>إِلَيْ+ضمیر: قرآنی مرکبات</Text>
+        
+        <View style={styles.tableContainer}>
+          {/* Main Header Row */}
+          <View style={styles.tableHeader2}>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>جمع</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>مثنى</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>واحد</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>إِلَيْ / کی طرف</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>إِلَيْهِمْ / اُن کی طرف (جمع مذکر)</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>إِلَيْهِ / اُس کی طرف</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مذكر</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>اِلَیْھِنَّ / اُن عورتوں کی طرف</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>إِلَيْهَا / اُس (مونث) کی طرف</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مونث</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>إِلَيْكُمْ / تمہاری طرف</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>إِلَيْكُمَا</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>إِلَيْكَ / تیری طرف</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مذكر</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}> تم دونوں کی طرف</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مونث</Text>
+            </View>
+          </View>
+
+          {/* 1st Person */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell2}>
+              <Text style={styles.arabicText}>إِلَيْنَا / ہماری طرف</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>إِلَيَّ / میری طرف</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>متکلم</Text>
+            </View>
+          </View>
+        </View>
+        </View>
+
+        {/* Main Table */}
+        <View style={styles.section}>
+        <Text style={styles.sectionTitle2}>عَلَيْ+ضمیر: قرآنی مرکبات</Text>
+        
+        <View style={styles.tableContainer}>
+          {/* Main Header Row */}
+          <View style={styles.tableHeader2}>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>جمع</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>مثنى</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>واحد</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>عَلَيْ / پر</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عَلَيْهِمْ / ان پر</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عَلَيْهِمَا</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عَلَيْهِ / اُس پر</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مذكر</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عَلَيْهِنَّ / ان (عورتوں) پر</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>ان دونوں پر</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عَلَيْهَا / اُس (عورت) پر</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مونث</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عَلَيْكُمْ / تم پر</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عَلَيْكَ / آپ پر</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مذكر</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مونث</Text>
+            </View>
+          </View>
+
+          {/* 1st Person */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell2}>
+              <Text style={styles.arabicText}>عَلَيْنَا / ہم پر</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عَلَيَّ / مجھ پر</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>متکلم</Text>
+            </View>
+          </View>
+        </View>
+        </View>
+
+        {/* Main Table */}
+        <View style={styles.section}>
+        <Text style={styles.sectionTitle2}>لَ+ضمیر: قرآنی مرکبات</Text>
+        
+        <View style={styles.tableContainer}>
+          {/* Main Header Row */}
+          <View style={styles.tableHeader2}>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>جمع</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>مثنى</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>واحد</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>لَ / کے لیے</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>لَهُم / اُن کے لیے</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>لَهُمَا</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>لَهُ / اُس کے لیے</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مذكر</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>لَهُنَّ / ان عورتوں کے لیے</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>ان دونوں کے لیے</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>لَھَا / اس عورت کے لیے</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مونث</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>لَكُمْ / تم سب کے لیے</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>لَكُمَا</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>لَكَ / تیرے لیے</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مذكر</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>تم دونوں کے لیے</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مونث</Text>
+            </View>
+          </View>
+
+          {/* 1st Person */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell2}>
+              <Text style={styles.arabicText}>لَنَا / ہمارے لیے</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>لِیْ / میرے لیے</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>متکلم</Text>
+            </View>
+          </View>
+        </View>
+        </View>
+
+        {/* Main Table */}
+        <View style={styles.section}>
+        <Text style={styles.sectionTitle2}>مَعَ+ضمیر: قرآنی مرکبات</Text>
+        
+        <View style={styles.tableContainer}>
+          {/* Main Header Row */}
+          <View style={styles.tableHeader2}>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>جمع</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>مثنى</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>واحد</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>مَعَ / کے ساتھ</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>مَعَهُمْ / ان کے ساتھ</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>مَعَهُ / اس کے ساتھ</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مذكر</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مونث</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>مَعَكُمْ / تمہارے ساتھ</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>مَعَكَ / تیرے ساتھ </Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مذكر</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مونث</Text>
+            </View>
+          </View>
+
+          {/* 1st Person */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell2}>
+              <Text style={styles.arabicText}>مَعَنَا / ہمارے ساتھ</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>مَعِي / میرے ساتھ</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>متکلم</Text>
+            </View>
+          </View>
+        </View>
+        </View>
+
+        {/* Main Table */}
+        <View style={styles.section}>
+        <Text style={styles.sectionTitle2}>عِندَ+ضمیر: قرآنی مرکبات</Text>
+        
+        <View style={styles.tableContainer}>
+          {/* Main Header Row */}
+          <View style={styles.tableHeader2}>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>جمع</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>مثنى</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>واحد</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>عِندَ / کے پاس</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عِندَهُمْ / ان کے پاس</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عِندَهُ / اس کے پاس</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مذكر</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عِندَهَا / اس عورت کے پاس</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مونث</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عِندَكُم / تمہارے پاس</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عِندَكَ / تیرے پاس</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مذكر</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مونث</Text>
+            </View>
+          </View>
+
+          {/* 1st Person */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell2}>
+              <Text style={styles.arabicText}>عِندَنَا / ہمارے پاس</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>عِندِي / میرے پاس</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>متکلم</Text>
+            </View>
+          </View>
+        </View>
+        </View>
+
+        {/* Main Table */}
+        <View style={styles.section}>
+        <Text style={styles.sectionTitle2}>لَدَىٰ+ضمیر: قرآنی مرکبات</Text>
+        
+        <View style={styles.tableContainer}>
+          {/* Main Header Row */}
+          <View style={styles.tableHeader2}>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>جمع</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>مثنى</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>واحد</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>لَدَىٰ / کے پاس</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>لَدَيْهِمْ / ان کے پاس</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>لَدَيْهِ / اس کے پاس</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مذكر</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مونث</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مذكر</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مونث</Text>
+            </View>
+          </View>
+
+          {/* 1st Person */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell2}>
+              <Text style={styles.arabicText}>لَدَيْنَا / ہمارے پاس</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>لَدَيَّ / میرے پاس</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>متکلم</Text>
+            </View>
+          </View>
+        </View>
+        </View>
+
+        {/* Main Table */}
+        <View style={styles.section}>
+        <Text style={styles.sectionTitle2}>لَدُنْ+ضمیر: قرآنی مرکبات</Text>
+        
+        <View style={styles.tableContainer}>
+          {/* Main Header Row */}
+          <View style={styles.tableHeader2}>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>جمع</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>مثنى</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>واحد</Text>
+            </View>
+            <View style={styles.headerCell}>
+              <Text style={styles.headerText2}>لَدُنْ /  پاس سے</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>لَّدُنْهُ /  اس کے پاس سے , اس کی طرف سے</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مذكر</Text>
+            </View>
+          </View>
+
+          {/* 3rd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>غائب مونث</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Masculine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مذكر</Text>
+            </View>
+          </View>
+
+          {/* 2nd Person - Feminine */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}>-</Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>حاضر مونث</Text>
+            </View>
+          </View>
+
+          {/* 1st Person */}
+          <View style={styles.dataRow}>
+            <View style={styles.dataCell2}>
+              <Text style={styles.arabicText}>لَدُنَّا / ہمارے پاس سے , ہماری طرف سے</Text>
+            </View>
+            <View style={styles.dataCell}>
+              <Text style={styles.arabicText}></Text>
+            </View>
+            <View style={styles.categoryCell2}>
+              <Text style={styles.categoryText2}>متکلم</Text>
+            </View>
+          </View>
+        </View>
+        </View>
+
+
       </ScrollView>
     </SafeAreaView>
   );

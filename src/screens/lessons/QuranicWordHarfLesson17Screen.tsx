@@ -11,10 +11,10 @@ import {
 } from 'react-native';
 import { useThemeStore } from '../../store/themeStore';
 import { TAILWIND_COLORS, FONT_CLASSES } from '../../utils/constants';
-import { getThemeColor, getColorFromClass } from '../../utils/colorUtils';
+import { getThemeColor } from '../../utils/colorUtils';
 import { getFontWithProperFallback } from '../../utils/fontUtils';
 
-interface QuranicWordHarfLesson11ScreenProps {
+interface QuranicWordHarfLesson17ScreenProps {
   onNavigate: (screen: any) => void;
   onBack: () => void;
 }
@@ -22,7 +22,7 @@ interface QuranicWordHarfLesson11ScreenProps {
 const { width, height } = Dimensions.get('window');
 const isTablet = width >= 768;
 
-const QuranicWordHarfLesson11Screen: React.FC<QuranicWordHarfLesson11ScreenProps> = ({ onNavigate, onBack }) => {
+const QuranicWordHarfLesson17Screen: React.FC<QuranicWordHarfLesson17ScreenProps> = ({ onNavigate, onBack }) => {
   const { isDarkMode } = useThemeStore();
   const colors = isDarkMode ? TAILWIND_COLORS.dark : TAILWIND_COLORS.light;
 
@@ -49,17 +49,17 @@ const QuranicWordHarfLesson11Screen: React.FC<QuranicWordHarfLesson11ScreenProps
       padding: 8,
       marginRight: 16,
       borderRadius: 8,
-      backgroundColor: isDarkMode ? getColorFromClass('markab-purple-dark') : getColorFromClass('markab-purple-light'),
+      backgroundColor: getThemeColor(colors.primary, isDarkMode),
     },
     backButtonText: {
       fontSize: 18,
-      color: isDarkMode ? getColorFromClass('markab-purple-dark-text') : getColorFromClass('markab-purple-light-text'),
+      color: getThemeColor(colors.surface, isDarkMode),
       fontWeight: 'bold',
     },
     headerTitle: {
       fontSize: 20,
       fontWeight: 'bold',
-      color: isDarkMode ? getColorFromClass('markab-purple-light-text') : getColorFromClass('markab-purple-dark-text'),
+      color: getThemeColor(colors.text, isDarkMode),
       flex: 1,
     },
     scrollView: {
@@ -74,16 +74,8 @@ const QuranicWordHarfLesson11Screen: React.FC<QuranicWordHarfLesson11ScreenProps
       fontSize: isTablet ? 32 : 24,
       fontWeight: 'bold',
       textAlign: 'center',
-      marginBottom: 8,
-      color: isDarkMode ? getColorFromClass('markab-purple-light-text') : getColorFromClass('markab-purple-dark-text'),
-    },
-    titleEnglish: {
-      fontSize: isTablet ? 18 : 16,
-      fontWeight: 'bold',
-      color: getThemeColor(colors.textSecondary, isDarkMode),
-      textAlign: 'center',
       marginBottom: 16,
-      fontStyle: 'italic',
+      color: getThemeColor(colors.primary, isDarkMode),
     },
     subtitle: {
       fontSize: isTablet ? 18 : 16,
@@ -113,7 +105,7 @@ const QuranicWordHarfLesson11Screen: React.FC<QuranicWordHarfLesson11ScreenProps
       padding: 20,
       marginBottom: 16,
       borderWidth: 2,
-      borderColor: getColorFromClass('markab-purple-light'),
+      borderColor: getThemeColor(colors.primary, isDarkMode),
       shadowColor: getThemeColor(colors.shadow, isDarkMode),
       shadowOffset: { width: 0, height: 4 },
       shadowOpacity: 0.15,
@@ -131,7 +123,7 @@ const QuranicWordHarfLesson11Screen: React.FC<QuranicWordHarfLesson11ScreenProps
     particleArabic: {
       fontSize: isTablet ? 28 : 24,
       fontWeight: 'bold',
-      color: isDarkMode ? getColorFromClass('markab-purple-light-text') : getColorFromClass('markab-purple-dark-text'),
+      color: getThemeColor(colors.primary, isDarkMode),
       fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
       lineHeight: 32,
       marginBottom: 4,
@@ -153,7 +145,7 @@ const QuranicWordHarfLesson11Screen: React.FC<QuranicWordHarfLesson11ScreenProps
       textAlign: 'center',
     },
     exampleSection: {
-      backgroundColor: isDarkMode ? getColorFromClass('markab-purple-dark') : getColorFromClass('markab-purple-light'),
+      backgroundColor: getThemeColor(colors.primary, isDarkMode),
       borderRadius: 12,
       padding: 12,
       marginTop: 8,
@@ -161,13 +153,13 @@ const QuranicWordHarfLesson11Screen: React.FC<QuranicWordHarfLesson11ScreenProps
     exampleTitle: {
       fontSize: isTablet ? 12 : 10,
       fontWeight: 'bold',
-      color: isDarkMode ? getColorFromClass('markab-purple-dark-text') : getColorFromClass('markab-purple-light-text'),
+      color: getThemeColor(colors.surface, isDarkMode),
       marginBottom: 6,
       textAlign: 'center',
     },
     exampleReference: {
       fontSize: isTablet ? 12 : 10,
-      color: isDarkMode ? getColorFromClass('markab-purple-dark-text') : getColorFromClass('markab-purple-light-text'),
+      color: getThemeColor(colors.surface, isDarkMode),
       opacity: 0.9,
       textAlign: 'center',
       fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
@@ -181,34 +173,10 @@ const QuranicWordHarfLesson11Screen: React.FC<QuranicWordHarfLesson11ScreenProps
       fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
       lineHeight: 16,
     },
-    notesSection: {
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
-      borderRadius: 16,
-      padding: 20,
-      marginTop: 24,
-      borderWidth: 2,
-      borderColor: getThemeColor(colors.primary, isDarkMode),
-    },
-    notesTitle: {
-      fontSize: isTablet ? 18 : 16,
-      fontWeight: 'bold',
-      color: getThemeColor(colors.surface, isDarkMode),
-      marginBottom: 12,
-      textAlign: 'center',
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
-    },
-    notesText: {
-      fontSize: isTablet ? 14 : 12,
-      color: getThemeColor(colors.surface, isDarkMode),
-      lineHeight: 20,
-      textAlign: 'center',
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
-      marginBottom: 8,
-    },
     decorativeLine: {
       height: 3,
       width: 60,
-      backgroundColor: isDarkMode ? getColorFromClass('markab-purple-dark') : getColorFromClass('markab-purple-light'),
+      backgroundColor: getThemeColor(colors.primary, isDarkMode),
       borderRadius: 2,
       alignSelf: 'center',
       marginBottom: 24,
@@ -216,99 +184,16 @@ const QuranicWordHarfLesson11Screen: React.FC<QuranicWordHarfLesson11ScreenProps
   });
 
   const particles = [
+   
     {
-      arabic: 'بِمَا',
-      transliteration: 'Bima',
-      urduMeaning: 'جس کے ساتھ، کیونکہ',
-      englishMeaning: 'With what, because',
-      group_category: 'حرفِ جر + ما (مرکب)',
+      arabic: '-',
+      transliteration: '-',
+      urduMeaning: '-',
+      englishMeaning: '-',
+      example: '-',
+      translation: '-',
     },
-    {
-      arabic: 'عَمَّا',
-      transliteration: 'Ammma',
-      urduMeaning: 'جس کے بارے میں، جس سے دور',
-      englishMeaning: 'About what, away from what',
-      group_category: 'حرفِ جر + ما (مرکب)',
-    },
-    {
-      arabic: 'فِيمَا',
-      transliteration: 'Fima',
-      urduMeaning: 'جس میں',
-      englishMeaning: 'In what',
-      group_category: 'حرفِ جر + ما (مرکب)',
-    },
-    {
-      arabic: 'کَمَا',
-      transliteration: 'Kama',
-      urduMeaning: 'جیسا کہ، جیسے',
-      englishMeaning: 'As, just as',
-      group_category: 'حرفِ جر + ما (مرکب)',
-    },
-    {
-      arabic: 'لِمَا',
-      transliteration: 'Lima',
-      urduMeaning: 'جس کے لیے، جس لیے',
-      englishMeaning: 'For what, for that which',
-      group_category: 'حرفِ جر + ما (مرکب)',
-    },
-    {
-      arabic: 'مِمَّا',
-      transliteration: 'Mimma',
-      urduMeaning: 'جس سے، جس میں سے',
-      englishMeaning: 'Out of what, from that which',
-      group_category: 'حرفِ جر + ما (مرکب)',
-    },
-    {
-      arabic: 'أَمَّا',
-      transliteration: 'Amma',
-      urduMeaning: 'جہاں تک، تو، پس',
-      englishMeaning: 'As to, as for',
-      group_category: 'حرفِ شرط/تفصیل + ما (مرکب)',
-    },
-    {
-      arabic: 'إِمَّا',
-      transliteration: 'Imma',
-      urduMeaning: 'اگر، یا، چاہے... چاہے',
-      englishMeaning: 'If, either/or',
-      group_category: 'حرفِ شرط + ما (مرکب)',
-    },
-    {
-      arabic: 'أَنَّمَا',
-      transliteration: 'Annama',
-      urduMeaning: 'کہ وہ، وہ کہ',
-      englishMeaning: 'That',
-      group_category: 'حرف + ما (مرکب)',
-    },
-    {
-      arabic: 'إِنَّمَا',
-      transliteration: 'Innama',
-      urduMeaning: 'بے شک، صرف',
-      englishMeaning: 'Verily, only',
-      group_category: 'حرفِ تاکید + ما (مرکب)',
-    },
-    {
-      arabic: 'كَأَنَّمَا',
-      transliteration: 'Kannama',
-      urduMeaning: 'گویا کہ، جیسے کہ',
-      englishMeaning: 'As if',
-      group_category: 'حرفِ تشبیہ + ما (مرکب)',
-    },
-    {
-      arabic: 'كُلَّمَا',
-      transliteration: 'Kulama',
-      urduMeaning: 'جب بھی، جب کبھی',
-      englishMeaning: 'Whenever',
-      group_category: 'حرفِ شرط + ما (مرکب)',
-    },
-    {
-      arabic: 'لَمَّا',
-      transliteration: 'Lamma',
-      urduMeaning: 'جب، ابھی نہیں',
-      englishMeaning: 'The time when, not yet',
-      group_category: 'حرفِ ظرف + ما (مرکب)',
-    },
-
-    
+  
   ];
 
   return (
@@ -323,7 +208,7 @@ const QuranicWordHarfLesson11Screen: React.FC<QuranicWordHarfLesson11ScreenProps
         <TouchableOpacity style={styles.backButton} onPress={onBack}>
           <Text style={styles.backButtonText}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>مرکب ما</Text>
+        <Text style={styles.headerTitle}>Harf Lesson 8</Text>
       </View>
 
       <ScrollView
@@ -332,9 +217,10 @@ const QuranicWordHarfLesson11Screen: React.FC<QuranicWordHarfLesson11ScreenProps
         contentContainerStyle={styles.content}
       >
         {/* Title Section */}
-        <Text style={styles.title}> مرکب ما</Text>
-        <Text style={styles.titleEnglish}>Compound Word with Ma</Text>
-       
+        <Text style={styles.title}>🔤 حرف تاکید - Emphasis Particles</Text>
+        <Text style={styles.subtitle}>
+          Learn essential Arabic emphasis particles and their usage in the Quran
+        </Text>
 
         {/* Decorative Line */}
         <View style={styles.decorativeLine} />
@@ -355,18 +241,19 @@ const QuranicWordHarfLesson11Screen: React.FC<QuranicWordHarfLesson11ScreenProps
               </View>
               
               <View style={styles.exampleSection}>
-                <Text style={styles.exampleTitle}>Group Category</Text>
-                <Text style={styles.exampleReference}>{particle.group_category}</Text>
+                <Text style={styles.exampleTitle}>Example</Text>
+                <Text style={styles.exampleReference}>{particle.example}</Text>
               </View>
-             
+              <View style={styles.exampleSection}>
+                <Text style={styles.exampleTitle}>Translation</Text>
+                <Text style={styles.translationText}>{particle.translation}</Text>
+              </View>
             </View>
           ))}
         </View>
-
-        
       </ScrollView>
     </SafeAreaView>
   );
 };
 
-export default QuranicWordHarfLesson11Screen; 
+export default QuranicWordHarfLesson17Screen; 

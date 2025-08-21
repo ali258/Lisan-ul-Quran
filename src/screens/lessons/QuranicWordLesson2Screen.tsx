@@ -544,10 +544,10 @@ const QuranicWordLesson2Screen: React.FC<QuranicWordLesson2ScreenProps> = ({ onN
                 <Text style={styles.headerText}></Text>
               </View>
               <View style={styles.nominativeHeaderCell}>
-                <Text style={styles.headerText}> رفع</Text>
+                <Text style={styles.headerText}> نصب اور جرّ</Text>
               </View>
               <View style={styles.accusativeHeaderCell}>
-                <Text style={styles.headerText}> نصب اور جرّ</Text>
+                <Text style={styles.headerText}> رفع</Text>
               </View>
               <View style={styles.singularHeaderCell}>
                 <Text style={styles.headerText}></Text>

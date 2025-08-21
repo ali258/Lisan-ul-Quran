@@ -31,6 +31,10 @@ export { default as QuranicWordLesson1Screen } from './QuranicWordLesson1Screen'
 export { default as QuranicWordLesson2Screen } from './QuranicWordLesson2Screen';
 export { default as QuranicWordLesson3Screen } from './QuranicWordLesson3Screen';
 export { default as QuranicWordLesson4Screen } from './QuranicWordLesson4Screen';
+export { default as QuranicWordLesson5Screen } from './QuranicWordLesson5Screen';
+export { default as QuranicWordLesson6Screen } from './QuranicWordLesson6Screen';
+export { default as QuranicWordLesson7Screen } from './QuranicWordLesson7Screen';
+export { default as QuranicWordLesson8Screen } from './QuranicWordLesson8Screen';
 export { default as QuranicWordHarfLesson1Screen } from './QuranicWordHarfLesson1Screen';
 export { default as QuranicWordHarfLesson2Screen } from './QuranicWordHarfLesson2Screen';
 export { default as QuranicWordHarfLesson3Screen } from './QuranicWordHarfLesson3Screen';
@@ -45,6 +49,9 @@ export { default as QuranicWordHarfLesson11Screen } from './QuranicWordHarfLesso
 export { default as QuranicWordHarfLesson12Screen } from './QuranicWordHarfLesson12Screen';
 export { default as QuranicWordHarfLesson13Screen } from './QuranicWordHarfLesson13Screen';
 export { default as QuranicWordHarfLesson14Screen } from './QuranicWordHarfLesson14Screen';
+export { default as QuranicWordHarfLesson15Screen } from './QuranicWordHarfLesson15Screen';
+export { default as QuranicWordHarfLesson16Screen } from './QuranicWordHarfLesson16Screen';
+export { default as QuranicWordHarfLesson17Screen } from './QuranicWordHarfLesson17Screen';
 
 // Future lesson screens can be added here:
 // export { default as Lesson27Screen } from './Lesson27Screen';

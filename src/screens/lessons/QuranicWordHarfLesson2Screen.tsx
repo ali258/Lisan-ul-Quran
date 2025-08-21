@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { useThemeStore } from '../../store/themeStore';
 import { TAILWIND_COLORS, FONT_CLASSES } from '../../utils/constants';
-import { getThemeColor } from '../../utils/colorUtils';
+import { getThemeColor, getColorWithOpacity, getColorFromClass } from '../../utils/colorUtils';
 import { getFontWithProperFallback } from '../../utils/fontUtils';
 
 interface QuranicWordHarfLesson2ScreenProps {
@@ -49,17 +49,17 @@ const QuranicWordHarfLesson2Screen: React.FC<QuranicWordHarfLesson2ScreenProps> 
       padding: 8,
       marginRight: 16,
       borderRadius: 8,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('harf-orange-dark') : getColorFromClass('harf-orange-light'),
     },
     backButtonText: {
       fontSize: 18,
-      color: getThemeColor(colors.surface, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-dark-text') : getColorFromClass('harf-orange-light-text'),
       fontWeight: 'bold',
     },
     headerTitle: {
       fontSize: 20,
       fontWeight: 'bold',
-      color: getThemeColor(colors.text, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
       flex: 1,
     },
     scrollView: {
@@ -75,7 +75,8 @@ const QuranicWordHarfLesson2Screen: React.FC<QuranicWordHarfLesson2ScreenProps> 
       fontWeight: 'bold',
       textAlign: 'center',
       marginBottom: 16,
-      color: getThemeColor(colors.primary, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
     },
     subtitle: {
       fontSize: isTablet ? 18 : 16,
@@ -83,147 +84,200 @@ const QuranicWordHarfLesson2Screen: React.FC<QuranicWordHarfLesson2ScreenProps> 
       marginBottom: 32,
       color: getThemeColor(colors.textSecondary, isDarkMode),
       lineHeight: 24,
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
     },
-    lessonGroup: {
+    section: {
+      marginBottom: 32,
+    },
+    sectionTitle: {
       fontSize: isTablet ? 22 : 18,
       fontWeight: 'bold',
-      textAlign: 'center',
-      marginBottom: 24,
-      color: getThemeColor(colors.text, isDarkMode),
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
-      lineHeight: 32,
-    },
-    particlesContainer: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      justifyContent: 'space-between',
-    },
-    particleCard: {
-      width: isTablet ? '48%' : '48%',
-      backgroundColor: getThemeColor(colors.surface, isDarkMode),
-      borderRadius: 20,
-      padding: 20,
       marginBottom: 16,
-      borderWidth: 2,
-      borderColor: getThemeColor(colors.primary, isDarkMode),
+      color: isDarkMode ? getColorFromClass('harf-orange-light-text') : getColorFromClass('harf-orange-dark-text'),
+      textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+    },
+    sectionSubtitle: {
+      fontSize: isTablet ? 16 : 14,
+      marginBottom: 20,
+      color: getThemeColor(colors.textSecondary, isDarkMode),
+      textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+    },
+    tableContainer: {
+      backgroundColor: getThemeColor(colors.surface, isDarkMode),
+      borderRadius: 16,
+      overflow: 'hidden',
+      borderWidth: 1,
+      borderColor: getThemeColor(colors.border, isDarkMode),
       shadowColor: getThemeColor(colors.shadow, isDarkMode),
       shadowOffset: { width: 0, height: 4 },
-      shadowOpacity: 0.15,
+      shadowOpacity: 0.1,
       shadowRadius: 8,
-      elevation: 6,
+      elevation: 4,
     },
-    particleHeader: {
+    tableHeader: {
       flexDirection: 'row',
-      alignItems: 'center',
-      marginBottom: 16,
+      backgroundColor: isDarkMode ? getColorFromClass('harf-orange-dark') : getColorFromClass('harf-orange-light'),
     },
-    particleInfo: {
+    
+    headerCell: {
       flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 16,
+      paddingHorizontal: 8,
+      borderRightWidth: 1,
+      borderRightColor: getThemeColor(colors.surface, isDarkMode),
     },
-    particleArabic: {
-      fontSize: isTablet ? 28 : 24,
+    headerText: {
+      fontSize: 16,
       fontWeight: 'bold',
-      color: getThemeColor(colors.primary, isDarkMode),
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
-      lineHeight: 32,
-      marginBottom: 4,
+      color: isDarkMode ? getColorFromClass('harf-orange-dark-text') : getColorFromClass('harf-orange-light-text'),
       textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
     },
-    particleTransliteration: {
-      fontSize: isTablet ? 14 : 12,
-      color: getThemeColor(colors.textSecondary, isDarkMode),
-      fontStyle: 'italic',
-      marginBottom: 6,
-      textAlign: 'center',
+   
+    dataRow: {
+      flexDirection: 'row',
+      backgroundColor: getThemeColor(colors.surface, isDarkMode),
+      borderBottomWidth: 1,
+      borderBottomColor: getThemeColor(colors.border, isDarkMode),
     },
-    particleMeaning: {
-      fontSize: isTablet ? 16 : 14,
+    dataCell: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 12,
+      paddingHorizontal: 8,
+      borderRightWidth: 1,
+      borderRightColor: getThemeColor(colors.border, isDarkMode),
+    },
+    arabicText: {
+      fontSize: 18,
+      fontWeight: 'bold',
       color: getThemeColor(colors.text, isDarkMode),
+      textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
+    },
+    urduText: {
+      fontSize: 14,
+      color: getThemeColor(colors.text, isDarkMode),
+      textAlign: 'center',
       fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
       lineHeight: 20,
-      marginBottom: 8,
-      textAlign: 'center',
     },
-    exampleSection: {
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
-      borderRadius: 12,
-      padding: 12,
-      marginTop: 8,
-    },
-    exampleTitle: {
-      fontSize: isTablet ? 12 : 10,
-      fontWeight: 'bold',
-      color: getThemeColor(colors.surface, isDarkMode),
-      marginBottom: 6,
-      textAlign: 'center',
-    },
-    exampleReference: {
-      fontSize: isTablet ? 12 : 10,
-      color: getThemeColor(colors.surface, isDarkMode),
-      opacity: 0.8,
+    englishText: {
+      fontSize: 12,
+      color: getThemeColor(colors.textSecondary, isDarkMode),
       textAlign: 'center',
       fontStyle: 'italic',
+      lineHeight: 16,
     },
-    decorativeLine: {
-      height: 3,
-      width: 60,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
-      borderRadius: 2,
-      alignSelf: 'center',
-      marginBottom: 24,
+    exampleText: {
+      fontSize: 14,
+      color: getThemeColor(colors.text, isDarkMode),
+      textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
+      lineHeight: 20,
     },
+    
+    
+    
   });
 
-  const particles = [
+  const prepositions = [
     {
-      arabic: 'أَ',
-      transliteration: 'a (Hamzat al-Istifham)',
-      urduMeaning: 'کیا؟ / ?is it',
-      englishMeaning: 'is it',
-      reference: 'النمل 27:60',
+      harf: 'بِ',
+      meaning: 'کے ساتھ',
+      english: 'by, with',
+      example: 'بِسْمِ اللهِ، بِإِذْنِ اللهِ، بِنَصْرِهِ اللهِ'
     },
     {
-      arabic: 'أَيَّانَ',
-      transliteration: 'ayyana',
-      urduMeaning: 'کب (شدید)؟ / (emphatic)when',
-      englishMeaning: '(emphatic) when',
-      reference: 'القيامة 75:6',
+      harf: 'تَ',
+      meaning: 'قسم',
+      english: '(oath)by',
+      example: 'وَالتَّمْرِ، وَالتَّرْتِيبِ، وَالرَّبَابِ'
     },
     {
-      arabic: 'أَيْنَ',
-      transliteration: 'ayna',
-      urduMeaning: 'کہاں؟ / ?where',
-      englishMeaning: 'where',
-      reference: 'النحل 16:27',
+      harf: 'وَ',
+      meaning: 'قسم/اور',
+      english: 'and, by',
+      example: 'وَاللهِ، وَالشَّمْسِ، وَالنَّجْمِ، وَالْفَجْرِ'
     },
     {
-      arabic: 'كَمْ',
-      transliteration: 'kam',
-      urduMeaning: 'کتنا/کتنے؟ / ?how many',
-      englishMeaning: 'how many',
-      reference: 'البقرة 2:249',
+      harf: 'كَ',
+      meaning: 'کی طرح',
+      english: 'like, as',
+      example: 'كَفَلَقِ، كَشَجَرَةٍ، كَمِثْلِهِمْ'
     },
     {
-      arabic: 'كَيْفَ',
-      transliteration: 'kayfa',
-      urduMeaning: 'کیسے؟ / ?how',
-      englishMeaning: 'how',
-      reference: 'البقرة 2:28',
+      harf: 'فِي',
+      meaning: 'میں',
+      english: 'in',
+      example: 'فِي الْبَيْتِ فِي الْكِتَابِ، فِي الْجَنَّةِ'
     },
     {
-      arabic: 'مَتَى',
-      transliteration: 'mata',
-      urduMeaning: 'کب؟ / ?when',
-      englishMeaning: 'when',
-      reference: 'یس 36:48',
+      harf: 'مِنْ',
+      meaning: 'سے',
+      english: 'from',
+      example: 'مِنْ مَكَّةَ مِنَ الْبَيْتِ مِنَ السَّمَاءِ'
     },
     {
-      arabic: 'هَلْ',
-      transliteration: 'hal',
-      urduMeaning: 'کیا؟ / ?is it',
-      englishMeaning: 'is it',
-      reference: 'الإنسان 76:1',
+      harf: 'عَنْ',
+      meaning: 'کے بارے میں/سے',
+      english: 'about, from',
+      example: 'عَنْ أَنْفُسِهِمْ، عَنْ ذِكْرِ اللهِ'
     },
+    {
+      harf: 'إِلَى',
+      meaning: 'کی طرف',
+      english: 'to, towards',
+      example: 'إِلَى الْبَيْتِ، إِلَى السَّمَاءِ، إِلَى الْمَسْجِدِ'
+    },
+    {
+      harf: 'عَلَى',
+      meaning: 'پر',
+      english: 'on, upon, over',
+      example: 'عَلَى الْعَرْشِ، عَلَى قُلُوبِهِمْ، عَلَى الْمَلَائِكَةِ'
+    },
+    {
+      harf: 'حَتَّى',
+      meaning: 'تک',
+      english: 'till, until',
+      example: 'حَتَّى مَطْلِعِ الْفَجْرِ'
+    },
+    {
+      harf: 'لِ',
+      meaning: 'کے لیے',
+      english: 'for, to',
+      example: 'لِرَجُلٍ، لِلذِّكْرِ، الْأَمْرُ اللهِ'
+    },
+    {
+      harf: 'مَعَ',
+      meaning: 'کے ساتھ',
+      english: 'with',
+      example: 'إِنَّ اللهَ مَعَ الصَّابِرِينَ'
+    },
+    {
+      harf: 'عِنْدَ',
+      meaning: 'پاس',
+      english: 'near, beside',
+      example: 'إِنَّ الدَّارَ الْآخِرَةَ عِندَ اللَّهِ'
+    },
+    {
+      harf: 'لَدَىٰ',
+      meaning: 'پاس',
+      english: 'near, beside',
+      example: 'هَـٰذَا مَا لَدَيَّ عَتِيدٌ'
+    },
+    {
+      harf: 'لَدُنْ',
+      meaning: 'پاس سے',
+      english: 'from near',
+      example: 'مِن لَّدُنَّا عِلْمًا'
+    }
+    
   ];
 
   return (
@@ -238,7 +292,7 @@ const QuranicWordHarfLesson2Screen: React.FC<QuranicWordHarfLesson2ScreenProps> 
         <TouchableOpacity style={styles.backButton} onPress={onBack}>
           <Text style={styles.backButtonText}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Harf Lesson 2</Text>
+        <Text style={styles.headerTitle}>حروف جارہ</Text>
       </View>
 
       <ScrollView
@@ -247,41 +301,51 @@ const QuranicWordHarfLesson2Screen: React.FC<QuranicWordHarfLesson2ScreenProps> 
         contentContainerStyle={styles.content}
       >
         {/* Title Section */}
-        <Text style={styles.title}>🔤 حرف - Particles</Text>
+        <Text style={styles.title}>حروف جارہ</Text>
         <Text style={styles.subtitle}>
-          Learn essential Arabic particles and their usage in the Quran
+          Arabic Prepositions and Particles - Essential Grammar Guide
         </Text>
 
-        {/* Decorative Line */}
-        <View style={styles.decorativeLine} />
-
-        {/* Lesson Group */}
-        <Text style={styles.lessonGroup}>
-          حروف الاستفهام
-        </Text>
-        <Text style={styles.subtitle}>
-          Interrogative Particles
-        </Text>
-
-        {/* Particles */}
-        <View style={styles.particlesContainer}>
-          {particles.map((particle, index) => (
-            <View key={index} style={styles.particleCard}>
-              <View style={styles.particleHeader}>
-                <View style={styles.particleInfo}>
-                  <Text style={styles.particleArabic}>{particle.arabic}</Text>
-                  <Text style={styles.particleTransliteration}>{particle.transliteration}</Text>
-                  <Text style={styles.particleMeaning}>{particle.urduMeaning}</Text>
-                </View>
+        {/* Main Table */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>حروف جارہ کی مکمل جدول</Text>
+          <Text style={styles.sectionSubtitle}>Complete Table of Arabic Prepositions</Text>
+          
+          <View style={styles.tableContainer}>
+            {/* Header Row */}
+            <View style={styles.tableHeader}>
+              <View style={styles.headerCell}>
+                <Text style={styles.headerText}>مثال</Text>
               </View>
-              
-              <View style={styles.exampleSection}>
-                <Text style={styles.exampleTitle}>Quranic Reference</Text>
-                <Text style={styles.exampleReference}>{particle.reference}</Text>
+              <View style={styles.headerCell}>
+                <Text style={styles.headerText}>معنى/استعمال</Text>
+              </View>
+              <View style={styles.headerCell}>
+                <Text style={styles.headerText}>حرف</Text>
               </View>
             </View>
-          ))}
+
+            {/* Data Rows */}
+            {prepositions.map((prep, index) => (
+              <View key={index} style={styles.dataRow}>
+                <View style={styles.dataCell}>
+                  <Text style={styles.exampleText}>{prep.example}</Text>
+                </View>
+                <View style={styles.dataCell}>
+                  <Text style={styles.urduText}>{prep.meaning}</Text>
+                  <Text style={styles.englishText}>{prep.english}</Text>
+                </View>
+                <View style={styles.dataCell}>
+                  <Text style={styles.arabicText}>{prep.harf}</Text>
+                </View>
+              </View>
+            ))}
+          </View>
         </View>
+
+        
+
+
       </ScrollView>
     </SafeAreaView>
   );

@@ -286,19 +286,6 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
           </Text>
         </View>
 
-        {/* Dua Section */}
-        <View style={styles.duaSection}>
-          <Text style={styles.duaTitle}>دعا</Text>
-          <Text style={styles.arabicText}>
-            رَبِّ يَسِّرْ وَلَا تُعَسِّرْ وَتَمِّمْ بِالْخَيْرِ
-          </Text>
-          <Text style={styles.urduText}>
-            اے میرے رب! آسان فرما اور مشکل نہ فرما، اور خیر کے ساتھ مکمل فرما۔
-          </Text>
-          <Text style={styles.englishText}>
-            "My Lord, make it easy and do not make it difficult, and complete it with goodness."
-          </Text>
-        </View>
 
         {/* Decorative Line */}
         <View style={styles.decorativeLine} />
@@ -326,6 +313,22 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onNavigate }) => {
             />
           </View>
         </View>
+
+
+        {/* Dua Section */}
+        <View style={styles.duaSection}>
+          <Text style={styles.duaTitle}>دعا</Text>
+          <Text style={styles.arabicText}>
+            رَبِّ يَسِّرْ وَلَا تُعَسِّرْ وَتَمِّمْ بِالْخَيْرِ
+          </Text>
+          <Text style={styles.urduText}>
+            اے میرے رب! آسان فرما اور مشکل نہ فرما، اور خیر کے ساتھ مکمل فرما۔
+          </Text>
+          <Text style={styles.englishText}>
+            "My Lord, make it easy and do not make it difficult, and complete it with goodness."
+          </Text>
+        </View>
+
 
         {/* Features Section */}
         <View style={styles.featuresSection}>
