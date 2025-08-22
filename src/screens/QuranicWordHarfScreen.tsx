@@ -510,87 +510,8 @@ const QuranicWordHarfScreen: React.FC<QuranicWordHarfScreenProps> = ({ onNavigat
             <Text style={styles.progressText}>Ready to start</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
-            style={styles.lessonCard}
-            onPress={() => onNavigate('QuranicWordHarfLesson14')}
-            activeOpacity={0.7}
-          >
-            <View style={styles.lessonHeader}>
-              <Text style={styles.lessonIcon}>🔧</Text>
-              <View style={styles.lessonInfo}>
-                <Text style={styles.lessonTitle}>Lesson 14</Text>
-                <Text style={styles.lessonUrduName}>حروف سبب و علت</Text>
-                <Text style={styles.lessonEnglishName}>Cause/Reason Particles</Text>
-              </View>
-            </View>
+         
 
-            <View style={styles.progressBar}>
-              <View style={[styles.progressFill, { width: '0%' }]} />
-            </View>
-            <Text style={styles.progressText}>Ready to start</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.lessonCard}
-            onPress={() => onNavigate('QuranicWordHarfLesson15')}
-            activeOpacity={0.7}
-          >
-            <View style={styles.lessonHeader}>
-              <Text style={styles.lessonIcon}>👆</Text>
-              <View style={styles.lessonInfo}>
-                <Text style={styles.lessonTitle}>Lesson 15</Text>
-                <Text style={styles.lessonUrduName}>اسمائے موصول</Text>
-                <Text style={styles.lessonEnglishName}>Relative Pronouns</Text>
-              </View>
-            </View>
-
-            <View style={styles.progressBar}>
-              <View style={[styles.progressFill, { width: '0%' }]} />
-            </View>
-            <Text style={styles.progressText}>Ready to start</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.lessonCard}
-            onPress={() => onNavigate('QuranicWordHarfLesson16')}
-            activeOpacity={0.7}
-          >
-            <View style={styles.lessonHeader}>
-              <Text style={styles.lessonIcon}>📝</Text>
-              <View style={styles.lessonInfo}>
-                <Text style={styles.lessonTitle}>Lesson 16</Text>
-                <Text style={styles.lessonUrduName}>اسمائے اشارہ</Text>
-                <Text style={styles.lessonEnglishName}>Demonstrative Pronouns</Text>
-              </View>
-            </View>
-            
-          
-
-            <View style={styles.progressBar}>
-              <View style={[styles.progressFill, { width: '0%' }]} />
-            </View>
-            <Text style={styles.progressText}>Ready to start</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.lessonCard}
-            onPress={() => onNavigate('QuranicWordHarfLesson17')}
-            activeOpacity={0.7}
-          >
-            <View style={styles.lessonHeader}>
-              <Text style={styles.lessonIcon}>📝</Text>
-              <View style={styles.lessonInfo}>
-                <Text style={styles.lessonTitle}>Lesson 17</Text>
-                <Text style={styles.lessonUrduName}>اسم ضمائر</Text>
-                <Text style={styles.lessonEnglishName}>Personal Pronouns</Text>
-              </View>
-            </View>
-            
-            
-            <View style={styles.progressBar}>
-              <View style={[styles.progressFill, { width: '0%' }]} />
-            </View>
-            <Text style={styles.progressText}>Ready to start</Text>
-          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>

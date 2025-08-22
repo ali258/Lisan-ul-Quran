@@ -60,10 +60,6 @@ export type RootStackParamList = {
   'QuranicWordHarfLesson11': undefined;
   'QuranicWordHarfLesson12': undefined;
   'QuranicWordHarfLesson13': undefined;
-  'QuranicWordHarfLesson14': undefined;
-  'QuranicWordHarfLesson15': undefined;
-  'QuranicWordHarfLesson16': undefined;
-  'QuranicWordHarfLesson17': undefined;
 };
 
 export type MenuItem = {

@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { useThemeStore } from '../../store/themeStore';
 import { TAILWIND_COLORS, FONT_CLASSES } from '../../utils/constants';
-import { getThemeColor, getColorWithOpacity } from '../../utils/colorUtils';
+import { getThemeColor, getColorFromClass } from '../../utils/colorUtils';
 import { getFontWithProperFallback } from '../../utils/fontUtils';
 
 interface QuranicWordLesson4ScreenProps {
@@ -49,18 +49,19 @@ const QuranicWordLesson4Screen: React.FC<QuranicWordLesson4ScreenProps> = ({ onN
       padding: 8,
       marginRight: 16,
       borderRadius: 8,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('ism-blue-dark') : getColorFromClass('ism-blue-light'),
     },
     backButtonText: {
       fontSize: 18,
-      color: getThemeColor(colors.surface, isDarkMode),
+      color: isDarkMode ? getColorFromClass('ism-blue-dark-text') : getColorFromClass('ism-blue-light-text'),
       fontWeight: 'bold',
     },
     headerTitle: {
       fontSize: 20,
       fontWeight: 'bold',
-      color: getThemeColor(colors.text, isDarkMode),
+      color: isDarkMode ? getColorFromClass('ism-blue-light-text') : getColorFromClass('ism-blue-dark-text'),
       flex: 1,
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
     },
     scrollView: {
       flex: 1,
@@ -75,7 +76,7 @@ const QuranicWordLesson4Screen: React.FC<QuranicWordLesson4ScreenProps> = ({ onN
       fontWeight: 'bold',
       textAlign: 'center',
       marginBottom: 16,
-      color: getThemeColor(colors.primary, isDarkMode),
+      color: isDarkMode ? getColorFromClass('ism-blue-light-text') : getColorFromClass('ism-blue-dark-text'),
       fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
     },
     subtitle: {
@@ -93,118 +94,158 @@ const QuranicWordLesson4Screen: React.FC<QuranicWordLesson4ScreenProps> = ({ onN
       fontSize: isTablet ? 22 : 18,
       fontWeight: 'bold',
       marginBottom: 16,
-      color: getThemeColor(colors.text, isDarkMode),
+      color: isDarkMode ? getColorFromClass('ism-blue-light-text') : getColorFromClass('ism-blue-dark-text'),
       textAlign: 'center',
       fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
     },
-    sectionSubtitle: {
-      fontSize: isTablet ? 16 : 14,
-      marginBottom: 20,
-      color: getThemeColor(colors.textSecondary, isDarkMode),
-      textAlign: 'center',
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+    wordsGrid: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'space-between',
     },
-    tableContainer: {
+    wordCard: {
+      width: isTablet ? '31%' : '48%',
       backgroundColor: getThemeColor(colors.surface, isDarkMode),
-      borderRadius: 16,
-      overflow: 'hidden',
-      borderWidth: 1,
-      borderColor: getThemeColor(colors.border, isDarkMode),
+      borderRadius: 20,
+      padding: 16,
+      marginBottom: 16,
+      borderWidth: 2,
+      borderColor: getColorFromClass('ism-blue-light'),
       shadowColor: getThemeColor(colors.shadow, isDarkMode),
       shadowOffset: { width: 0, height: 4 },
-      shadowOpacity: 0.1,
+      shadowOpacity: 0.15,
       shadowRadius: 8,
       elevation: 4,
-    },
-    tableHeader: {
-      flexDirection: 'row',
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
-    },
-    headerCell: {
-      flex: 1,
       alignItems: 'center',
-      justifyContent: 'center',
-      paddingVertical: 16,
-      paddingHorizontal: 8,
-      borderRightWidth: 1,
-      borderRightColor: getThemeColor(colors.surface, isDarkMode),
     },
-    headerText: {
-      fontSize: 16,
+    arabicWord: {
+      fontSize: isTablet ? 20 : 16,
       fontWeight: 'bold',
-      color: getThemeColor(colors.surface, isDarkMode),
       textAlign: 'center',
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
-    },
-    dataRow: {
-      flexDirection: 'row',
-      backgroundColor: getThemeColor(colors.surface, isDarkMode),
-      borderBottomWidth: 1,
-      borderBottomColor: getThemeColor(colors.border, isDarkMode),
-    },
-    dataCell: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingVertical: 12,
-      paddingHorizontal: 8,
-      borderRightWidth: 1,
-      borderRightColor: getThemeColor(colors.border, isDarkMode),
-    },
-    categoryCell: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      paddingVertical: 12,
-      paddingHorizontal: 8,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
-      borderRightWidth: 1,
-      borderRightColor: getThemeColor(colors.border, isDarkMode),
-    },
-    arabicText: {
-      fontSize: 18,
-      fontWeight: 'bold',
-      color: getThemeColor(colors.text, isDarkMode),
-      textAlign: 'center',
+      marginBottom: 8,
+      color: isDarkMode ? getColorFromClass('ism-blue-light-text') : getColorFromClass('ism-blue-dark-text'),
       fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
-    },
-    categoryText: {
-      fontSize: 16,
-      fontWeight: 'bold',
-      color: getThemeColor(colors.text, isDarkMode),
-      textAlign: 'center',
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
-    },
-    highlightedCell: {
-      backgroundColor: getThemeColor(colors.error, isDarkMode),
-    },
-    highlightedText: {
-      color: getThemeColor(colors.surface, isDarkMode),
-    },
-    noteSection: {
-      backgroundColor: getThemeColor(colors.surface, isDarkMode),
-      borderRadius: 16,
-      padding: 20,
-      marginTop: 24,
-      borderWidth: 1,
-      borderColor: getThemeColor(colors.border, isDarkMode),
-      borderLeftWidth: 4,
-      borderLeftColor: getThemeColor(colors.primary, isDarkMode),
-    },
-    noteTitle: {
-      fontSize: 18,
-      fontWeight: 'bold',
-      color: getThemeColor(colors.primary, isDarkMode),
-      marginBottom: 12,
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
-    },
-    noteText: {
-      fontSize: 16,
-      color: getThemeColor(colors.text, isDarkMode),
       lineHeight: 24,
+    },
+    urduMeaning: {
+      fontSize: isTablet ? 14 : 12,
+      textAlign: 'center',
+      marginBottom: 6,
+      color: getThemeColor(colors.text, isDarkMode),
       fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+      lineHeight: 18,
+    },
+    englishMeaning: {
+      fontSize: isTablet ? 12 : 10,
+      textAlign: 'center',
+      color: getThemeColor(colors.textSecondary, isDarkMode),
+      fontStyle: 'italic',
+      lineHeight: 16,
+      marginBottom: 6,
+    },
+    frequencyBadge: {
+      backgroundColor: isDarkMode ? getColorFromClass('ism-blue-dark') : getColorFromClass('ism-blue-light'),
+      borderRadius: 10,
+      paddingHorizontal: 8,
+      paddingVertical: 3,
+      alignSelf: 'center',
+    },
+    frequencyText: {
+      fontSize: isTablet ? 12 : 10,
+      color: isDarkMode ? getColorFromClass('ism-blue-dark-text') : getColorFromClass('ism-blue-light-text'),
+      fontWeight: 'bold',
+    },
+    decorativeLine: {
+      height: 3,
+      width: 60,
+      backgroundColor: isDarkMode ? getColorFromClass('ism-blue-dark') : getColorFromClass('ism-blue-light'),
+      borderRadius: 2,
+      alignSelf: 'center',
+      marginBottom: 24,
     },
   });
+
+  const basicWords = [
+    {
+      arabic: 'أَشَدُّ',
+      urdu: 'سب سے زیادہ سخت / شدید',
+      english: 'Most severe',
+      frequency: 31,
+    },
+    {
+      arabic: 'أَعْلَى',
+      urdu: 'سب سے بلند / برتر',
+      english: 'Higher, superior',
+      frequency: 11,
+    },
+    {
+      arabic: 'أَعْلَمُ',
+      urdu: 'سب سے زیادہ جاننے والا',
+      english: 'Better-knowing, most informed',
+      frequency: 49,
+    },
+    {
+      arabic: 'أَقْرَبُ',
+      urdu: 'سب سے قریب / قریب تر',
+      english: 'Nearer, nearest',
+      frequency: 19,
+    },
+    {
+      arabic: 'أَكْبَرُ',
+      urdu: 'سب سے بڑا / بڑا',
+      english: 'Bigger, biggest',
+      frequency: 24,
+    },
+    {
+      arabic: 'أَكْثَرُ',
+      urdu: 'سب سے زیادہ',
+      english: 'More; most',
+      frequency: 80,
+    },
+    {
+      arabic: 'أَحْسَنُ',
+      urdu: 'سب سے بہتر / اچھا',
+      english: 'Better, best',
+      frequency: 36,
+    },
+    {
+      arabic: 'أَحَقُّ',
+      urdu: 'سب سے زیادہ حقدار / زیادہ حق والا',
+      english: 'More entitled; most worthy',
+      frequency: 10,
+    },
+    {
+      arabic: 'أَدْنَى',
+      urdu: 'سب سے قریب / سب سے نیچے',
+      english: 'Nearer; lowest',
+      frequency: 12,
+    },
+    {
+      arabic: 'أَظْلَمُ',
+      urdu: 'سب سے زیادہ ظالم / زیادہ ناانصاف',
+      english: 'More unjust; most unjust',
+      frequency: 16,
+    },
+    {
+      arabic: 'أَهْدَى',
+      urdu: 'سب سے زیادہ ہدایت یافتہ',
+      english: 'Better guided',
+      frequency: 7,
+    },
+    {
+      arabic: 'أَوْلَى',
+      urdu: 'سب سے زیادہ قریب / زیادہ حق دار، افسوس',
+      english: 'Nearer, closest; woe',
+      frequency: 11,
+    },
+    {
+      arabic: 'أَحَبُّ',
+      urdu: 'سب سے زیادہ محبوب',
+      english: 'More beloved',
+      frequency: 3,
+    },
+    
+  ];
 
   return (
     <SafeAreaView style={styles.container}>
@@ -218,7 +259,7 @@ const QuranicWordLesson4Screen: React.FC<QuranicWordLesson4ScreenProps> = ({ onN
         <TouchableOpacity style={styles.backButton} onPress={onBack}>
           <Text style={styles.backButtonText}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>اسم موصول</Text>
+        <Text style={styles.headerTitle}>اسمِ تفضیل</Text>
       </View>
 
       <ScrollView
@@ -227,80 +268,28 @@ const QuranicWordLesson4Screen: React.FC<QuranicWordLesson4ScreenProps> = ({ onN
         contentContainerStyle={styles.content}
       >
         {/* Title Section */}
-        <Text style={styles.title}>اسم موصول</Text>
-        <Text style={styles.subtitle}>
-          Relative Pronouns - Connecting Words in Arabic
-        </Text>
-
-        {/* Main Table */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>اسم موصول کی مکمل جدول</Text>
-          <Text style={styles.sectionSubtitle}>Relative Pronouns Table</Text>
-          
-          <View style={styles.tableContainer}>
-            {/* Main Header Row */}
-            <View style={styles.tableHeader}>
-              <View style={styles.headerCell}>
-                <Text style={styles.headerText}>جمع</Text>
-              </View>
-              <View style={styles.headerCell}>
-                <Text style={styles.headerText}>مثنى</Text>
-              </View>
-              <View style={styles.headerCell}>
-                <Text style={styles.headerText}>واحد</Text>
-              </View>
-              <View style={styles.headerCell}>
-                <Text style={styles.headerText}>  جو، جس نے  </Text>
-              </View>
-            </View>
-
-            {/* Masculine Row */}
-            <View style={styles.dataRow}>
-              <View style={styles.dataCell}>
-                <Text style={styles.arabicText}>اَلَّذِينَ</Text>
-              </View>
-              <View style={styles.dataCell}>
-                <Text style={styles.arabicText}>اَللَّذَانِ</Text>
-              </View>
-              <View style={styles.dataCell}>
-                <Text style={styles.arabicText}>اَلَّذِیْ</Text>
-              </View>
-              <View style={styles.categoryCell}>
-                <Text style={styles.categoryText}>مذكر</Text>
-              </View>
-            </View>
-
-            {/* Feminine Row */}
-            <View style={styles.dataRow}>
-              <View style={styles.dataCell}>
-                <Text style={styles.arabicText}>اَللَّاتِي - اَللَّائِیْ</Text>
-              </View>
-              <View style={styles.dataCell}>
-                <Text style={styles.arabicText}>-</Text>
-              </View>
-              <View style={styles.dataCell}>
-                <Text style={styles.arabicText}>اَلَّتِیْ</Text>
-              </View>
-              <View style={styles.categoryCell}>
-                <Text style={styles.categoryText}>مونث</Text>
-              </View>
-            </View>
-          </View>
-        </View>
-
+        <Text style={styles.title}>اسمِ تفضیل</Text>
+        <Text style={styles.title}>Noun of Superiority</Text>
        
+        {/* Decorative Line */}
+        <View style={styles.decorativeLine} />
 
-        {/* Note Section */}
-        <View style={styles.noteSection}>
-          <Text style={styles.noteTitle}>یاد رکھیں</Text>
-          <Text style={styles.noteText}>
-            • اسم موصول وہ الفاظ ہیں جو دو جملوں کو جوڑتے ہیں{'\n'}
-            • الَّذِي مذكر واحد کے لیے استعمال ہوتا ہے{'\n'}
-            • الَّتِي مونث واحد کے لیے استعمال ہوتا ہے{'\n'}
-            • مثنى میں اللَّذَانِ (مذكر) اور اللَّتَانِ (مونث) ہیں{'\n'}
-            • جمع میں الَّذِينَ (مذكر) اور اللَّاتِي/اللَّائِي (مونث) ہیں{'\n'}
-           
-          </Text>
+        {/* Basic Words Section */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Essential Quranic 13 Nouns (Total: 309 times)</Text>
+          
+          <View style={styles.wordsGrid}>
+            {basicWords.map((word, index) => (
+              <View key={index} style={styles.wordCard}>
+                <Text style={styles.arabicWord}>{word.arabic}</Text>
+                <Text style={styles.urduMeaning}>{word.urdu}</Text>
+                <Text style={styles.englishMeaning}>{word.english}</Text>
+                <View style={styles.frequencyBadge}>
+                  <Text style={styles.frequencyText}>{word.frequency} times</Text>
+                </View>
+              </View>
+            ))}
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>

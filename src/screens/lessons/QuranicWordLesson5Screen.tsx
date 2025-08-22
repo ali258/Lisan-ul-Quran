@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { useThemeStore } from '../../store/themeStore';
 import { TAILWIND_COLORS, FONT_CLASSES } from '../../utils/constants';
-import { getThemeColor } from '../../utils/colorUtils';
+import { getThemeColor, getColorFromClass } from '../../utils/colorUtils';
 import { getFontWithProperFallback } from '../../utils/fontUtils';
 
 interface QuranicWordLesson5ScreenProps {
@@ -49,18 +49,19 @@ const QuranicWordLesson5Screen: React.FC<QuranicWordLesson5ScreenProps> = ({ onN
       padding: 8,
       marginRight: 16,
       borderRadius: 8,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('ism-blue-dark') : getColorFromClass('ism-blue-light'),
     },
     backButtonText: {
       fontSize: 18,
-      color: getThemeColor(colors.surface, isDarkMode),
+      color: isDarkMode ? getColorFromClass('ism-blue-dark-text') : getColorFromClass('ism-blue-light-text'),
       fontWeight: 'bold',
     },
     headerTitle: {
       fontSize: 20,
       fontWeight: 'bold',
-      color: getThemeColor(colors.text, isDarkMode),
+      color: isDarkMode ? getColorFromClass('ism-blue-light-text') : getColorFromClass('ism-blue-dark-text'),
       flex: 1,
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
     },
     scrollView: {
       flex: 1,
@@ -75,7 +76,8 @@ const QuranicWordLesson5Screen: React.FC<QuranicWordLesson5ScreenProps> = ({ onN
       fontWeight: 'bold',
       textAlign: 'center',
       marginBottom: 16,
-      color: getThemeColor(colors.primary, isDarkMode),
+      color: isDarkMode ? getColorFromClass('ism-blue-light-text') : getColorFromClass('ism-blue-dark-text'),
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
     },
     subtitle: {
       fontSize: isTablet ? 18 : 16,
@@ -83,6 +85,7 @@ const QuranicWordLesson5Screen: React.FC<QuranicWordLesson5ScreenProps> = ({ onN
       marginBottom: 32,
       color: getThemeColor(colors.textSecondary, isDarkMode),
       lineHeight: 24,
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
     },
     section: {
       marginBottom: 32,
@@ -91,8 +94,9 @@ const QuranicWordLesson5Screen: React.FC<QuranicWordLesson5ScreenProps> = ({ onN
       fontSize: isTablet ? 22 : 18,
       fontWeight: 'bold',
       marginBottom: 16,
-      color: getThemeColor(colors.text, isDarkMode),
+      color: isDarkMode ? getColorFromClass('ism-blue-light-text') : getColorFromClass('ism-blue-dark-text'),
       textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
     },
     wordsGrid: {
       flexDirection: 'row',
@@ -106,7 +110,7 @@ const QuranicWordLesson5Screen: React.FC<QuranicWordLesson5ScreenProps> = ({ onN
       padding: 16,
       marginBottom: 16,
       borderWidth: 2,
-      borderColor: getThemeColor(colors.primary, isDarkMode),
+      borderColor: getColorFromClass('ism-blue-light'),
       shadowColor: getThemeColor(colors.shadow, isDarkMode),
       shadowOffset: { width: 0, height: 4 },
       shadowOpacity: 0.15,
@@ -119,7 +123,7 @@ const QuranicWordLesson5Screen: React.FC<QuranicWordLesson5ScreenProps> = ({ onN
       fontWeight: 'bold',
       textAlign: 'center',
       marginBottom: 8,
-      color: getThemeColor(colors.primary, isDarkMode),
+      color: isDarkMode ? getColorFromClass('ism-blue-light-text') : getColorFromClass('ism-blue-dark-text'),
       fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
       lineHeight: 24,
     },
@@ -139,124 +143,108 @@ const QuranicWordLesson5Screen: React.FC<QuranicWordLesson5ScreenProps> = ({ onN
       lineHeight: 16,
       marginBottom: 6,
     },
-    exampleSection: {
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
-      borderRadius: 12,
-      padding: 12,
-      marginTop: 8,
-      width: '100%',
+    frequencyBadge: {
+      backgroundColor: isDarkMode ? getColorFromClass('ism-blue-dark') : getColorFromClass('ism-blue-light'),
+      borderRadius: 10,
+      paddingHorizontal: 8,
+      paddingVertical: 3,
+      alignSelf: 'center',
     },
-    exampleTitle: {
+    frequencyText: {
       fontSize: isTablet ? 12 : 10,
+      color: isDarkMode ? getColorFromClass('ism-blue-dark-text') : getColorFromClass('ism-blue-light-text'),
       fontWeight: 'bold',
-      color: getThemeColor(colors.surface, isDarkMode),
-      marginBottom: 6,
-      textAlign: 'center',
-    },
-    exampleText: {
-      fontSize: isTablet ? 12 : 10,
-      color: getThemeColor(colors.surface, isDarkMode),
-      textAlign: 'center',
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
-      lineHeight: 16,
-      marginBottom: 4,
-    },
-    translationText: {
-      fontSize: isTablet ? 12 : 10,
-      color: getThemeColor(colors.surface, isDarkMode),
-      textAlign: 'center',
-      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
-      lineHeight: 16,
-      opacity: 0.9,
     },
     decorativeLine: {
       height: 3,
       width: 60,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('ism-blue-dark') : getColorFromClass('ism-blue-light'),
       borderRadius: 2,
       alignSelf: 'center',
       marginBottom: 24,
     },
   });
 
-  const interrogativeWords = [
+  const basicWords = [
     {
-      arabic: 'مَا',
-      urdu: 'کیا',
-      english: 'What',
-      example: 'مَا هَذَا؟',
-      translation: 'یہ کیا ہے؟',
+      arabic: 'أَنْعَامُ',
+      urdu: 'مویشی',
+      english: 'Livestock, Cattle',
+      frequency: 33,
     },
     {
-      arabic: 'مَن',
-      urdu: 'کون',
-      english: 'Who',
-      example: 'مَن أَنتَ؟',
-      translation: 'تم کون ہو؟',
+      arabic: 'جَبَل (جِبَالٌ)',
+      urdu: 'پہاڑ',
+      english: 'Mountain(s)',
+      frequency: 39,
     },
     {
-      arabic: 'كَيْفَ',
-      urdu: 'کیسا',
-      english: 'How',
-      example: 'كَيْفَ حَالُكَ؟',
-      translation: 'تمہارا حال کیسا ہے؟',
+      arabic: 'بَحْرٌ',
+      urdu: 'سمندر',
+      english: 'Sea, Ocean',
+      frequency: 35,
     },
     {
-      arabic: 'أَيْنَ',
-      urdu: 'کہاں',
-      english: 'Where',
-      example: 'أَيْنَ أَخُوكَ؟',
-      translation: 'تمہارا بھائی کہاں ہے؟',
+      arabic: 'آيَةٌ (آيَاتٌ)',
+      urdu: 'آیت، نشانی',
+      english: 'Sign, Verse',
+      frequency: 382,
     },
     {
-      arabic: 'مَتَى',
-      urdu: 'کب',
-      english: 'When',
-      example: 'مَتَى يَأْتِي؟',
-      translation: 'وہ کب آئے گا؟',
+      arabic: 'شَمْسٌ',
+      urdu: 'سورج',
+      english: 'Sun',
+      frequency: 33,
     },
     {
-      arabic: 'أَنَّى',
-      urdu: 'کہاں سے/کیسے',
-      english: 'Where from/How',
-      example: 'أَنَّى لَكُمْ هَذَا؟',
-      translation: 'یہ تمہیں کہاں سے ملا؟',
+      arabic: 'أَرْضُ',
+      urdu: 'زمین',
+      english: 'Earth, Land',
+      frequency: 461,
     },
     {
-      arabic: 'أَيَّانَ',
-      urdu: 'کب',
-      english: 'When',
-      example: 'أَيَّانَ يَوْمُ الدِّينِ؟',
-      translation: 'جزا کا دن کب ہوگا؟',
+      arabic: 'رِيح (رِيَاحٌ)',
+      urdu: 'ہوا',
+      english: 'Wind(s)',
+      frequency: 29,
     },
     {
-      arabic: 'أَيُّ',
-      urdu: 'کون سا',
-      english: 'Which',
-      example: 'أَيُّ شَيْءٍ؟',
-      translation: 'کون سی چیز؟',
+      arabic: 'لَيْلٌ',
+      urdu: 'رات',
+      english: 'Night',
+      frequency: 80,
     },
     {
-      arabic: 'كَمْ',
-      urdu: 'کتنے/کتنی',
-      english: 'How many/How much',
-      example: 'كَمْ عُمْرُكَ؟',
-      translation: 'تمہاری عمر کتنی ہے؟',
+      arabic: 'سَبْعٌ',
+      urdu: 'سات',
+      english: 'Seven',
+      frequency: 24,
     },
     {
-        arabic: 'مَاذَا',
-        urdu: 'کیا/کیا چیز',
-        english: 'What/What thing',
-        example: 'مَاذَا يُنفِقُونَ',
-        translation: '(البقرۃ: 219)',
+      arabic: 'سَمَاءُ (سَمَاوَاتُ)',
+      urdu: 'آسمان',
+      english: 'Sky, Heavens',
+      frequency: 310,
     },
     {
-        arabic: 'لِمَ / لِمَاذَا',
-        urdu: 'کیوں',
-        english: 'Why',
-        example: 'لِمَ تَقُولُونَ مَا لَا تَفْعَلُونَ',
-        translation: '(الصف: 2)',
+      arabic: 'بَيِّنَةٌ (بَيِّنَاتُ)',
+      urdu: 'واضح نشانی',
+      english: 'Clear proof, Signs',
+      frequency: 71,
     },
+    {
+      arabic: 'قَمَرٌ',
+      urdu: 'چاند',
+      english: 'Moon',
+      frequency: 27,
+    },
+    {
+      arabic: 'نَهَارٌ',
+      urdu: 'دن',
+      english: 'Day',
+      frequency: 57,
+    },
+    
   ];
 
   return (
@@ -271,7 +259,7 @@ const QuranicWordLesson5Screen: React.FC<QuranicWordLesson5ScreenProps> = ({ onN
         <TouchableOpacity style={styles.backButton} onPress={onBack}>
           <Text style={styles.backButtonText}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>اسم Lesson 5</Text>
+        <Text style={styles.headerTitle}>اللہ کی نشانیاں</Text>
       </View>
 
       <ScrollView
@@ -280,29 +268,24 @@ const QuranicWordLesson5Screen: React.FC<QuranicWordLesson5ScreenProps> = ({ onN
         contentContainerStyle={styles.content}
       >
         {/* Title Section */}
-        <Text style={styles.title}>❓ اسم استفهام - Interrogative Nouns</Text>
-        <Text style={styles.subtitle}>
-          Learn essential Arabic interrogative words and their usage in questions
-        </Text>
-
+        <Text style={styles.title}>اللہ کی نشانیاں</Text>
+        <Text style={styles.title}>Allah Signs</Text>
+       
         {/* Decorative Line */}
         <View style={styles.decorativeLine} />
 
-        {/* Interrogative Words Section */}
+        {/* Basic Words Section */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>حروف استفهام - Question Words</Text>
-          
+          <Text style={styles.sectionTitle}>Essential Quranic 13 Nouns (Total: 1581 times)</Text>
+            
           <View style={styles.wordsGrid}>
-            {interrogativeWords.map((word, index) => (
+            {basicWords.map((word, index) => (
               <View key={index} style={styles.wordCard}>
                 <Text style={styles.arabicWord}>{word.arabic}</Text>
                 <Text style={styles.urduMeaning}>{word.urdu}</Text>
                 <Text style={styles.englishMeaning}>{word.english}</Text>
-                
-                <View style={styles.exampleSection}>
-                  <Text style={styles.exampleTitle}>Example</Text>
-                  <Text style={styles.exampleText}>{word.example}</Text>
-                  <Text style={styles.translationText}>{word.translation}</Text>
+                <View style={styles.frequencyBadge}>
+                  <Text style={styles.frequencyText}>{word.frequency} times</Text>
                 </View>
               </View>
             ))}

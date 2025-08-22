@@ -48,10 +48,7 @@ export { default as QuranicWordHarfLesson10Screen } from './QuranicWordHarfLesso
 export { default as QuranicWordHarfLesson11Screen } from './QuranicWordHarfLesson11Screen';
 export { default as QuranicWordHarfLesson12Screen } from './QuranicWordHarfLesson12Screen';
 export { default as QuranicWordHarfLesson13Screen } from './QuranicWordHarfLesson13Screen';
-export { default as QuranicWordHarfLesson14Screen } from './QuranicWordHarfLesson14Screen';
-export { default as QuranicWordHarfLesson15Screen } from './QuranicWordHarfLesson15Screen';
-export { default as QuranicWordHarfLesson16Screen } from './QuranicWordHarfLesson16Screen';
-export { default as QuranicWordHarfLesson17Screen } from './QuranicWordHarfLesson17Screen';
+
 
 // Future lesson screens can be added here:
 // export { default as Lesson27Screen } from './Lesson27Screen';

@@ -58,10 +58,6 @@ import {
   QuranicWordHarfLesson11Screen,
   QuranicWordHarfLesson12Screen,
   QuranicWordHarfLesson13Screen,
-  QuranicWordHarfLesson14Screen,
-  QuranicWordHarfLesson15Screen,
-  QuranicWordHarfLesson16Screen,
-  QuranicWordHarfLesson17Screen,
 } from './src/screens/lessons';
 
 // Store
@@ -136,11 +132,7 @@ type Screen =
   | 'QuranicWordHarfLesson10'
   | 'QuranicWordHarfLesson11'
   | 'QuranicWordHarfLesson12'
-  | 'QuranicWordHarfLesson13'
-  | 'QuranicWordHarfLesson14'
-  | 'QuranicWordHarfLesson15'
-  | 'QuranicWordHarfLesson16'
-  | 'QuranicWordHarfLesson17';
+  | 'QuranicWordHarfLesson13';
 
 const { width, height } = Dimensions.get('window');
 
@@ -308,14 +300,6 @@ const App = () => {
         return <QuranicWordHarfLesson12Screen onNavigate={navigate} onBack={goBack} />;
       case 'QuranicWordHarfLesson13':
         return <QuranicWordHarfLesson13Screen onNavigate={navigate} onBack={goBack} />;
-      case 'QuranicWordHarfLesson14':
-        return <QuranicWordHarfLesson14Screen onNavigate={navigate} onBack={goBack} />;
-      case 'QuranicWordHarfLesson15':
-        return <QuranicWordHarfLesson15Screen onNavigate={navigate} onBack={goBack} />;
-      case 'QuranicWordHarfLesson16':
-        return <QuranicWordHarfLesson16Screen onNavigate={navigate} onBack={goBack} />;
-      case 'QuranicWordHarfLesson17':
-        return <QuranicWordHarfLesson17Screen onNavigate={navigate} onBack={goBack} />;
     default:
       return <HomeScreen onNavigate={navigate} />;
     }

@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { useThemeStore } from '../../store/themeStore';
 import { TAILWIND_COLORS, FONT_CLASSES } from '../../utils/constants';
-import { getThemeColor } from '../../utils/colorUtils';
+import { getThemeColor, getColorFromClass } from '../../utils/colorUtils';
 import { getFontWithProperFallback } from '../../utils/fontUtils';
 
 interface QuranicWordLesson1ScreenProps {
@@ -49,18 +49,19 @@ const QuranicWordLesson1Screen: React.FC<QuranicWordLesson1ScreenProps> = ({ onN
       padding: 8,
       marginRight: 16,
       borderRadius: 8,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('ism-blue-dark') : getColorFromClass('ism-blue-light'),
     },
     backButtonText: {
       fontSize: 18,
-      color: getThemeColor(colors.surface, isDarkMode),
+      color: isDarkMode ? getColorFromClass('ism-blue-dark-text') : getColorFromClass('ism-blue-light-text'),
       fontWeight: 'bold',
     },
     headerTitle: {
       fontSize: 20,
       fontWeight: 'bold',
-      color: getThemeColor(colors.text, isDarkMode),
+      color: isDarkMode ? getColorFromClass('ism-blue-light-text') : getColorFromClass('ism-blue-dark-text'),
       flex: 1,
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
     },
     scrollView: {
       flex: 1,
@@ -75,7 +76,8 @@ const QuranicWordLesson1Screen: React.FC<QuranicWordLesson1ScreenProps> = ({ onN
       fontWeight: 'bold',
       textAlign: 'center',
       marginBottom: 16,
-      color: getThemeColor(colors.primary, isDarkMode),
+      color: isDarkMode ? getColorFromClass('ism-blue-light-text') : getColorFromClass('ism-blue-dark-text'),
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
     },
     subtitle: {
       fontSize: isTablet ? 18 : 16,
@@ -83,6 +85,15 @@ const QuranicWordLesson1Screen: React.FC<QuranicWordLesson1ScreenProps> = ({ onN
       marginBottom: 32,
       color: getThemeColor(colors.textSecondary, isDarkMode),
       lineHeight: 24,
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+    },
+    englishTitle: {
+      fontSize: isTablet ? 16 : 14,
+      textAlign: 'center',
+      marginBottom: 32,
+      color: getThemeColor(colors.textSecondary, isDarkMode),
+      lineHeight: 20,
+      fontStyle: 'italic',
     },
     section: {
       marginBottom: 32,
@@ -91,8 +102,9 @@ const QuranicWordLesson1Screen: React.FC<QuranicWordLesson1ScreenProps> = ({ onN
       fontSize: isTablet ? 22 : 18,
       fontWeight: 'bold',
       marginBottom: 16,
-      color: getThemeColor(colors.text, isDarkMode),
+      color: isDarkMode ? getColorFromClass('ism-blue-light-text') : getColorFromClass('ism-blue-dark-text'),
       textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
     },
     wordsGrid: {
       flexDirection: 'row',
@@ -106,7 +118,7 @@ const QuranicWordLesson1Screen: React.FC<QuranicWordLesson1ScreenProps> = ({ onN
       padding: 16,
       marginBottom: 16,
       borderWidth: 2,
-      borderColor: getThemeColor(colors.primary, isDarkMode),
+      borderColor: getColorFromClass('ism-blue-light'),
       shadowColor: getThemeColor(colors.shadow, isDarkMode),
       shadowOffset: { width: 0, height: 4 },
       shadowOpacity: 0.15,
@@ -119,7 +131,7 @@ const QuranicWordLesson1Screen: React.FC<QuranicWordLesson1ScreenProps> = ({ onN
       fontWeight: 'bold',
       textAlign: 'center',
       marginBottom: 8,
-      color: getThemeColor(colors.primary, isDarkMode),
+      color: isDarkMode ? getColorFromClass('ism-blue-light-text') : getColorFromClass('ism-blue-dark-text'),
       fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
       lineHeight: 24,
     },
@@ -139,107 +151,188 @@ const QuranicWordLesson1Screen: React.FC<QuranicWordLesson1ScreenProps> = ({ onN
       lineHeight: 16,
       marginBottom: 6,
     },
-    frequencyBadge: {
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
-      borderRadius: 10,
-      paddingHorizontal: 8,
-      paddingVertical: 3,
-      alignSelf: 'center',
+    exampleSection: {
+      backgroundColor: isDarkMode ? getColorFromClass('ism-blue-dark') : getColorFromClass('ism-blue-light'),
+      borderRadius: 12,
+      padding: 12,
+      marginTop: 8,
+      width: '100%',
     },
-    frequencyText: {
+    exampleTitle: {
       fontSize: isTablet ? 12 : 10,
-      color: getThemeColor(colors.surface, isDarkMode),
       fontWeight: 'bold',
+      color: isDarkMode ? getColorFromClass('ism-blue-dark-text') : getColorFromClass('ism-blue-light-text'),
+      marginBottom: 6,
+      textAlign: 'center',
+    },
+    exampleText: {
+      fontSize: isTablet ? 12 : 10,
+      color: isDarkMode ? getColorFromClass('ism-blue-dark-text') : getColorFromClass('ism-blue-light-text'),
+      textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.arabic),
+      lineHeight: 16,
+      marginBottom: 4,
+    },
+    translationText: {
+      fontSize: isTablet ? 12 : 10,
+      color: isDarkMode ? getColorFromClass('ism-blue-dark-text') : getColorFromClass('ism-blue-light-text'),
+      textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+      lineHeight: 16,
+      opacity: 0.9,
     },
     decorativeLine: {
       height: 3,
       width: 60,
-      backgroundColor: getThemeColor(colors.primary, isDarkMode),
+      backgroundColor: isDarkMode ? getColorFromClass('ism-blue-dark') : getColorFromClass('ism-blue-light'),
       borderRadius: 2,
       alignSelf: 'center',
       marginBottom: 24,
     },
+    notesSection: {
+      backgroundColor: isDarkMode ? getColorFromClass('ism-blue-dark') : getColorFromClass('ism-blue-light'),
+      borderRadius: 16,
+      padding: 20,
+      marginTop: 32,
+      marginBottom: 20,
+    },
+    notesTitle: {
+      fontSize: isTablet ? 18 : 16,
+      fontWeight: 'bold',
+      color: isDarkMode ? getColorFromClass('ism-blue-dark-text') : getColorFromClass('ism-blue-light-text'),
+      marginBottom: 12,
+      textAlign: 'center',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+    },
+    notesText: {
+      fontSize: isTablet ? 14 : 12,
+      color: isDarkMode ? getColorFromClass('ism-blue-dark-text') : getColorFromClass('ism-blue-light-text'),
+      lineHeight: 20,
+      textAlign: 'right',
+      fontFamily: getFontWithProperFallback(FONT_CLASSES.urdu),
+    },
   });
 
-  const basicWords = [
+  const adverbWords = [
     {
-      arabic: 'أَنْعَامُ',
-      urdu: 'مویشی',
-      english: 'Livestock, Cattle',
-      frequency: 36,
+      arabic: 'دُونِ',
+      urdu: 'سوا، علاوه',
+      english: 'besides',
+      
     },
     {
-      arabic: 'جَبَل (جِبَالٌ)',
-      urdu: 'پہاڑ',
-      english: 'Mountain(s)',
-      frequency: 39,
+      arabic: 'فَوْقَ',
+      urdu: 'اوپر',
+      english: 'above, over',
+      
     },
     {
-      arabic: 'بَحْرٌ',
-      urdu: 'سمندر',
-      english: 'Sea, Ocean',
-      frequency: 35,
+      arabic: 'تَحْتِ',
+      urdu: 'نیچے',
+      english: 'under, beneath',
+      
     },
     {
-      arabic: 'آيَةٌ (آيَاتٌ)',
-      urdu: 'آیت، نشانی',
-      english: 'Sign, Verse',
-      frequency: 382,
+      arabic: 'بَیْنَ یَدَیْ / بَیْنَ أَیْدِی',
+      urdu: ' کے سامنے',
+      english: 'in front of',
+      
     },
     {
-      arabic: 'شَمْسٌ',
-      urdu: 'سورج',
-      english: 'Sun',
-      frequency: 33,
+      arabic: 'أَمَامَ',
+      urdu: 'سامنے',
+      english: 'In front of',
+      
     },
     {
-      arabic: 'أَرْضُ',
-      urdu: 'زمین',
-      english: 'Earth, Land',
-      frequency: 461,
+      arabic: 'خَلْفَ',
+      urdu: 'پیچھے',
+      english: 'behind',
+      
     },
     {
-      arabic: 'رِيح (رِيَاحٌ)',
-      urdu: 'ہوا',
-      english: 'Wind(s)',
-      frequency: 29,
+      arabic: 'وَرَاءَ',
+      urdu: 'پیچھے / بعد میں',
+      english: 'behind / after',
+      
     },
     {
-      arabic: 'لَيْلٌ',
-      urdu: 'رات',
-      english: 'Night',
-      frequency: 80,
+      arabic: 'يَمِينَ',
+      urdu: 'داہنے طرف',
+      english: 'right side',
+      
     },
     {
-      arabic: 'سَبْعٌ',
-      urdu: 'سات',
-      english: 'Seven',
-      frequency: 24,
+      arabic: 'شِمَالِ',
+      urdu: 'بائیں طرف',
+      english: 'left side',
+      
     },
     {
-      arabic: 'سَمَاءُ (سَمَاوَاتُ)',
-      urdu: 'آسمان',
-      english: 'Sky, Heavens',
-      frequency: 310,
+      arabic: 'بَيْنَ',
+      urdu: 'درمیان',
+      english: 'between',
+      
     },
     {
-      arabic: 'بَيِّنَةٌ (بَيِّنَاتُ)',
-      urdu: 'واضح نشانی',
-      english: 'Clear proof, Signs',
-      frequency: 71,
+      arabic: 'حَوْلَ',
+      urdu: 'اردگرد / چاروں طرف',
+      english: 'around',
+      
     },
     {
-      arabic: 'قَمَرٌ',
-      urdu: 'چاند',
-      english: 'Moon',
-      frequency: 27,
+      arabic: 'حَيثُ',
+      urdu: 'جہاں',
+      english: 'where',
+      
     },
     {
-      arabic: 'نَهَارٌ',
-      urdu: 'دن',
-      english: 'Day',
-      frequency: 57,
+      arabic: 'أَيْنَ',
+      urdu: 'جہاں',
+      english: 'where',
+      
     },
+    {
+      arabic: 'أَيْنَمَا',
+      urdu: 'جہاں بھی',
+      english: 'wherever',
+      
+    },
+    {
+      arabic: 'هُنَالِكَ',
+      urdu: 'وہاں',
+      english: 'there',
+      
+    },
+    {
+      arabic: 'قَبْلَ',
+      urdu: 'پہلے',
+      english: 'before',
+      
+    },
+    {
+      arabic: 'بَعْدَ',
+      urdu: 'بعد',
+      english: 'after',
+      
+    },
+    {
+      arabic: 'حِیْنَ',
+      urdu: 'وقت، جب، اُس وقت، لمحہ',
+      english: 'Time / moment / at the time',
+    },
+    {
+      arabic: 'يَوْمَئِذٍ',
+      urdu: 'اس دن / اس وقت',
+      english: 'that day / that time',
+    },
+    {
+      arabic: 'بَعِيدٍ',
+      urdu: 'دور',
+      english: 'far',
+    },
+    
+    
   ];
 
   return (
@@ -254,7 +347,7 @@ const QuranicWordLesson1Screen: React.FC<QuranicWordLesson1ScreenProps> = ({ onN
         <TouchableOpacity style={styles.backButton} onPress={onBack}>
           <Text style={styles.backButtonText}>←</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Lesson 1: Basic Quranic Words</Text>
+        <Text style={styles.headerTitle}>اسم ظرف</Text>
       </View>
 
       <ScrollView
@@ -263,30 +356,40 @@ const QuranicWordLesson1Screen: React.FC<QuranicWordLesson1ScreenProps> = ({ onN
         contentContainerStyle={styles.content}
       >
         {/* Title Section */}
-        <Text style={styles.title}>📝 Basic Quranic Words</Text>
-        <Text style={styles.subtitle}>
-          We will learn 13 Nouns that appear 1600+ times in the Quran
-        </Text>
+        <Text style={styles.title}> اسم ظرف</Text>
+        <Text style={styles.englishTitle}>Adverbs of Place/Time</Text>
+        
 
         {/* Decorative Line */}
         <View style={styles.decorativeLine} />
 
-        {/* Basic Words Section */}
+        {/* Adverb Words Section */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Essential Quranic Nouns (Total: 1,605 times)</Text>
+         
           
           <View style={styles.wordsGrid}>
-            {basicWords.map((word, index) => (
+            {adverbWords.map((word, index) => (
               <View key={index} style={styles.wordCard}>
                 <Text style={styles.arabicWord}>{word.arabic}</Text>
                 <Text style={styles.urduMeaning}>{word.urdu}</Text>
                 <Text style={styles.englishMeaning}>{word.english}</Text>
-                <View style={styles.frequencyBadge}>
-                  <Text style={styles.frequencyText}>{word.frequency} times</Text>
-                </View>
+                
+                {/* <View style={styles.exampleSection}>
+                  <Text style={styles.exampleTitle}>Example</Text>
+                  <Text style={styles.exampleText}>{word.example}</Text>
+                  <Text style={styles.translationText}>{word.translation}</Text>
+                </View> */}
               </View>
             ))}
           </View>
+        </View>
+
+        {/* Notes Section */}
+        <View style={styles.notesSection}>
+          <Text style={styles.notesTitle}>اہم نوٹ:</Text>
+          <Text style={styles.notesText}>
+            اسم ظرف: وہ اسماء جو جگہ یا وقت کو ظاہر کریں (مثلاً: تحت = نیچ، عند = پاس، بعد = بعد، يومئذ = اُس دن) ۔
+          </Text>
         </View>
       </ScrollView>
     </SafeAreaView>

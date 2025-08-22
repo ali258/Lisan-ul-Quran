@@ -307,6 +307,13 @@ const QuranicWordHarfLesson11Screen: React.FC<QuranicWordHarfLesson11ScreenProps
       englishMeaning: 'The time when, not yet',
       group_category: 'حرفِ ظرف + ما (مرکب)',
     },
+    {
+      arabic: 'مِمَّنْ (مِنْ+مَنْ)',
+      transliteration: 'Mimman',
+      urduMeaning: 'اس سے جو/ اُن میں سے جو',
+      englishMeaning: 'than the one who; from those who',
+      group_category: 'مرکب اضافی (اسم موصول + جار)',
+    },
 
     
   ];

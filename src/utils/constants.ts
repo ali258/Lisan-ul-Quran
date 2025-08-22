@@ -163,15 +163,15 @@ export const QURANIC_WORD_LESSONS: MenuItem[] = [
   {
     id: 'quranic-word-lesson-1',
     title: 'Lesson 1',
-    subtitle: 'بنیادی قرآنی الفاظ',
-    icon: '📝',
-    color: 'primary-600',
+    subtitle: 'اسم ظرف',
+    icon: '📍',
+    color: 'primary-50',
     route: 'QuranicWordLesson1',
   },
   {
     id: 'quranic-word-lesson-2',
     title: 'Lesson 2',
-    subtitle: 'اشارے والے اسماء',
+    subtitle: 'کثرت استعمال والے اسماء',
     icon: '📚',
     color: 'primary-500',
     route: 'QuranicWordLesson2',
@@ -179,7 +179,7 @@ export const QURANIC_WORD_LESSONS: MenuItem[] = [
   {
     id: 'quranic-word-lesson-3',
     title: 'Lesson 3',
-    subtitle: 'ضمائر کی تفصیل',
+    subtitle: 'بعض صفات (اللہ اور دوسروں کی)',
     icon: '🎯',
     color: 'primary-400',
     route: 'QuranicWordLesson3',
@@ -187,7 +187,7 @@ export const QURANIC_WORD_LESSONS: MenuItem[] = [
   {
     id: 'quranic-word-lesson-4',
     title: 'Lesson 4',
-    subtitle: 'اسم موصول کی تفصیل',
+    subtitle: 'اسمِ تفضیل',
     icon: '🔗',
     color: 'primary-300',
     route: 'QuranicWordLesson4',
@@ -195,7 +195,7 @@ export const QURANIC_WORD_LESSONS: MenuItem[] = [
   {
     id: 'quranic-word-lesson-5',
     title: 'Lesson 5',
-    subtitle: 'اسم استفهام',
+    subtitle: 'اللہ کی نشانیاں',
     icon: '❓',
     color: 'primary-200',
     route: 'QuranicWordLesson5',
@@ -211,9 +211,9 @@ export const QURANIC_WORD_LESSONS: MenuItem[] = [
   {
     id: 'quranic-word-lesson-7',
     title: 'Lesson 7',
-    subtitle: 'اسم ظرف',
-    icon: '📍',
-    color: 'primary-50',
+    subtitle: 'بنیادی قرآنی الفاظ',
+    icon: '📝',
+    color: 'primary-600',
     route: 'QuranicWordLesson7',
   },
   {
