@@ -1,0 +1,47 @@
+/* Custom Fonts CSS */
+
+/* Import multiple Arabic fonts for better diacritical mark support */
+@import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap');
+
+/* Primary Arabic font with proper diacritical mark support */
+@font-face {
+  font-family: 'Arabic-Font';
+  src: url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fallback fonts */
+@font-face {
+  font-family: 'Noto-Nastaliq-Urdu';
+  src: local('Noto Nastaliq Urdu'), local('Arial');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Additional styling for better Arabic text rendering */
+.arabic-text {
+  font-family: 'Scheherazade New', 'Amiri', 'Noto Naskh Arabic', serif;
+  font-weight: 700;
+  line-height: 1.8;
+  text-align: center;
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+/* Specific styling for Arabic text with diacritics */
+.arabic-with-diacritics {
+  font-family: 'Scheherazade New', 'Amiri', 'Noto Naskh Arabic', serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.6;
+  text-align: center;
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: "liga" 1, "kern" 1;
+  font-feature-settings: "liga" 1, "kern" 1;
+} 
