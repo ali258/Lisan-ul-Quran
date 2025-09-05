@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BackHandler, Alert } from 'react-native';
+import { BackHandler, Alert, View, StyleSheet, Platform } from 'react-native';
 import { 
   SplashScreen, 
   HomeScreen, 
@@ -149,51 +149,66 @@ export default function App() {
     setIsInLesson(false);
   };
 
-  switch (currentScreen) {
-    case 'splash':
-      return <SplashScreen onFinish={handleSplashFinish} />;
-    case 'settings':
-      return <SettingsScreen onBackPress={handleBackFromSettings} />;
-    case 'quran':
-      return <QuranScreen onGoToSettings={handleGoToSettings} onBottomNavigation={handleBottomNavigation} />;
-    case 'grammar':
-      return <ArabicScreen onGoToSettings={handleGoToSettings} onBottomNavigation={handleBottomNavigation} />;
-    case 'words':
-      return <WordScreen onGoToSettings={handleGoToSettings} onBottomNavigation={handleBottomNavigation} onNavigateToHarf={handleNavigateToHarf} onNavigateToIsm={handleNavigateToIsm} onNavigateToFal={handleNavigateToFal} />;
-    case 'harf':
-      return <HarfScreen 
-        onGoToSettings={handleGoToSettings} 
-        onBottomNavigation={handleBottomNavigation} 
-        onBackPress={handleBackToWord}
-        onLessonOpen={handleLessonOpen}
-        onLessonClose={handleLessonClose}
-      />;
-    case 'ism':
-      return <IsmScreen 
-        onGoToSettings={handleGoToSettings} 
-        onBottomNavigation={handleBottomNavigation} 
-        onBackPress={handleBackToWord}
-        onLessonOpen={handleLessonOpen}
-        onLessonClose={handleLessonClose}
-      />;
-    case 'fal':
-      return <FalScreen 
-        onGoToSettings={handleGoToSettings} 
-        onBottomNavigation={handleBottomNavigation} 
-        onBackPress={handleBackToWord}
-        onLessonOpen={handleLessonOpen}
-        onLessonClose={handleLessonClose}
-      />;
-    case 'more':
-      return <MoreScreen onGoToSettings={handleGoToSettings} onBottomNavigation={handleBottomNavigation} />;
-    case 'home':
-    default:
-      return (
-        <HomeScreen 
-          onBackToSplash={handleBackToSplash}
-          onGoToSettings={handleGoToSettings}
-          onBottomNavigation={handleBottomNavigation}
-        />
-      );
-  }
+  const renderScreen = () => {
+    switch (currentScreen) {
+      case 'splash':
+        return <SplashScreen onFinish={handleSplashFinish} />;
+      case 'settings':
+        return <SettingsScreen onBackPress={handleBackFromSettings} />;
+      case 'quran':
+        return <QuranScreen onGoToSettings={handleGoToSettings} onBottomNavigation={handleBottomNavigation} />;
+      case 'grammar':
+        return <ArabicScreen onGoToSettings={handleGoToSettings} onBottomNavigation={handleBottomNavigation} />;
+      case 'words':
+        return <WordScreen onGoToSettings={handleGoToSettings} onBottomNavigation={handleBottomNavigation} onNavigateToHarf={handleNavigateToHarf} onNavigateToIsm={handleNavigateToIsm} onNavigateToFal={handleNavigateToFal} />;
+      case 'harf':
+        return <HarfScreen 
+          onGoToSettings={handleGoToSettings} 
+          onBottomNavigation={handleBottomNavigation} 
+          onBackPress={handleBackToWord}
+          onLessonOpen={handleLessonOpen}
+          onLessonClose={handleLessonClose}
+        />;
+      case 'ism':
+        return <IsmScreen 
+          onGoToSettings={handleGoToSettings} 
+          onBottomNavigation={handleBottomNavigation} 
+          onBackPress={handleBackToWord}
+          onLessonOpen={handleLessonOpen}
+          onLessonClose={handleLessonClose}
+        />;
+      case 'fal':
+        return <FalScreen 
+          onGoToSettings={handleGoToSettings} 
+          onBottomNavigation={handleBottomNavigation} 
+          onBackPress={handleBackToWord}
+          onLessonOpen={handleLessonOpen}
+          onLessonClose={handleLessonClose}
+        />;
+      case 'more':
+        return <MoreScreen onGoToSettings={handleGoToSettings} onBottomNavigation={handleBottomNavigation} />;
+      case 'home':
+      default:
+        return (
+          <HomeScreen 
+            onBackToSplash={handleBackToSplash}
+            onGoToSettings={handleGoToSettings}
+            onBottomNavigation={handleBottomNavigation}
+          />
+        );
+    }
+  };
+
+  return (
+    <View style={styles.appContainer}>
+      {renderScreen()}
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  appContainer: {
+    flex: 1,
+    paddingBottom: Platform.OS === 'android' ? 48 : 0, // Add bottom padding for Android to prevent overlap
+  },
+});
